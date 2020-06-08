@@ -12,26 +12,76 @@
         *{
             font-family: "Helvetica", Helvetica, sans-serif;
         }
+        #titleElement{
+            position: absolute;
+            top:5%;
+        }
+        #donorHeading{
+            margin-top: 20px;
+            color: #B5EAD7;
+        }
+        #matcherHeading{
+            margin-top: 20px;
+            color: #FFDAC1;
+        }
+        #donorButton{
+            margin-right: 20px;
+            background-color: #B5EAD7;
+            border:none;
+            padding: 10px 50px;
+        }
+        #matcherButton{
+            margin-left: 20px;
+            background-color: #FFDAC1;
+            border:none;
+            padding: 10px 50px;
+        }
+        #buttons{
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
-<div>
-    <div >
-        <h1>Multifire</h1>
+<div class="container-fluid" id="titleElement">
+    <div class="row justify-content-center">
+        <h1><b>Multifire 🔥</b></h1>
+    </div>
+    <div class="row justify-content-center">
+        <h3> Multiply your donation in minutes.</h3>
+    </div>
+    <div class="row justify-content-center" id="donorHeading">
+        <h3> <b> For Donors 💚</b></h3>
+    </div>
+    <div class="row justify-content-center" name="donorDescription">
+        <p> Step 1. Write-up a brief summary of your donation. </p>
+    </div>
+    <div class="row justify-content-center" name="donorDescription">
+        <p> Step 2. Deposit funds on the site. </p>
+    </div>
+    <div class="row justify-content-center" name="donorDescription">
+        <p> Step 3. Once your donation is matched, your funds will be paid out to the matcher. </p>
+    </div>
+    <div class="row justify-content-center" id="matcherHeading">
+        <h3> <b> For Matchers 🧡</b></h3>
+    </div>
+    <div class="row justify-content-center" name="donorDescription">
+        <p> Step 1. Find a commitment that your company can match. </p>
+    </div>
+    <div class="row justify-content-center" name="donorDescription">
+        <p> Step 2. Using your own funds, donate to the organization referenced in the commitment. </p>
+    </div>
+    <div class="row justify-content-center" name="donorDescription">
+        <p> Step 3. Submit confirmation of the match to Multifire, and receive funds from the donor. </p>
+    </div>
+    <div class="row justify-content-center" id="buttons">
+        <a href="donor.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true" id="donorButton"><b>Donor</b></a>
+        <a href="#" class="btn btn-lg btn-primary" role="button" aria-pressed="true" id="matcherButton"><b>Matcher</b></a>
     </div>
 </div>
-<h> For Donors</h>
-<p> Step 1. Write-up a brief summary of your donation.</p>
-<p> Step 2. Deposit fund on the site.</p>
-<p> Step 3. Once your donation is matched, your funds will be paid out to the matcher.</p>
-<h> For Matchers</h>
-<p> Step 1. Find a commitment that your company can match.</p>
-<p> Step 2. Using your own funds, donate to the organization referenced in the commitment.</p>
-<p> Step 3. Submit confirmation of the match to Multifire, and receive funds from the donor.</p>
-<a href="donor.html" class="btn btn-outline-primary" role="button" aria-pressed="true">Donor</a>
-<a href="#" class="btn btn-outline-danger" role="button" aria-pressed="true">Matcher</a>
-    <!-- bootstrap implementation -->
+
+
+<!-- bootstrap implementation -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

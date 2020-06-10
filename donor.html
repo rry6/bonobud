@@ -3,41 +3,65 @@
 <head>
     <!-- meta stuff -->
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- bootstrap implementation -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Donor Page</title>
+    <style>
+        *{
+            font-family: "Helvetica", Helvetica, sans-serif;
+        }
+        #mainContainer{
+            position: absolute;
+            top: 5%;
+        }
+        #titleElement{
+            padding: 10px 50px;
+            background-color: #B5EAD7;
+            border-radius: 25px;
+            color: #FFFFFF;
+        }
+        input[type=text]{
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #000000;
+            padding: 2px 5px;
+        }
+    </style>
+
 </head>
 <body>
-    <div class="container">
-        <h1> Donor </h1>
+    <div class="container-fluid" id="mainContainer">
+        <div class="row justify-content-center">
+            <h2 id="titleElement"><b>Donor</b></h2>
+        </div>
+        <form action="">
+            <div class="form-group">
+                <label for="nameInput">Full Name</label>
+                <input type="text" class="form-control" id="nameInput" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label for="emailInput">Email</label>
+                <input type="email" class="form-control" id="emailInput" placeholder="johndoe@xyz.com">
+            </div>
+            <div class="form-group">
+                <label for="orgInput">Name of Charitable Organization</label>
+                <input type="text" class="form-control" id="orgInput" placeholder="World Health Organization">
+            </div>
+            <div class="form-group">
+                <label for="emailInput">Link to Donation Portal</label>
+                <input type="text" class="form-control" id="emailInput" placeholder="who.org">
+            </div>
+            <div class="form-group">
+                <label for="reasonInput">Reason for donating</label>
+                <textarea class="form-control" id="reasonInput" placeholder="Limit to 150 characters" rows="3"></textarea>
+            </div>
+            <a href="payment.html" class="btn btn-outline-primary" role="button" aria-pressed="true">Next</a>
+        </form>
     </div>
 
     <!-- **ADD FORM ACTION when we integrate with Firebase -->
-
-    <form action="">
-        <div class="form-group">
-            <label for="nameInput">Full Name</label>
-            <input type="text" class="form-control" id="nameInput" placeholder="John Doe">
-        </div>
-        <div class="form-group">
-            <label for="emailInput">Email</label>
-            <input type="email" class="form-control" id="emailInput" placeholder="johndoe@xyz.com">
-        </div>
-        <div class="form-group">
-            <label for="orgInput">Name of Charitable Organization</label>
-            <input type="text" class="form-control" id="orgInput" placeholder="World Health Organization">
-        </div>
-        <div class="form-group">
-            <label for="emailInput">Link to Donation Portal</label>
-            <input type="text" class="form-control" id="emailInput" placeholder="who.org">
-        </div>
-        <div class="form-group">
-            <label for="reasonInput">Reason for donating</label>
-            <textarea class="form-control" id="reasonInput" placeholder="Limit to 150 characters" rows="3"></textarea>
-        </div>
-        <a href="payment.html" class="btn btn-outline-primary" role="button" aria-pressed="true">Next</a>
-    </form>
 
     <!-- bootstrap implementation tags -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

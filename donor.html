@@ -76,6 +76,7 @@
             <b id="titleElement">Donor</b>
         </div>
         <form action="" id="submitForm">
+          <div id="page1" style="visibility:visible; position:absolute">
             <div class="form-group">
                 <label for="nameInput"></label>
                 <input type="text" class="form-control" id="nameInput" placeholder="Full Name">
@@ -96,7 +97,24 @@
                 <label for="reasonInput" id="reasonLabel">Why are you donating?</label>
                 <textarea class="form-control" id="reasonInput" placeholder="Limit to 150 characters" rows="3"></textarea>
             </div>
-            <a href="payment.html" id="nextButton" class="btn btn-outline-primary" role="button" aria-pressed="true"><b>Next</b></a>
+            <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= Next onClick="showLayer('page2')"></p>
+          </div>
+<!--End of page 1, beginning of page 2-->
+          <div id="page2" style="visibility:hidden; position:absolute">
+            <div class="form-group">
+                <label for="venmoInput">Venmo Username</label>
+                <input type="text" class="form-control" id="venmoInput" placeholder="multi-fire">
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount to donate ($)</label>
+                <input type="number" class="form-control" id="amount" placeholder="25">
+            </div>
+            <p><input type="button" class="btn btn-outline-primary" id="backButton" value= Back onClick="showLayer('page1')"></p>
+            <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('submitted')"></p>
+          </div>
+<!--End of page 2-->
+        <div id="submitted" style="visibility:hidden; position:absolute">
+        </div>
         </form>
     </div>
 
@@ -106,5 +124,21 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- Firestore implementation-->
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+
+
+    <script src="./donor.js"></script>
 </body>
 </html>

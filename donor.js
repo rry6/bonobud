@@ -50,7 +50,6 @@ dsave.addEventListener("click", function(){
   })
   .then(function() {
       console.log("Donor written with ID: " + newdonor.id);
-      document.getElementById("submitted").innerHTML = "<h1>Successfully submitted! <br>ID: " + newdonor.id;
   })
   .catch(function(error) {
       console.error("Error adding donor: ", error);

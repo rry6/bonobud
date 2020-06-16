@@ -59,6 +59,22 @@
         <b id="titleElement">Matcher</b>
     </div>
     <form action="" id="submitForm">
+      <div id = "page1" style="visibility:visible; position:absolute"> <!--Instructions-->
+        Instructions? <br>
+        <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
+        <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Let's go!" onClick="showLayer('page2')"></p>
+      </div>
+<!--End of instructions-->
+      <div id = "page2" style="visibility:hidden; position:absolute"> <!--select a donor-->
+        Search bar <br>
+        Explore feed... <br>
+        <!-- implement feed -->
+        <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Pick me!" onClick="showLayer('page3')"></p>
+        <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
+        <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Back" onClick="showLayer('page1')"></p>
+      </div>
+      <div id = "page3" style="visibility:hidden; position:absolute"> <!--info input-->
+        <!-- add summary of donor -->
         <div class="form-group">
             <label for="nameInput"></label>
             <input type="text" class="form-control" id="nameInput" placeholder="Full Name">
@@ -68,22 +84,52 @@
             <input type="text" class="form-control" id="companyInput" placeholder="Company Name">
         </div>
         <div class="form-group">
+            <label for="matcherRate"></label>
+            <input type="text" class="form-control" id="matcherRate" placeholder="Company Matching Rate (i.e. 1:1)">
+        </div>
+        <div class="form-group">
             <label for="emailInput"></label>
             <input type="text" class="form-control" id="emailInput" placeholder="Company Email (For verification purposes)">
         </div>
         <div class="form-group">
             <label for="personalEmailInput"></label>
-            <input type="text" class="form-control" id="personalEmailInput" placeholder="Personal Email">
+            <input type="text" class="form-control" id="personalEmailInput" placeholder="Personal Email (For contact purposes)">
         </div>
-        <a href="matcherTwo.html" id="nextButton" class="btn btn-outline-primary" role="button" aria-pressed="true"><b>Next</b></a>
+        <div class="form-group">
+            <label for="noteInput" id="noteLabel">Leave a note to your donor! (optional)</label>
+            <textarea class="form-control" id="noteInput" placeholder="Limit to 150 characters" rows="3"></textarea>
+        </div>
+        <p><input type="button" class="btn btn-outline-primary" id="backButton" value= Back onClick="showLayer('page2')"></p>
+        <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 4')"></p>
+      </div>
+<!--End of info input-->
+      <div id="page 4" style="visibility:hidden; position:absolute">
+        <div id="submitted">
+        </div>
+        <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
+      </div>
     </form>
 </div>
-
-<!-- **ADD FORM ACTION when we integrate with Firebase -->
 
 <!-- bootstrap implementation tags -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<!-- Firestore implementation-->
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+
+
+<script src="./matcher.js"></script>
 </body>
 </html>

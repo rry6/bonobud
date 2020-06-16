@@ -32,7 +32,6 @@ const demail = document.querySelector("#emailInput");
 const dcharity = document.querySelector("#orgInput");
 const dlink = document.querySelector("#linkInput");
 const dreason = document.querySelector("#reasonInput");
-const dvenmo = document.querySelector("#venmoInput");
 const damount = document.querySelector("#amount");
 const dsave = document.querySelector("#submitButton");
 
@@ -45,14 +44,16 @@ dsave.addEventListener("click", function(){
     link: dlink.value,
     reason: dreason.value,
     amount: damount.value,
-    venmo: dvenmo.value,
-    date: firebase.firestore.FieldValue.serverTimestamp()
+    date: firebase.firestore.FieldValue.serverTimestamp(),
+		status: "available" //available = display in feed, complete = donor matched, expired = after 1 week
   })
   .then(function() {
       console.log("Donor written with ID: " + newdonor.id);
+			document.getElementById("submitted").innerHTML = ("<h1>Success! Thank you for submitting! <br> ID: "
+				+ newdonor.id + "<br> email: " + demail.value)
   })
   .catch(function(error) {
       console.error("Error adding donor: ", error);
-      document.getElementById("submitted").innerHTML = "<h1>Error. Please try again later.</h1>"
+      document.getElementById("submitted").innerHTML = "<h1>Error processing donor. Please try again later.</h1>"
   });
 })

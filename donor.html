@@ -76,7 +76,13 @@
             <b id="titleElement">Donor</b>
         </div>
         <form action="" id="submitForm">
-          <div id="page1" style="visibility:visible; position:absolute">
+          <div id = "page1" style="visibility:visible; position:absolute"> <!--Instructions-->
+            Instructions? <br>
+            <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
+            <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Let's go!" onClick="showLayer('page2')"></p>
+          </div>
+<!--End of instructions page-->
+          <div id="page2" style="visibility:hidden; position:absolute"> <!--info input-->
             <div class="form-group">
                 <label for="nameInput"></label>
                 <input type="text" class="form-control" id="nameInput" placeholder="Full Name">
@@ -90,35 +96,28 @@
                 <input type="text" class="form-control" id="orgInput" placeholder="Name of Charitable Organization">
             </div>
             <div class="form-group">
-                <label for="emailInput"></label>
+                <label for="linkInput"></label>
                 <input type="text" class="form-control" id="linkInput" placeholder="Link to Donation Portal">
             </div>
             <div class="form-group">
-                <label for="reasonInput" id="reasonLabel">Why are you donating?</label>
+                <label for="amount"></label>
+                <input type="number" class="form-control" id="amount" placeholder="Amount to Donate ($)">
+            </div>
+            <div class="form-group">
+                <label for="reasonInput" id="reasonLabel">Why are you donating? (optional)</label>
                 <textarea class="form-control" id="reasonInput" placeholder="Limit to 150 characters" rows="3"></textarea>
             </div>
-            <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= Next onClick="showLayer('page2')"></p>
-          </div>
-<!--End of page 1, beginning of page 2-->
-          <div id="page2" style="visibility:hidden; position:absolute">
-            <div class="form-group">
-                <label for="venmoInput">Venmo Username</label>
-                <input type="text" class="form-control" id="venmoInput" placeholder="multi-fire">
-            </div>
-            <div class="form-group">
-                <label for="amount">Amount to donate ($)</label>
-                <input type="number" class="form-control" id="amount" placeholder="25">
-            </div>
             <p><input type="button" class="btn btn-outline-primary" id="backButton" value= Back onClick="showLayer('page1')"></p>
-            <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('submitted')"></p>
+            <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 3')"></p>
           </div>
-<!--End of page 2-->
-        <div id="submitted" style="visibility:hidden; position:absolute">
+<!--End of info input-->
+        <div id="page 3" style="visibility:hidden; position:absolute">
+          <div id="submitted">
+          </div>
+          <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
         </div>
         </form>
     </div>
-
-    <!-- **ADD FORM ACTION when we integrate with Firebase -->
 
     <!-- bootstrap implementation tags -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

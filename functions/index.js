@@ -1,10 +1,3 @@
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-// Firebase Config
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
@@ -15,6 +8,7 @@ const sgMail = require('@sendgrid/mail');
 const API_KEY = functions.config().sendgrid.key;
 sgMail.setApiKey(API_KEY);
 
+//New donor signup email
 exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( async (change, context) => {
     const donorSnap = await db.collection('donors').doc(context.params.donorId).get();
     const donor = donorSnap.data();
@@ -28,6 +22,7 @@ exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( as
     return sgMail.send(msg);
 });
 
+//New matcher "submit" confirmation email
 exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCreate( async (change, context) => {
     const matcherSnap = await db.collection('matchers').doc(context.params.matcherId).get();
     const matcher = donorSnap.data();

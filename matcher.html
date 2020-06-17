@@ -67,14 +67,15 @@
 <!--End of instructions-->
       <div id = "page2" style="visibility:hidden; position:absolute"> <!--select a donor-->
         Search bar <br>
-        Explore feed... <br>
-        <!-- implement feed -->
-        <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Pick me!" onClick="showLayer('page3')"></p>
+        Explore feed <br>
+        <div class = "container-fluid" id= "feed">
+        </div>
         <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
         <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Back" onClick="showLayer('page1')"></p>
       </div>
       <div id = "page3" style="visibility:hidden; position:absolute"> <!--info input-->
         <!-- add summary of donor -->
+        <div id="donorSummary"> </div>
         <div class="form-group">
             <label for="nameInput"></label>
             <input type="text" class="form-control" id="nameInput" placeholder="Full Name">

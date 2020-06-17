@@ -31,7 +31,9 @@ var db = firebase.firestore();
 var html = ``;
 var donorId;
 
-db.collection("donors").orderBy("date").limit(10).get() //add firebase index to check status = available
+db.collection("donors").orderBy("date", "desc").limit(10).get() //descending order for testing purposes
+//db.collection("donors").orderBy("date").limit(10).get() //ascending order
+//add firebase index to check status = available
 //use firebase function to get rid of expired?
   .then(function(querySnapshot){
     querySnapshot.forEach(function(doc) {
@@ -43,7 +45,7 @@ db.collection("donors").orderBy("date").limit(10).get() //add firebase index to 
       var reason = doc.data().reason; //check to see if reason exists
       html += `<div id= ${id} type="button" class="btn btn-outline-primary" onClick= "saveId('${id}');copyBox('${id}');showLayer('page3')">
       $${amount} to
-      <a href="${link}" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>${charity}</b></a>
+      <a href="${link}" class="btn btn-lg btn-primary" role="button" target = "_blank" aria-pressed="true"><b>${charity}</b></a>
       <div>By ${name}</div>
       <br>Reason: ${reason}
       <br>ID: ${id}

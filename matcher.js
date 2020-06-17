@@ -30,11 +30,14 @@ var db = firebase.firestore();
 //building explore feed
 var html = ``;
 var donorId;
+const loadMore = document.querySelector("#loadButton");
 
-db.collection("donors").orderBy("date", "desc").limit(10).get() //descending order for testing purposes
-//db.collection("donors").orderBy("date").limit(10).get() //ascending order
-//add firebase index to check status = available
-//use firebase function to get rid of expired?
+var load = db.collection("donors").where('status', '==', 'available').orderBy("date").limit(10);
+loadDonors(load);
+
+function loadDonors(content){
+	content.get() //oldest to newest
+	//use firebase function to get rid of expired
   .then(function(querySnapshot){
     querySnapshot.forEach(function(doc) {
       var id = doc.id;
@@ -51,21 +54,38 @@ db.collection("donors").orderBy("date", "desc").limit(10).get() //descending ord
       <br>ID: ${id}
       <br>Date: ${doc.data().date.toDate()}</div> `
     })
+		var n = querySnapshot.docs.length-1;
+		if (n==9) {
+			var lastVisible = querySnapshot.docs[querySnapshot.docs.length-1];
+			load = db.collection("donors").where('status', '==', 'available').orderBy("date").startAfter(lastVisible).limit(10);
+		} else {
+			loadMore.style = "visibility: hidden";
+		}
   })
   .then(function(){
     document.getElementById("feed").innerHTML = html;
   })
+	.catch(function(error) {
+    console.error("Error adding donor: ", error);
+  });
+}
 
 function saveId(id) {
   donorId = id;
 }
 
+//clones selected donor box for reference when filling out form
 function copyBox(id) {
   console.log(id);
   var clone = document.getElementById(id).cloneNode(true);
   clone.onclick= "";
   document.getElementById("donorSummary").innerHTML = "";
   document.getElementById("donorSummary").appendChild(clone);
+}
+
+//load next 10 donors
+function more() {
+	loadDonors(load);
 }
 
 //log matcher info

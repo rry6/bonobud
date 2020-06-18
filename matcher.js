@@ -46,9 +46,9 @@ function loadDonors(content){
       var charity = doc.data().charity;
       var link = doc.data().link;
       var reason = doc.data().reason; //check to see if reason exists
-      html += `<div id= ${id} type="button" class="btn btn-outline-primary" onClick= "saveId('${id}');copyBox('${id}');showLayer('page3')">
+      html += `<div id= ${id} type="button" class="btn btn-outline-success" onClick= "saveId('${id}');copyBox('${id}');showLayer('page3')">
       $${amount} to
-      <a href="${link}" class="btn btn-lg btn-primary" role="button" target = "_blank" aria-pressed="true"><b>${charity}</b></a>
+      <a href="${link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${charity}</b></a>
       <div>By ${name}</div>
       <br>Reason: ${reason}
       <br>ID: ${id}

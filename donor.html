@@ -43,6 +43,22 @@
             background: none;
             transition: box-shadow 0.1s ease-out 0s;
         }
+        input[type=number]{
+            display: inline;
+            width: 50%;
+            font-size: 26px;
+            -webkit-font-smoothing: antialiased;
+            line-height: unset;
+            box-shadow: rgb(181, 234, 215) 0px 1px;
+            padding: 0px 0px 1px;
+            border-width: initial;
+            border-style: none;
+            border-color: initial;
+            outline: none;
+            border-radius: 0px;
+            background: none;
+            transition: box-shadow 0.1s ease-out 0s;
+        }
         #reasonLabel{
             padding-top: 10px;
             font-size: 26px;
@@ -81,8 +97,9 @@
             <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
             <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Let's go!" onClick="showLayer('page2')"></p>
           </div>
+
 <!--End of instructions page-->
-          <div id="page2" style="visibility:hidden; position:absolute"> <!--info input-->
+          <div id="page2" style="visibility:hidden"> <!--info input-->
             <div class="form-group">
                 <label for="nameInput"></label>
                 <input type="text" class="form-control" id="nameInput" placeholder="Full Name">
@@ -111,7 +128,7 @@
             <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 3')"></p>
           </div>
 <!--End of info input-->
-        <div id="page 3" style="visibility:hidden; position:absolute">
+        <div id="page 3" style="visibility:hidden;">
           <div id="submitted">
           </div>
           <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>

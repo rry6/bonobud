@@ -17,12 +17,13 @@ var transporter= nodemailer.createTransport({
     }
 });
 
+//New donor "submit" confirmation email
 exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( async (change, context) => {
     const donorSnap = await db.collection('donors').doc(context.params.donorId).get();
     const donor = donorSnap.data();
     const msg = {
         to: donor.email,
-        from: 'teambonobud@gmail.com',
+        from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: donor.name + ', thank you for using BonoBud!',
         text: 'Our bonobos will start looking for a matcher immediately!',
         html: '<strong>Our bonobos will start looking for a matcher immediately!</strong>',
@@ -36,6 +37,7 @@ exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( as
     });
 });
 
+
 //New matcher "submit" confirmation email
 exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCreate( async (change, context) => {
     const matcherSnap = await db.collection('matchers').doc(context.params.matcherId).get();
@@ -43,9 +45,12 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
     const donorID = matcher.donorID;
     const donorSnap = await db.collection('donors').doc(donorID).get();
     const donor = donorSnap.data();
+    db.doc('donors/' + donorID).update({
+        status: 'matched'
+    })
     const msg = {
         to: matcher.pemail,
-        from: 'teambonobud@gmail.com',
+        from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: matcher.name + ', thank you for using BonoBud!',
         text: "Your donor's email is " + donor.email + ", so reach out and donate!",
     };
@@ -67,7 +72,7 @@ exports.matched = functions.firestore.document('matchers/{matcherId}').onCreate(
     const donor = donorSnap.data();
     const msg = {
         to: donor.email,
-        from: 'teambonobud@gmail.com',
+        from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: donor.name + ', you just got matched!',
         text: 'Someone just matched you! Their email is: ' + matcher.pemail,
     };

@@ -14,7 +14,7 @@
         }
         #mainContainer{
             position: absolute;
-            top: 5%;
+            top: 2%;
         }
         #titleElement{
             padding: 5px 50px;
@@ -67,6 +67,16 @@
             font-size:26px;
             -webkit-font-smoothing: antialiased;
         }
+        #submitButton, #backButton{
+            border-color:#FFDAC1;
+            color:#FFDAC1;
+            font-size: 26px;
+            border-radius: 25px;
+            padding: 5px 50px;
+        }
+        #backButton{
+            margin-right: 20px;
+        }
     </style>
 
 </head>
@@ -118,8 +128,10 @@
             <label for="noteInput" id="noteLabel">Leave a note to your donor! (optional)</label>
             <textarea class="form-control" id="noteInput" placeholder="Limit to 150 characters" rows="3"></textarea>
         </div>
-        <p><input type="button" class="btn btn-outline-primary" id="backButton" value= Back onClick="showLayer('page2')"></p>
-        <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 4')"></p>
+        <div class="form-group">
+            <p><input type="button" class="btn btn-outline-primary" id="backButton" value= Back onClick="showLayer('page2')"></p>
+            <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 4')"></p>
+        </div>
       </div>
 <!--End of info input-->
       <div id="page 4" style="visibility:hidden; position:absolute">

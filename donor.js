@@ -48,7 +48,6 @@ dsave.addEventListener("click", function(){
 		status: "available" //available = display in feed, complete = donor matched, expired = after 1 week
   })
   .then(function() {
-      console.log("Donor written with ID: " + newdonor.id);
 			document.getElementById("submitted").innerHTML = ("<h1>Success! Thank you for submitting! <br> ID: "
 				+ newdonor.id + "<br> email: " + demail.value)
   })

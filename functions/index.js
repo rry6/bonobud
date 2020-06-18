@@ -23,7 +23,7 @@ exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( as
     const msg = {
         to: donor.email,
         from: 'teambonobud@gmail.com',
-        subject: donor.name + ' , thank you for using BonoBud!',
+        subject: donor.name + ', thank you for using BonoBud!',
         text: 'Our bonobos will start looking for a matcher immediately!',
         html: '<strong>Our bonobos will start looking for a matcher immediately!</strong>',
     };
@@ -45,7 +45,7 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
     const msg = {
         to: matcher.pemail,
         from: 'teambonobud@gmail.com',
-        subject: matcher.name + ' , thank you for using BonoBud!',
+        subject: matcher.name + ', thank you for using BonoBud!',
         text: 'Your BonoBud will reach out to you soon and the two of you can hammer it out!',
         html: '<strong>Your BonoBud will reach out to you soon and the two of you can hammer it out!</strong>',
     };

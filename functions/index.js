@@ -36,18 +36,40 @@ exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( as
     });
 });
 
-
-
 //New matcher "submit" confirmation email
 exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCreate( async (change, context) => {
     const matcherSnap = await db.collection('matchers').doc(context.params.matcherId).get();
     const matcher = matcherSnap.data();
+    const donorID = matcher.donorID;
+    const donorSnap = await db.collection('donors').doc(donorID).get();
+    const donor = donorSnap.data();
     const msg = {
         to: matcher.pemail,
         from: 'teambonobud@gmail.com',
         subject: matcher.name + ', thank you for using BonoBud!',
-        text: 'Your BonoBud will reach out to you soon and the two of you can hammer it out!',
-        html: '<strong>Your BonoBud will reach out to you soon and the two of you can hammer it out!</strong>',
+        text: "Your donor's email is " + donor.email + ", so reach out and donate!",
+    };
+    return transporter.sendMail(msg, (error, data) => {
+        if (error) {
+            console.log(error)
+            return
+        }
+        console.log("Sent")
+    });
+});
+
+//Notify donor that they have been matched
+exports.matched = functions.firestore.document('matchers/{matcherId}').onCreate( async (change, context) => {
+    const matcherSnap = await db.collection('matchers').doc(context.params.matcherId).get();
+    const matcher = matcherSnap.data();
+    const donorID = matcher.donorID;
+    const donorSnap = await db.collection('donors').doc(donorID).get();
+    const donor = donorSnap.data();
+    const msg = {
+        to: donor.email,
+        from: 'teambonobud@gmail.com',
+        subject: donor.name + ', you just got matched!',
+        text: 'Someone just matched you! Their email is: ' + matcher.pemail,
     };
     return transporter.sendMail(msg, (error, data) => {
         if (error) {

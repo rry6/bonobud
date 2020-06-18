@@ -14,7 +14,7 @@
         }
         #mainContainer{
             position: absolute;
-            top: 5%;
+            top: 2%;
         }
         #titleElement{
             padding: 5px 50px;
@@ -50,6 +50,33 @@
             border-radius: 25px;
             padding: 5px 50px;
         }
+        #noteLabel{
+            padding-top: 10px;
+            font-size: 26px;
+            color: grey;
+            -webkit-font-smoothing: antialiased;
+            padding
+        }
+        #noteInput{
+            padding-top: 20px;
+            display: block;
+            width:50%;
+            background: rgba(255, 218, 193, 0.20);
+            border: none;
+            height: 200px;
+            font-size:26px;
+            -webkit-font-smoothing: antialiased;
+        }
+        #submitButton, #backButton{
+            border-color:#FFDAC1;
+            color:#FFDAC1;
+            font-size: 26px;
+            border-radius: 25px;
+            padding: 5px 50px;
+        }
+        #backButton{
+            margin-right: 20px;
+        }
     </style>
 
 </head>
@@ -74,7 +101,7 @@
         <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
         <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Back" onClick="showLayer('page1')"></p>
       </div>
-      <div id = "page3" style="visibility:hidden; position:absolute"> <!--info input-->
+      <div id = "page3" style="visibility:hidden;"> <!--info input-->
         <!-- add summary of donor -->
         <div id="donorSummary"> </div>
         <div class="form-group">
@@ -101,8 +128,10 @@
             <label for="noteInput" id="noteLabel">Leave a note to your donor! (optional)</label>
             <textarea class="form-control" id="noteInput" placeholder="Limit to 150 characters" rows="3"></textarea>
         </div>
-        <p><input type="button" class="btn btn-outline-primary" id="backButton" value= Back onClick="showLayer('page2')"></p>
-        <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 4')"></p>
+        <div class="form-group">
+            <p><input type="button" class="btn btn-outline-primary" id="backButton" value= Back onClick="showLayer('page2')"></p>
+            <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 4')"></p>
+        </div>
       </div>
 <!--End of info input-->
       <div id="page 4" style="visibility:hidden; position:absolute">

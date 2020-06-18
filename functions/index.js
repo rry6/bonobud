@@ -1,14 +1,22 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const nodemailer = require('nodemailer');
+
+const gmail = functions.config().gmail.login;
+const password = functions.config().gmail.pass;
+
 admin.initializeApp();
 const db = admin.firestore();
 
-// Sendgrid Config
-const sgMail = require('@sendgrid/mail');
-const API_KEY = functions.config().sendgrid.key;
-sgMail.setApiKey(API_KEY);
 
-//New donor signup email
+var transporter= nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: gmail,
+        pass: password
+    }
+});
+
 exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( async (change, context) => {
     const donorSnap = await db.collection('donors').doc(context.params.donorId).get();
     const donor = donorSnap.data();
@@ -19,13 +27,21 @@ exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( as
         text: 'Our bonobos will start looking for a matcher immediately!',
         html: '<strong>Our bonobos will start looking for a matcher immediately!</strong>',
     };
-    return sgMail.send(msg);
+    return transporter.sendMail(msg, (error, data) => {
+        if (error) {
+            console.log(error)
+            return
+        }
+        console.log("Sent")
+    });
 });
+
+
 
 //New matcher "submit" confirmation email
 exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCreate( async (change, context) => {
     const matcherSnap = await db.collection('matchers').doc(context.params.matcherId).get();
-    const matcher = donorSnap.data();
+    const matcher = matcherSnap.data();
     const msg = {
         to: matcher.pemail,
         from: 'teambonobud@gmail.com',
@@ -33,5 +49,11 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         text: 'Your BonoBud will reach out to you soon and the two of you can hammer it out!',
         html: '<strong>Your BonoBud will reach out to you soon and the two of you can hammer it out!</strong>',
     };
-    return sgMail.send(msg);
+    return transporter.sendMail(msg, (error, data) => {
+        if (error) {
+            console.log(error)
+            return
+        }
+        console.log("Sent")
+    });
 });

@@ -75,7 +75,7 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
     const donorSnap = await db.collection('donors').doc(donorID).get();
     const donor = donorSnap.data();
     db.doc('donors/' + donorID).update({
-        status: 'matched'
+        status: matcherId
     })
     const msg = {
         to: matcher.pemail,
@@ -120,7 +120,7 @@ exports.expired = functions.firestore.document('matchers/{matcherId}').onCreate(
     db.collection('donors').where('status', '==', 'available').get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             const difference = Math.floor((currentTime.getTime() - doc.data().date.getTime())/1000/60/60/24);
-            if (difference > 14) {
+            if (difference > 21) {
                 db.collection('donors').doc(doc.id).update({
                     status: 'expired'
                 });

@@ -31,10 +31,88 @@ var db = firebase.firestore();
 var html = ``;
 var donorId;
 const loadMore = document.querySelector("#loadButton");
+var load;
 
-var load = db.collection("donors").where('status', '==', 'available').orderBy("date").limit(10);
-loadDonors(load);
+function loadDefault(){
+	load = db.collection("donors").where('status', '==', 'available').orderBy("date").limit(10);
+	loadDonors(load);
+}
 
+//sets removes "active" from the class of a button
+function inactivate(button) {
+	var classes = button.className;
+	classes = classes.replace(new RegExp("active","g"),"");
+	button.className = classes;
+}
+
+//adds "active" to the class of a button
+function activate(button) {
+	var classes = button.className;
+	classes += " active";
+	button.className = classes;
+}
+
+//filter by amount
+const under25 = document.querySelector("#under25Button");
+const mid = document.querySelector("#midButton");
+const over50 = document.querySelector("#over50Button");
+
+function loadUnder25(){
+	var classes = under25.className;
+	if (classes.indexOf("active")== -1) {
+		html = "";
+		load = db.collection("donors").where('status', '==', 'available').where('amount', '<', 25).limit(10);
+		loadDonors(load);
+		activate(under25)
+		inactivate(mid);
+		inactivate(over50);
+
+	} else {
+		html = "";
+		load = db.collection("donors").where('status', '==', 'available').orderBy("date").limit(10);
+		loadDonors(load);
+		inactivate(under25);
+	}
+}
+
+function load25to50(){
+	var classes = mid.className;
+	if (classes.indexOf("active")== -1) {
+		html = "";
+		load = db.collection("donors").where('status', '==', 'available').where('amount', '>=', 25).where('amount', '<=', 50).limit(10);
+		loadDonors(load);
+		activate(mid);
+		inactivate(under25);
+		inactivate(over50);
+
+	} else {
+		html = "";
+		load = db.collection("donors").where('status', '==', 'available').orderBy("date").limit(10);
+		loadDonors(load);
+		inactivate(mid);
+	}
+}
+
+
+function loadOver50() {
+	var classes = over50.className;
+	if (classes.indexOf("active")== -1) {
+		html = "";
+		load = db.collection("donors").where('status', '==', 'available').where('amount', '>', 50).limit(10);
+		loadDonors(load);
+		activate(over50);
+		inactivate(under25);
+		inactivate(mid);
+
+	} else {
+		html = "";
+		load = db.collection("donors").where('status', '==', 'available').orderBy("date").limit(10);
+		loadDonors(load);
+		inactivate(over50);
+	}
+}
+
+//main function to load feed
 function loadDonors(content){
 	content.get() //oldest to newest
 	//use firebase function to get rid of expired
@@ -54,10 +132,12 @@ function loadDonors(content){
       <br>ID: ${id}
       <br>Date: ${doc.data().date.toDate()}</div> `
     })
-		var n = querySnapshot.docs.length-1;
-		if (n==9) {
+		var n = querySnapshot.docs.length;
+		if (n==10) {
+			loadMore.style = "visibility: visible";
 			var lastVisible = querySnapshot.docs[querySnapshot.docs.length-1];
-			load = db.collection("donors").where('status', '==', 'available').orderBy("date").startAfter(lastVisible).limit(10);
+			//load = db.collection("donors").where('status', '==', 'available').orderBy("date").startAfter(lastVisible).limit(10);
+			load = load.startAfter(lastVisible);
 		} else {
 			loadMore.style = "visibility: hidden";
 		}
@@ -100,6 +180,7 @@ const mSave = document.querySelector("#submitButton");
 mSave.addEventListener("click", function(){
   var newMatcher = db.collection("matchers").doc();
   newMatcher.set({
+
     name: mName.value,
     company: mCompany.value,
     rate: mRate.value,

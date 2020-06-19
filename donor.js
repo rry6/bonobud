@@ -43,9 +43,9 @@ dsave.addEventListener("click", function(){
     charity: dcharity.value,
     link: dlink.value,
     reason: dreason.value,
-    amount: damount.value,
+    amount: Number(damount.value),
     date: firebase.firestore.FieldValue.serverTimestamp(),
-		status: "available" //available = display in feed, complete = donor matched, expired = after 1 week
+		status: "available" //available = display in feed, matched = donor matched, expired = after 1 week
   })
   .then(function() {
 			document.getElementById("submitted").innerHTML = ("<h1>Success! Thank you for submitting! <br> ID: "

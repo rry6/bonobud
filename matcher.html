@@ -89,15 +89,21 @@
       <div id = "page1" style="visibility:visible; position:absolute"> <!--Instructions-->
         Instructions? <br>
         <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
-        <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Let's go!" onClick="showLayer('page2')"></p>
+        <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Let's go!" onClick="showLayer('page2');loadDefault()"></p>
       </div>
 <!--End of instructions-->
       <div id = "page2" style="visibility:hidden; position:absolute"> <!--select a donor-->
         Search bar <br>
         Explore feed <br>
+        <div class = "container-fluid">
+          Filter by amount:
+          <input type="button" class="btn btn-outline-primary" id="under25Button" value= "Less than $25" onClick="loadUnder25()">
+          <input type="button" class="btn btn-outline-primary" id="midButton" value= "$25 - $50" onClick="load25to50()">
+          <input type="button" class="btn btn-outline-primary" id="over50Button" value= "Over $50" onClick="loadOver50()">
+        </div>
         <div class = "container-fluid" id= "feed">
         </div>
-        <p><input type="button" class="btn btn-outline-primary" id="loadButton" value= "Load more" onClick = "more()"></p>
+        <p><input type="button" class="btn btn-outline-primary" id="loadButton" value= "Load more" onClick = "more()" style="visibility:hidden"></p>
         <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
         <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Back" onClick="showLayer('page1')"></p>
       </div>

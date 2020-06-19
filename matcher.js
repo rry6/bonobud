@@ -208,11 +208,23 @@ searchInput.addEventListener("click", function(event) {
 });
 
 //change your mind and click away from search bar without searching
-searchInput.addEventListener("blur", function(event) {
+function blurInput() {
 	if (searchButton.value == "Search!") {
 		searchButton.value = "Cancel";
 	}
-});
+}
+
+//so that onblur of searchInput excludes clicking searchButton
+searchButton.setAttribute("onmouseover", "unblurInput()");
+searchButton.setAttribute("onmouseout", "reblurInput()");
+
+function unblurInput() {
+	searchInput.onblur = "";
+}
+
+function reblurInput() {
+	searchInput.setAttribute("onblur", "blurInput()");
+}
 
 //search by pressing enter
 searchInput.addEventListener("keyup", function(event) {

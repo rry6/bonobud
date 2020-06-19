@@ -36,46 +36,14 @@ exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( as
     });
 });
 
-//Weekly expiring listings, doesn't work unless we switch to Blaze plan
-/*exports.expired = functions.pubsub.schedule('every day').onRun((context) => {
-    const currentTime = new Date();
-    db.collection('donors').where('status', '==', 'available').get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            const difference = Math.floor((currentTime.getTime() - doc.data().date.getTime())/1000/60/60/24);
-            if (difference > 14) {
-                db.collection('donors').doc(doc.id).update({
-                    status: 'expired'
-                });
-            }
-        });
-        const msg = {
-            to: doc.data().email,
-            from: 'Team BonoBud <teambonobud@gmail.com>',
-            subject: doc.data().name + ', your donation listing has expired.',
-            text: 'Unfortunately, we were unable to match you with a BonoBud',
-        };        
-        return transporter.sendMail(msg, (error, data) => {
-            if (error) {
-                console.log(error)
-                return
-            }
-            console.log("Sent")
-        });
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
-});*/
-
 //New matcher "submit" confirmation email
 exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCreate( async (change, context) => {
     const matcherSnap = await db.collection('matchers').doc(context.params.matcherId).get();
     const matcher = matcherSnap.data();
-    const donorID = matcher.donorID;
-    const donorSnap = await db.collection('donors').doc(donorID).get();
+    const donorSnap = await db.collection('donors').doc(matcher.donorID).get();
     const donor = donorSnap.data();
-    db.doc('donors/' + donorID).update({
-        status: matcherId
+    db.doc('donors/' + matcher.donorID).update({
+        status: 'Matched by '+ context.params.matcherId
     })
     const msg = {
         to: matcher.pemail,
@@ -114,31 +82,32 @@ exports.matched = functions.firestore.document('matchers/{matcherId}').onCreate(
     });
 });
 
-//Piggyback?
+//checks for expiring donor listings
 exports.expired = functions.firestore.document('matchers/{matcherId}').onCreate( async (change, context) => {
     const currentTime = new Date();
     db.collection('donors').where('status', '==', 'available').get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            const difference = Math.floor((currentTime.getTime() - doc.data().date.getTime())/1000/60/60/24);
+            const difference = Math.floor((currentTime.getTime() - doc.data().date.toDate().getTime())/1000/60/60/24);
             if (difference > 21) {
                 db.collection('donors').doc(doc.id).update({
                     status: 'expired'
                 });
             }
+            const msg = {
+                to: doc.data().email,
+                from: 'Team BonoBud <teambonobud@gmail.com>',
+                subject: doc.data().name + ', your donation listing has expired.',
+                text: 'Unfortunately, we were unable to match you with a BonoBud',
+            };        
+            return transporter.sendMail(msg, (error, data) => {
+                if (error) {
+                    console.log(error)
+                    return
+                }
+                console.log("Sent")
+            }); 
         });
-        const msg = {
-            to: doc.data().email,
-            from: 'Team BonoBud <teambonobud@gmail.com>',
-            subject: doc.data().name + ', your donation listing has expired.',
-            text: 'Unfortunately, we were unable to match you with a BonoBud',
-        };        
-        return transporter.sendMail(msg, (error, data) => {
-            if (error) {
-                console.log(error)
-                return
-            }
-            console.log("Sent")
-        });
+        return
     })
     .catch((error) => {
         console.log("Error getting documents: ", error);

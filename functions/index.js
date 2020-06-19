@@ -89,7 +89,7 @@ exports.expired = functions.firestore.document('matchers/{matcherId}').onCreate(
         querySnapshot.forEach((doc) => {
             const difference = Math.floor((currentTime.getTime() - doc.data().date.toDate().getTime())/1000/60/60/24);
             if (difference > 21) {
-                db.collection('donors').doc(doc.id).update({
+                db.doc('donors/' + doc.id).update({
                     status: 'expired'
                 });
             }

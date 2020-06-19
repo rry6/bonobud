@@ -41,11 +41,12 @@ dsave.addEventListener("click", function(){
     name: dname.value,
     email: demail.value,
     charity: dcharity.value,
+		charityArray: arrayify(dcharity.value),
     link: dlink.value,
     reason: dreason.value,
     amount: Number(damount.value),
     date: firebase.firestore.FieldValue.serverTimestamp(),
-		status: "available" //available = display in feed, matched = donor matched, expired = after 1 week
+		status: "available" //available = display in feed, or matcherid if matched, expired after 3 weeks
   })
   .then(function() {
 			document.getElementById("submitted").innerHTML = ("<h1>Success! Thank you for submitting! <br> ID: "
@@ -56,3 +57,23 @@ dsave.addEventListener("click", function(){
       document.getElementById("submitted").innerHTML = "<h1>Error processing donor. Please try again later.</h1>"
   });
 })
+
+//turns a charity name into an array of all sequential word combinations
+function arrayify(phrase) {
+	phrase = phrase.toLowerCase();
+	var singleWords = phrase.split(" ");
+	var array = [];
+	for (var i = 0; i < singleWords.length; i++) {
+		var last = singleWords[i];
+		array.push(last);
+		var space = last + " ";
+		array.push(space);
+		for (var n = i+1; n < singleWords.length; n++) {
+			last = last + " " + singleWords[n];
+			array.push(last);
+			space = last + " ";
+			array.push(space);
+		}
+	}
+	return array;
+}

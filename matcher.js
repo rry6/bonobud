@@ -172,6 +172,61 @@ function more() {
 	loadDonors(load);
 }
 
+//search by charity name (searchBar input) when searchButton is pressed
+var searchInput = document.querySelector("#searchBar");
+const searchButton = document.querySelector("#searchButton");
+
+function search() {
+	if (searchButton.value == "Search!") {
+		var input = searchInput.value.toLowerCase();
+		var output = db.collection("donors").where("charityArray", "array-contains", input).limit(10);
+		html = "";
+		loadDonors(output);
+		searchButton.value = "Cancel";
+		inactivate(under25);
+		under25.onclick = "";
+		inactivate(mid);
+		mid.onclick = "";
+		inactivate(over50);
+		over50.onclick = "";
+	} else {
+		searchInput.value = "";
+		searchButton.value = "Search!";
+		html = "";
+		loadDefault();
+		under25.setAttribute("onclick", "loadUnder25()");
+		mid.setAttribute("onclick", "load25to50()");
+		over50.setAttribute("onclick", "loadOver50()");
+	}
+}
+
+//edit a search
+searchInput.addEventListener("click", function(event) {
+	if (searchButton.value == "Cancel") {
+		searchButton.value = "Search!";
+	}
+});
+
+//change your mind and click away from search bar without searching
+searchInput.addEventListener("blur", function(event) {
+	if (searchButton.value == "Search!") {
+		searchButton.value = "Cancel";
+	}
+});
+
+//search by pressing enter
+searchInput.addEventListener("keyup", function(event) {
+	// Number 13 is the "Enter" key on the keyboard
+	if (event.keyCode === 13 && searchButton.value == "Search!") {
+		// Cancel the default action, if needed
+		event.preventDefault();
+		// Trigger the button element with a click
+		searchButton.click();
+		//deselect search button
+		this.blur();
+	}
+});
+
 //log matcher info
 const mName = document.querySelector("#nameInput");
 const mCompany = document.querySelector("#companyInput");

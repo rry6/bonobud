@@ -57,6 +57,7 @@ const under25 = document.querySelector("#under25Button");
 const mid = document.querySelector("#midButton");
 const over50 = document.querySelector("#over50Button");
 
+//under $25 button
 function loadUnder25(){
 	var classes = under25.className;
 	if (classes.indexOf("active")== -1) {
@@ -75,6 +76,7 @@ function loadUnder25(){
 	}
 }
 
+//$25 - $50 button
 function load25to50(){
 	var classes = mid.className;
 	if (classes.indexOf("active")== -1) {
@@ -93,7 +95,7 @@ function load25to50(){
 	}
 }
 
-
+//over $50 button
 function loadOver50() {
 	var classes = over50.className;
 	if (classes.indexOf("active")== -1) {
@@ -115,7 +117,6 @@ function loadOver50() {
 //main function to load feed
 function loadDonors(content){
 	content.get() //oldest to newest
-	//use firebase function to get rid of expired
   .then(function(querySnapshot){
     querySnapshot.forEach(function(doc) {
       var id = doc.id;
@@ -132,14 +133,16 @@ function loadDonors(content){
       <br>ID: ${id}
       <br>Date: ${doc.data().date.toDate()}</div> `
     })
+		//prep for load more
 		var n = querySnapshot.docs.length;
 		if (n==10) {
-			loadMore.style = "visibility: visible";
 			var lastVisible = querySnapshot.docs[querySnapshot.docs.length-1];
-			//load = db.collection("donors").where('status', '==', 'available').orderBy("date").startAfter(lastVisible).limit(10);
 			load = load.startAfter(lastVisible);
+			loadMore.setAttribute("onclick", "more()");
+			loadMore.value = "Load more";
 		} else {
-			loadMore.style = "visibility: hidden";
+			loadMore.onclick = "";
+			loadMore.value = "All results loaded";
 		}
   })
   .then(function(){
@@ -150,6 +153,7 @@ function loadDonors(content){
   });
 }
 
+//saves selected donor ID to global variable to be saved to matcher field later
 function saveId(id) {
   donorId = id;
 }
@@ -178,27 +182,35 @@ const mNote = document.querySelector("#noteInput");
 const mSave = document.querySelector("#submitButton");
 
 mSave.addEventListener("click", function(){
-  var newMatcher = db.collection("matchers").doc();
-  newMatcher.set({
-
-    name: mName.value,
-    company: mCompany.value,
-    rate: mRate.value,
-    cemail: mCompanyemail.value,
-    pemail: mEmail.value,
-    note: mNote.value,
-    date: firebase.firestore.FieldValue.serverTimestamp(),
-    donorID: donorId
-  })
-  .then(function() {
-		  document.getElementById("submitted").innerHTML = ("<h1>Success! Thank you for submitting! <br> ID: "
-				       + newMatcher.id + "<br> email: " + mEmail.value);
-  })
-  .catch(function(error) {
-      console.error("Error adding donor: ", error);
-      document.getElementById("submitted").innerHTML = "<h1>Error processing matcher. Please try again later.</h1>";
-  });
+	db.collection("donors").doc(donorId).get()
+		.then(function(snapshot) {
+			if (snapshot.data().status == "available") {
+			  var newMatcher = db.collection("matchers").doc();
+			  newMatcher.set({
+			    name: mName.value,
+			    company: mCompany.value,
+			    rate: mRate.value,
+			    cemail: mCompanyemail.value,
+			    pemail: mEmail.value,
+			    note: mNote.value,
+			    date: firebase.firestore.FieldValue.serverTimestamp(),
+			    donorID: donorId
+			  })
+			  .then(function() {
+					  document.getElementById("submitted").innerHTML = ("<h1>Success! Thank you for submitting! <br> ID: "
+							       + newMatcher.id + "<br> email: " + mEmail.value);
+			  })
+			  .catch(function(error) {
+			      console.error("Error adding donor: ", error);
+			      document.getElementById("submitted").innerHTML = "<h1>Error processing matcher. Please try again later.</h1>";
+			  });
+			} else {
+					document.getElementById("submitted").innerHTML = ("<h1>We're sorry, someone else matched that donor while you were filling out the form! "
+						+ "This is extremely rare so today is your lucky day! <br> Please try refreshing the page and filling out the form again. "
+						+ "Contact customer support at teambonobud@gmail.com.</h1>");
+			}
+	});
 })
 
-//pairing complete: send email to mEmail.value and donor email (read from firebase)
+//pairing complete-> send email to mEmail.value and donor email (read from firebase)
 //reach into donor doc with donorId and find info for email, double check status, write matcherid, and change status to complete

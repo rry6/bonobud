@@ -1,5 +1,5 @@
 //multi-page form
-var currentLayer = 'page1';
+var currentLayer = 'page2';
 function showLayer(lyr){
 	hideLayer(currentLayer);
 	document.getElementById(lyr).style.visibility = 'visible';

@@ -93,14 +93,14 @@
             <b id="titleElement">Donor</b>
         </div>
         <form action="" id="submitForm">
-          <div id = "page1" style="visibility:visible; position:absolute"> <!--Instructions-->
+          <div id = "page1" style="visibility:hidden; position:absolute"> <!--Instructions-->
             Instructions? <br>
             <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
             <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Let's go!" onClick="showLayer('page2')"></p>
           </div>
 
 <!--End of instructions page-->
-          <div id="page2" style="visibility:hidden"> <!--info input-->
+          <div id="page2" style="visibility:visible;"> <!--info input-->
             <div class="form-group">
                 <label for="nameInput"></label>
                 <input type="text" class="form-control" id="nameInput" placeholder="Full Name">
@@ -125,7 +125,7 @@
                 <label for="reasonInput" id="reasonLabel">Why are you donating? (optional)</label>
                 <textarea class="form-control" id="reasonInput" placeholder="Limit to 150 characters" rows="3"></textarea>
             </div>
-            <p><input type="button" class="btn btn-outline-primary" id="backButton" value= Back onClick="showLayer('page1')"></p>
+              <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true"><b>Back</b></a>
             <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 3')"></p>
           </div>
 <!--End of info input-->

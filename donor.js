@@ -50,7 +50,8 @@ dsave.addEventListener("click", function(){
   })
   .then(function() {
 			document.getElementById("submitted").innerHTML = ("<h1>Success! Thank you for submitting! <br> ID: "
-				+ newdonor.id + "<br> email: " + demail.value)
+				+ newdonor.id + "<br> email: " + demail.value);
+	  		location.href='submission.html';
   })
   .catch(function(error) {
       console.error("Error adding donor: ", error);

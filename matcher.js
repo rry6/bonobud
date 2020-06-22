@@ -1,5 +1,5 @@
 //multi-page form
-var currentLayer = 'page1';
+var currentLayer = 'page2';
 function showLayer(lyr){
 	hideLayer(currentLayer);
 	document.getElementById(lyr).style.visibility = 'visible';
@@ -8,6 +8,7 @@ function showLayer(lyr){
 
 function hideLayer(lyr){
 	document.getElementById(lyr).style.visibility = 'hidden';
+	console.log(currentLayer);
 }
 
 //Firebase
@@ -125,13 +126,16 @@ function loadDonors(content){
       var charity = doc.data().charity;
       var link = doc.data().link;
       var reason = doc.data().reason; //check to see if reason exists
+		if(reason.length===0)
+		{
+			reason = "I really liked their mission!";
+		}
       html += `<div id= ${id} type="button" class="btn btn-outline-success" onClick= "saveId('${id}');copyBox('${id}');showLayer('page3')">
       $${amount} to
       <a href="${link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${charity}</b></a>
       <div>By ${name}</div>
       <br>Reason: ${reason}
-      <br>ID: ${id}
-      <br>Date: ${doc.data().date.toDate()}</div> `
+      <br>Date: ${doc.data().date.toDate()}</div>`
     })
 		//prep for load more
 		var n = querySnapshot.docs.length;

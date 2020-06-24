@@ -7,6 +7,7 @@
 
     <!-- bootstrap implementation -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <title>Matcher Page</title>
     <style>
         *{
@@ -14,7 +15,7 @@
         }
         #mainContainer{
             position: absolute;
-            top: 5%;
+            top: 2%;
         }
         #titleElement{
             padding: 5px 50px;
@@ -50,6 +51,55 @@
             border-radius: 25px;
             padding: 5px 50px;
         }
+        #noteLabel{
+            padding-top: 10px;
+            font-size: 26px;
+            color: grey;
+            -webkit-font-smoothing: antialiased;
+            padding
+        }
+        #noteInput{
+            padding-top: 20px;
+            display: block;
+            width:50%;
+            background: rgba(255, 218, 193, 0.20);
+            border: none;
+            height: 200px;
+            font-size:26px;
+            -webkit-font-smoothing: antialiased;
+        }
+        #submitButton, #backButton{
+            border-color:#FFDAC1;
+            color:#FFDAC1;
+            font-size: 26px;
+            border-radius: 25px;
+            padding: 5px 50px;
+        }
+        #backButton{
+            margin-right: 20px;
+        }
+        .btn-outline-success{
+            color: #FFFFFF;
+            background-color:#FFDAC1;
+            margin-bottom:10px;
+            margin-right:10px;
+            border-color: #FFDAC1;
+        }
+        .btn-outline-success:hover{
+            color: #000000;
+            background-color:#FFFFFF;
+            border-color: #FFDAC1;
+        }
+        .btn-outline-warning{
+            color: #FFF;
+            border-color: #FFF;
+        }
+        .btn-outline-warning:hover{
+            color: #FFDAC1;
+            border-color: #FFDAC1;
+
+        }
+
     </style>
 
 </head>
@@ -59,6 +109,35 @@
         <b id="titleElement">Matcher</b>
     </div>
     <form action="" id="submitForm">
+      <div id = "page1" style="visibility:visible; position:absolute"> <!--Instructions-->
+        Instructions? <br>
+        <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
+        <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Let's go!" onClick="showLayer('page2');loadDefault()"></p>
+      </div>
+
+<!--End of instructions-->
+      <div id = "page2" style="visibility:hidden; position:absolute"> <!--select a donor-->
+        <div class = "container-fluid">
+          <div class="form-group">
+              <label for="searchBar"></label>
+              <input type="text" class="form-control" id="searchBar" placeholder="Search by Charity Name" onblur="blurInput()">
+              <input type="button" class="btn btn-outline-primary" id="searchButton" value= "Search!" onClick="search()">
+          </div>
+        </div>
+        <div class = "container-fluid">
+          Filter by amount:
+          <input type="button" class="btn btn-outline-primary" id="under25Button" value= "Less than $25" onClick="loadUnder25()">
+          <input type="button" class="btn btn-outline-primary" id="midButton" value= "$25 - $50" onClick="load25to50()">
+          <input type="button" class="btn btn-outline-primary" id="over50Button" value= "Over $50" onClick="loadOver50()">
+        </div>
+        <div class = "container-fluid" id= "feed"></div>
+        <p><input type="button" class="btn btn-outline-primary" id="loadButton" value= "Load more" onClick = "more()"></p>
+        <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
+        <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Back" onClick="showLayer('page1')"></p>
+      </div>
+      <div id = "page3" style="visibility:hidden;"> <!--info input-->
+        <!-- add summary of donor -->
+        <div id="donorSummary"> </div>
         <div class="form-group">
             <label for="nameInput"></label>
             <input type="text" class="form-control" id="nameInput" placeholder="Full Name">
@@ -68,22 +147,54 @@
             <input type="text" class="form-control" id="companyInput" placeholder="Company Name">
         </div>
         <div class="form-group">
+            <label for="matcherRate"></label>
+            <input type="text" class="form-control" id="matcherRate" placeholder="Company Matching Rate (i.e. 1:1)">
+        </div>
+        <div class="form-group">
             <label for="emailInput"></label>
             <input type="text" class="form-control" id="emailInput" placeholder="Company Email (For verification purposes)">
         </div>
         <div class="form-group">
             <label for="personalEmailInput"></label>
-            <input type="text" class="form-control" id="personalEmailInput" placeholder="Personal Email">
+            <input type="text" class="form-control" id="personalEmailInput" placeholder="Personal Email (For contact purposes)">
         </div>
-        <a href="matcherTwo.html" id="nextButton" class="btn btn-outline-primary" role="button" aria-pressed="true"><b>Next</b></a>
+        <div class="form-group">
+            <label for="noteInput" id="noteLabel">Leave a note to your donor! (optional)</label>
+            <textarea class="form-control" id="noteInput" placeholder="Limit to 150 characters" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <p><input type="button" class="btn btn-outline-primary" id="backButton" value= Back onClick="showLayer('page2')"></p>
+            <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 4')"></p>
+        </div>
+      </div>
+<!--End of info input-->
+      <div id="page 4" style="visibility:hidden; position:absolute">
+        <div id="submitted">
+        </div>
+        <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
+      </div>
     </form>
 </div>
-
-<!-- **ADD FORM ACTION when we integrate with Firebase -->
 
 <!-- bootstrap implementation tags -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<!-- Firestore implementation-->
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+
+
+<script src="./matcher.js"></script>
 </body>
 </html>

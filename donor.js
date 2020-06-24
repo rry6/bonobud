@@ -37,21 +37,25 @@ const dsave = document.querySelector("#submitButton");
 
 dsave.addEventListener("click", function(){
   var newdonor = db.collection("donors").doc();
+	var reason = dreason.value;
+	if (reason.length === 0) {
+		reason = "I really liked their mission!";
+	}
+	var first = dname.value.split(" ")[0]
   newdonor.set({
     name: dname.value,
+		firstname: first,
     email: demail.value,
     charity: dcharity.value,
 		charityArray: arrayify(dcharity.value),
     link: dlink.value,
-    reason: dreason.value,
+    reason: reason,
     amount: Number(damount.value),
     date: firebase.firestore.FieldValue.serverTimestamp(),
 		status: "available" //available = display in feed, or matcherid if matched, expired after 3 weeks
   })
   .then(function() {
-			document.getElementById("submitted").innerHTML = ("<h1>Success! Thank you for submitting! <br> ID: "
-				+ newdonor.id + "<br> email: " + demail.value);
-	  		location.href='submission.html';
+			location.href='submission.html';
   })
   .catch(function(error) {
       console.error("Error adding donor: ", error);

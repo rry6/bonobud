@@ -126,16 +126,13 @@ function loadDonors(content){
       var charity = doc.data().charity;
       var link = doc.data().link;
       var reason = doc.data().reason; //check to see if reason exists
-		if(reason.length===0)
-		{
-			reason = "I really liked their mission!";
-		}
+			var date = doc.data().date.toDate();
       html += `<div id= ${id} type="button" class="btn btn-outline-success" onClick= "saveId('${id}');copyBox('${id}');showLayer('page3')">
       $${amount} to
       <a href="${link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${charity}</b></a>
       <div>By ${name}</div>
       <br>Reason: ${reason}
-      <br>Date: ${doc.data().date.toDate()}</div>`
+      <br>Date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</div>`
     })
 		//prep for load more
 		var n = querySnapshot.docs.length;
@@ -257,10 +254,12 @@ mSave.addEventListener("click", function(){
 		.then(function(snapshot) {
 			if (snapshot.data().status == "available") {
 			  var newMatcher = db.collection("matchers").doc();
+				var first = mName.value.split(" ")[0];
 			  newMatcher.set({
 			    name: mName.value,
+					firstname: first,
 			    company: mCompany.value,
-			    rate: mRate.value,
+			    rate: Number(mRate.value),
 			    cemail: mCompanyemail.value,
 			    pemail: mEmail.value,
 			    note: mNote.value,

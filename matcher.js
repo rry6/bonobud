@@ -1,14 +1,14 @@
 //multi-page form
 var currentLayer = 'page2';
+//shows the next page of form and hides current page
 function showLayer(lyr){
 	hideLayer(currentLayer);
 	document.getElementById(lyr).style.visibility = 'visible';
 	currentLayer = lyr;
 }
-
+//hides a specific page
 function hideLayer(lyr){
 	document.getElementById(lyr).style.visibility = 'hidden';
-	console.log(currentLayer);
 }
 
 //Firebase
@@ -34,34 +34,35 @@ var donorId;
 const loadMore = document.querySelector("#loadButton");
 var load;
 
+//sets 'load' to order and display all donors by date (oldest-newest)
 function loadDefault(){
 	load = db.collection("donors").where('status', '==', 'available').orderBy("date").limit(10);
 	loadDonors(load);
 }
 
-//sets removes "active" from the class of a button
+//sets removes "active" from the class of a button (no longer looks like it is pressed)
 function inactivate(button) {
 	var classes = button.className;
 	classes = classes.replace(new RegExp("active","g"),"");
 	button.className = classes;
 }
 
-//adds "active" to the class of a button
+//adds "active" to the class of a button (so button looks like it is pressed)
 function activate(button) {
 	var classes = button.className;
 	classes += " active";
 	button.className = classes;
 }
 
-//filter by amount
+//filter donors by amount
 const under25 = document.querySelector("#under25Button");
 const mid = document.querySelector("#midButton");
 const over50 = document.querySelector("#over50Button");
 
-//under $25 button
+//under $25 button: sets 'load' to only donors under $25 and activates/deactivates the correct buttons
 function loadUnder25(){
 	var classes = under25.className;
-	if (classes.indexOf("active")== -1) {
+	if (classes.indexOf("active")== -1) { //if under $25 button is not already active, load <25 to feed
 		html = "";
 		load = db.collection("donors").where('status', '==', 'available').where('amount', '<', 25).limit(10);
 		loadDonors(load);
@@ -69,7 +70,7 @@ function loadUnder25(){
 		inactivate(mid);
 		inactivate(over50);
 
-	} else {
+	} else { //if under $25 button is active-> deactivates, then loads default feed by date
 		html = "";
 		load = db.collection("donors").where('status', '==', 'available').orderBy("date").limit(10);
 		loadDonors(load);
@@ -77,10 +78,10 @@ function loadUnder25(){
 	}
 }
 
-//$25 - $50 button
+//$25 - $50 button: sets 'load' to donors between $25 and $50 inclusive and activates/deactivates the correct buttons
 function load25to50(){
 	var classes = mid.className;
-	if (classes.indexOf("active")== -1) {
+	if (classes.indexOf("active")== -1) { //if button is not already active, load $25 to $50 to feed
 		html = "";
 		load = db.collection("donors").where('status', '==', 'available').where('amount', '>=', 25).where('amount', '<=', 50).limit(10);
 		loadDonors(load);
@@ -88,7 +89,7 @@ function load25to50(){
 		inactivate(under25);
 		inactivate(over50);
 
-	} else {
+	} else { //if $25-$50 button is active-> deactivates, then loads default feed by date
 		html = "";
 		load = db.collection("donors").where('status', '==', 'available').orderBy("date").limit(10);
 		loadDonors(load);
@@ -96,10 +97,10 @@ function load25to50(){
 	}
 }
 
-//over $50 button
+//over $50 button: sets 'load' to donors above $50 and activates/deactivates the correct buttons
 function loadOver50() {
 	var classes = over50.className;
-	if (classes.indexOf("active")== -1) {
+	if (classes.indexOf("active")== -1) { //if button is not already active, load above $50 to feed
 		html = "";
 		load = db.collection("donors").where('status', '==', 'available').where('amount', '>', 50).limit(10);
 		loadDonors(load);
@@ -107,7 +108,7 @@ function loadOver50() {
 		inactivate(under25);
 		inactivate(mid);
 
-	} else {
+	} else { //if over $50 button is active-> deactivates, then loads default feed by date
 		html = "";
 		load = db.collection("donors").where('status', '==', 'available').orderBy("date").limit(10);
 		loadDonors(load);
@@ -115,9 +116,10 @@ function loadOver50() {
 	}
 }
 
-//main function to load feed
+//main function to load feed of donors, content = a sorted query from Firebase
+//takes a snapshot of each document in the query and displays the information in individual boxes
 function loadDonors(content){
-	content.get() //oldest to newest
+	content.get()
   .then(function(querySnapshot){
     querySnapshot.forEach(function(doc) {
       var id = doc.id;
@@ -125,28 +127,30 @@ function loadDonors(content){
       var amount = doc.data().amount;
       var charity = doc.data().charity;
       var link = doc.data().link;
-      var reason = doc.data().reason; //check to see if reason exists
+      var reason = doc.data().reason;
 			var date = doc.data().date.toDate();
-      html += `<div id= ${id} type="button" class="btn btn-outline-success" onClick= "saveId('${id}');copyBox('${id}');showLayer('page3')">
+      html += `<div id= ${id} type="button" class="btn btn-outline-success"
+			onClick= "saveId('${id}');copyBox('${id}');showLayer('page3')">
       $${amount} to
-      <a href="${link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${charity}</b></a>
+      <a href="${link}" class="btn btn-lg btn-outline-warning" role="button"
+			target = "_blank" aria-pressed="true"><b>${charity}</b></a>
       <div>By ${name}</div>
       <br>Reason: ${reason}
       <br>Date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</div>`
     })
-		//prep for load more
+		//sets 'load' to the next query to be loaded when 'load more' button is pressed
 		var n = querySnapshot.docs.length;
-		if (n==10) {
+		if (n==10) { //checks if the last query was full, if so there may be more to be loaded
 			var lastVisible = querySnapshot.docs[querySnapshot.docs.length-1];
 			load = load.startAfter(lastVisible);
 			loadMore.setAttribute("onclick", "more()");
 			loadMore.value = "Load more";
-		} else {
-			loadMore.onclick = "";
+		} else { //if last query wasn't full, it means there are no more docs to be loaded
+			loadMore.onclick = ""; //deactivates load more button
 			loadMore.value = "All results loaded";
 		}
   })
-  .then(function(){
+  .then(function(){ //after all documents in query are formatted, they are displayed on web page
     document.getElementById("feed").innerHTML = html;
   })
 	.catch(function(error) {
@@ -154,12 +158,12 @@ function loadDonors(content){
   });
 }
 
-//saves selected donor ID to global variable to be saved to matcher field later
+//saves selected donor ID to global variable donorId (to be saved to matcher field later)
 function saveId(id) {
   donorId = id;
 }
 
-//clones selected donor box for reference when filling out form
+//clones selected donor box for reference when filling out information form
 function copyBox(id) {
   console.log(id);
   var clone = document.getElementById(id).cloneNode(true);
@@ -168,7 +172,7 @@ function copyBox(id) {
   document.getElementById("donorSummary").appendChild(clone);
 }
 
-//load next 10 donors
+//loads next 10 donors (load more button)
 function more() {
 	loadDonors(load);
 }
@@ -177,38 +181,40 @@ function more() {
 var searchInput = document.querySelector("#searchBar");
 const searchButton = document.querySelector("#searchButton");
 
+//main search function: checks charityArray field of all Firebase donor docs for searched terms
+//charityArray= array of all possible consecutive word combinations of charity name set in donor.js
 function search() {
-	if (searchButton.value == "Search!") {
+	if (searchButton.value == "Search!") { //search database if searchButton says 'search'
 		var input = searchInput.value.toLowerCase();
 		var output = db.collection("donors").where("charityArray", "array-contains", input).limit(10);
 		html = "";
 		loadDonors(output);
-		searchButton.value = "Cancel";
-		inactivate(under25);
+		searchButton.value = "Cancel"; //turns search button to say cancel when search is complete
+		inactivate(under25); //completely inactivate any $ filters previously clicked
 		under25.onclick = "";
 		inactivate(mid);
 		mid.onclick = "";
 		inactivate(over50);
 		over50.onclick = "";
-	} else {
+	} else { //if searchButton says 'cancel', then cancel and reset the query
 		searchInput.value = "";
 		searchButton.value = "Search!";
 		html = "";
 		loadDefault();
-		under25.setAttribute("onclick", "loadUnder25()");
+		under25.setAttribute("onclick", "loadUnder25()"); //reactivate filter by amount buttons
 		mid.setAttribute("onclick", "load25to50()");
 		over50.setAttribute("onclick", "loadOver50()");
 	}
 }
 
-//edit a search
+//edit a search by clicking on the input bar (so it says search instead of cancel)
 searchInput.addEventListener("click", function(event) {
 	if (searchButton.value == "Cancel") {
 		searchButton.value = "Search!";
 	}
 });
 
-//change your mind and click away from search bar without searching
+//change your mind and click away from search bar without searching (button says cancel instead of search)
 function blurInput() {
 	if (searchButton.value == "Search!") {
 		searchButton.value = "Cancel";
@@ -227,7 +233,7 @@ function reblurInput() {
 	searchInput.setAttribute("onblur", "blurInput()");
 }
 
-//search by pressing enter
+//click searchButton by pressing enter
 searchInput.addEventListener("keyup", function(event) {
 	// Number 13 is the "Enter" key on the keyboard
 	if (event.keyCode === 13 && searchButton.value == "Search!") {
@@ -240,7 +246,7 @@ searchInput.addEventListener("keyup", function(event) {
 	}
 });
 
-//log matcher info
+//log matcher info from form
 const mName = document.querySelector("#nameInput");
 const mCompany = document.querySelector("#companyInput");
 const mRate = document.querySelector("#matcherRate");
@@ -249,13 +255,14 @@ const mEmail = document.querySelector("#personalEmailInput");
 const mNote = document.querySelector("#noteInput");
 const mSave = document.querySelector("#submitButton");
 
+//create new matcher doc in firebase with input information
 mSave.addEventListener("click", function(){
-	db.collection("donors").doc(donorId).get()
+	db.collection("donors").doc(donorId).get() //reread the specific donor chosen
 		.then(function(snapshot) {
-			if (snapshot.data().status == "available") {
+			if (snapshot.data().status == "available") { //double check that the donor is still available
 			  var newMatcher = db.collection("matchers").doc();
 				var first = mName.value.split(" ")[0];
-			  newMatcher.set({
+			  newMatcher.set({ //writes new matcher to firebase
 			    name: mName.value,
 					firstname: first,
 			    company: mCompany.value,
@@ -267,17 +274,17 @@ mSave.addEventListener("click", function(){
 			    donorID: donorId
 			  })
 			  .then(function() {
-					  location.href('matcherSubmission.html');
+					  location.href('matcherSubmission.html'); //matcher success page
 			  })
 			  .catch(function(error) {
 			      console.error("Error adding donor: ", error);
-			      location.href('matcherSubmitFail.html');
+			      location.href('matcherSubmitFail.html'); //matcher fail page
 			  });
 			} else {
-					location.href('matcherSubmitFail.html')
+					location.href('matcherSubmitFail.html') //matcher fail page if donor status isn't available anymore
 			}
 	});
 })
 
 //pairing complete-> send email to mEmail.value and donor email (read from firebase)
-//reach into donor doc with donorId and find info for email, double check status, write matcherid, and change status to complete
+//use donorId to find doc with donor email, double check status, and change status to matcherid

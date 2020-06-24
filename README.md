@@ -9,7 +9,7 @@ This basic version exchanges the emails of the matcher and donor so that the don
 4. Donors are notified of the match (their BonoBuddy) and are given the email of the matcher. 
 
 We (3 college freshmen) are currently on our 3rd week of developing this platform! 
-This is still a work in progress, please excuse the appearance and any bugs before it is released. To be released by early July!
+This is still a work in progress, so please excuse the appearance and any bugs before it is released. To be released by early July!
 
 Ann: has been managing Firebase implementation and data storage of matcher and donor information. She wrote both matcher.js and donor.js (works with matcher.html and donor.html respectively) to store and display matcher/donor data from the user forms. She also created her own basic search and filter function to show matchers the different donor requests.
 

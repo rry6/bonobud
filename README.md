@@ -11,7 +11,7 @@ This basic version exchanges the emails of the matcher and donor so that the don
 We (3 college freshmen) are currently on our 3rd week of developing this platform! 
 This is still a work in progress, please excuse the appearance and any bugs before it is released. To be released by early July!
 
-Ann: has been managing Firebase implementation and data storage of matcher and donor information. She wrote both matcher.js and donor.js (works with matcher.html and donor.html respectively) to store matcher and donor data from the user forms. She also created a basic search and filter function to show matchers the different donor requests.
+Ann: has been managing Firebase implementation and data storage of matcher and donor information. She wrote both matcher.js and donor.js (works with matcher.html and donor.html respectively) to store and display matcher/donor data from the user forms. She also created her own basic search and filter function to show matchers the different donor requests.
 
 Rishab: has been working on front end development with Bootstrap. He wrote all the html docs and is looking to reorganize the site. 
 

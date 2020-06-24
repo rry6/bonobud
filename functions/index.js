@@ -51,6 +51,9 @@ exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( as
     return transporter.sendMail(msg, (error, data) => {
         if (error) {
             console.log(error)
+            db.doc('donors/{donorId}').update({
+                status: 'faulty email'
+            })
             return
         }
         console.log("Sent")
@@ -90,49 +93,38 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: matcher.firstname + ', thank you for using BonoBud!',
         html: `
-        <p>Hi ${donor.firstname},</p> <p style="text-align:right">Submission ID: ${donorSnap.id} </p>
+        <p>Hi ${matcher.firstname},</p> <p style="text-align:right">Submission ID: ${matcherSnap.id} </p>
+        <p> We have processed your BonoBud matcher request!
         <br> <br>
-        <p>We have good news! ${matcher.name} from ${matcher.company} wants to
-        match your donation of ${donor.amount} to ${donor.charity}. Here is their email: ${matcher.pemail}.
-        Look out for an email from ${matcher.firstname} or reach out to start the conversation!
+        Thank you for choosing to help ${donor.name} increase their donation of
+        $${donor.amount} to ${donor.charity}. Here is their email: ${donor.email}. Your BonoBuddy
+        ${donor.firstname} has been notified of the match, so reach out and start the conversation!
         <br><br>
-        Here is a note from your BonoBuddy:
-        <div>${matcher.note}</div>
-        <br><br>
-        Have any questions or concerns? Reply to this email or contact teambonobud@gmail.com.
-        Feedback is also appreciated! Refer us to your friends and family or tell us how we can do better next time!
+        Reply to this email or contact teambonobud@gmail.com with any feedback,
+        questions, or concerns. Want to continue to increase your impact? Please
+        share us with your friends and family!
         <br><br>
         Thank you for using BonoBud and we hope to see you again soon!
         <br> <br>
         Sincerely, <br>
         Team BonoBud </p>
+        <br> <br>
+        <div id= ${donorSnap.id} type="button" class="btn btn-outline-success" onClick= "matcher.html">
+          $${donor.amount} to
+          <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
+          <div>By ${donor.name}</div>
+          <br>Reason: ${donor.reason}
+          <br>Date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</div>
         `
     };
-    return transporter.sendMail(msg, (error, data) => {
-        if (error) {
-            console.log(error)
-            return
-        }
-        console.log("Sent")
-    });
-});
-
-//Notify donor that they have been matched
-exports.matched = functions.firestore.document('matchers/{matcherId}').onCreate( async (change, context) => {
-    const matcherSnap = await db.collection('matchers').doc(context.params.matcherId).get();
-    const matcher = matcherSnap.data();
-    const donorID = matcher.donorID;
-    const donorSnap = await db.collection('donors').doc(donorID).get();
-    const donor = donorSnap.data();
-    const msg = {
+    const msg2 = {
         to: donor.email,
         from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: donor.firstname + ', you\'ve been matched!',
         html: `
         <p>Hi ${donor.firstname},</p> <p style="text-align:right">Submission ID: ${donorSnap.id} </p>
-        <br> <br>
         <p>We have good news! ${matcher.name} from ${matcher.company} wants to
-        match your donation of ${donor.amount} to ${donor.charity}. Here is their email: ${matcher.pemail}.
+        match your donation of $${donor.amount} to ${donor.charity}. Here is their email: ${matcher.pemail}.
         Look out for an email from ${matcher.firstname} or reach out to start the conversation!
         <br><br>
         Here is a note from your BonoBuddy:
@@ -146,15 +138,26 @@ exports.matched = functions.firestore.document('matchers/{matcherId}').onCreate(
         Sincerely, <br>
         Team BonoBud </p>
         `
-    };
+    }
     return transporter.sendMail(msg, (error, data) => {
         if (error) {
             console.log(error)
-            return
+            db.doc('donors/' + matcher.donorID).update({
+                status: 'available'
+            })
+        }
+        else {
+            return transporter.sendMail(msg2, (error, data) => {
+                if (error) {
+                    console.log(error)
+                    return
+                }
+            }) 
         }
         console.log("Sent")
     });
 });
+
 
 //checks for expiring donor listings
 exports.expired = functions.firestore.document('matchers/{matcherId}').onCreate( async (change, context) => {

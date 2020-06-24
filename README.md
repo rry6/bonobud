@@ -1,6 +1,6 @@
 # bonobud
 
-Web app that matches people who would like to donate to a charity with people whose companies can match that donation. 
+BonoBud is a web app that matches people who would like to donate to a charity with people whose companies can match that donation. 
 This basic version exchanges the emails of the matcher and donor so that the donation can be made and matched, increasing the social impact. 
 
 1. Donors fill out a basic form and are sent an email confirmation. These entries are formatted into a feed for matchers to see.
@@ -12,7 +12,7 @@ We (3 college freshmen) are currently on our 3rd week of developing this platfor
 This is still a work in progress, please excuse the appearance and any bugs before it is released. To be released by early July!
 
 Ann: has been managing Firebase implementation and data storage of matcher and donor information
--wrote matcher.js and donor.js
+-wrote matcher.js and donor.js (works with matcher.html and donor.html respectively) to store matcher and donor data from the forms
 -created a basic search and filter function to show matchers the different donor requests
 
 Rishab: has been working on front end development with Bootstrap

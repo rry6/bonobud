@@ -268,17 +268,14 @@ mSave.addEventListener("click", function(){
 			    donorID: donorId
 			  })
 			  .then(function() {
-					  document.getElementById("submitted").innerHTML = ("<h1>Success! Thank you for submitting! <br> ID: "
-							       + newMatcher.id + "<br> email: " + mEmail.value);
+					  location.href('matcherSubmission.html');
 			  })
 			  .catch(function(error) {
 			      console.error("Error adding donor: ", error);
-			      document.getElementById("submitted").innerHTML = "<h1>Error processing matcher. Please try again later.</h1>";
+			      location.href('matcherSubmitFail.html');
 			  });
 			} else {
-					document.getElementById("submitted").innerHTML = ("<h1>We're sorry, someone else matched that donor while you were filling out the form! "
-						+ "This is extremely rare so today is your lucky day! <br> Please try refreshing the page and filling out the form again. "
-						+ "Contact customer support at teambonobud@gmail.com.</h1>");
+					location.href('matcherSubmitFail.html')
 			}
 	});
 })

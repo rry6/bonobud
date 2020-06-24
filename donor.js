@@ -49,13 +49,11 @@ dsave.addEventListener("click", function(){
 		status: "available" //available = display in feed, or matcherid if matched, expired after 3 weeks
   })
   .then(function() {
-			document.getElementById("submitted").innerHTML = ("<h1>Success! Thank you for submitting! <br> ID: "
-				+ newdonor.id + "<br> email: " + demail.value);
-	  		location.href='submission.html';
+      location.href='submission.html';
   })
   .catch(function(error) {
       console.error("Error adding donor: ", error);
-      document.getElementById("submitted").innerHTML = "<h1>Error processing donor. Please try again later.</h1>"
+      location.href='submissionFail.html';
   });
 })
 

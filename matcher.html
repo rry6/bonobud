@@ -44,6 +44,22 @@
             background: none;
             transition: box-shadow 0.1s ease-out 0s;
         }
+        input[type=number]{
+            display: inline;
+            width: 50%;
+            font-size: 26px;
+            -webkit-font-smoothing: antialiased;
+            line-height: unset;
+            box-shadow: #FFDAC1 0px 1px;
+            padding: 0px 0px 1px;
+            border-width: initial;
+            border-style: none;
+            border-color: initial;
+            outline: none;
+            border-radius: 0px;
+            background: none;
+            transition: box-shadow 0.1s ease-out 0s;
+        }
         #nextButton{
             border-color:#FFDAC1;
             color:#FFDAC1;
@@ -85,6 +101,7 @@
             margin-right:10px;
             border-color: #FFDAC1;
             width:500px;
+            height: 160px;
         }
         .btn-outline-success:hover{
             color: #FFFFFF;
@@ -133,6 +150,12 @@
         }
         #searchBar{
             width: 50%;
+        }
+        #emailNote{
+            font-size: 26px;
+            color: grey;
+            -webkit-font-smoothing: antialiased;
+            margin-bottom: 15px;
         }
     </style>
 
@@ -203,7 +226,7 @@
             <textarea class="form-control" id="noteInput" placeholder="Limit to 150 characters" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <div>Have questions? Email us at teambonobud@gmail.com</div>
+            <div id="emailNote">Have questions? Email us at teambonobud@gmail.com</div>
             <p><a href="index.html" class="btn btn-outline-primary" id="backButton" role="button" aria-pressed="true">Back</a></p>
             <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 4')"></p>
         </div>

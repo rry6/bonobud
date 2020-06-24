@@ -88,6 +88,12 @@
             background-color: #B5EAD7;
             color: #FFFFFF;
         }
+        #emailNote{
+            font-size: 26px;
+            color: grey;
+            -webkit-font-smoothing: antialiased;
+            margin-bottom: 15px;
+        }
     </style>
 
 </head>
@@ -132,7 +138,7 @@
                 <label for="reasonInput" id="reasonLabel">Why are you donating? (optional)</label>
                 <textarea class="form-control" id="reasonInput" placeholder="Limit to 150 characters" rows="3"></textarea>
             </div>
-              <div>Have questions? Email us at teambonobud@gmail.com</div>
+              <div id="emailNote">Have questions? Email us at teambonobud@gmail.com</div>
               <p><a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="backButton">Back</a></p>
               <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 3');"></p>
           </div>

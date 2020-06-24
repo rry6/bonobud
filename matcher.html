@@ -44,6 +44,22 @@
             background: none;
             transition: box-shadow 0.1s ease-out 0s;
         }
+        input[type=number]{
+            display: inline;
+            width: 50%;
+            font-size: 26px;
+            -webkit-font-smoothing: antialiased;
+            line-height: unset;
+            box-shadow: #FFDAC1 0px 1px;
+            padding: 0px 0px 1px;
+            border-width: initial;
+            border-style: none;
+            border-color: initial;
+            outline: none;
+            border-radius: 0px;
+            background: none;
+            transition: box-shadow 0.1s ease-out 0s;
+        }
         #nextButton{
             border-color:#FFDAC1;
             color:#FFDAC1;
@@ -79,44 +95,89 @@
             margin-right: 20px;
         }
         .btn-outline-success{
-            color: #FFFFFF;
-            background-color:#FFDAC1;
+            color: #000000;
+            background-color:#FFFFFF;
             margin-bottom:10px;
             margin-right:10px;
             border-color: #FFDAC1;
+            width:500px;
+            height: 160px;
         }
         .btn-outline-success:hover{
-            color: #000000;
-            background-color:#FFFFFF;
+            color: #FFFFFF;
+            background-color:#FFDAC1;
             border-color: #FFDAC1;
         }
         .btn-outline-warning{
-            color: #FFF;
-            border-color: #FFF;
+            color: #000;
+            border:none;
         }
         .btn-outline-warning:hover{
-            color: #FFDAC1;
-            border-color: #FFDAC1;
-
+            color: #FFFFFF;
+            background:none;
         }
-
+        #under25Button, #midButton, #over50Button{
+            color: #000000;
+            border-color: #FFDAC1;
+        }
+        #under25Button:hover, #midButton:hover, #over50Button:hover{
+            background-color: #FFDAC1;
+            color: #FFFFFF;
+        }
+        #under25Button.active,#midButton.active,#over50Button.active{
+            background-color: #FFDAC1;
+            color:#FFFFFF;
+        }
+        #filterButtons{
+            margin-bottom: 10px;
+        }
+        #searchButton{
+            border-color: #FFDAC1;
+            color:#000000;
+        }
+        #searchButton:hover{
+            color:#FFFFFF;
+            background-color: #FFDAC1;
+        }
+        #loadButton{
+            border-color: #FFDAC1;
+            color: #000000;
+            margin-top:10px;
+        }
+        #loadButton:hover{
+            background-color: #FFDAC1;
+            color: #FFFFFF;
+        }
+        #searchBar{
+            width: 50%;
+        }
+        #emailNote{
+            font-size: 26px;
+            color: grey;
+            -webkit-font-smoothing: antialiased;
+            margin-bottom: 15px;
+        }
     </style>
 
 </head>
-<body>
+<body onLoad ="loadDefault()">
 <div class="container-fluid" id="mainContainer">
     <div class="row justify-content-center">
         <b id="titleElement">Matcher</b>
     </div>
+
+    <!-- Page 1 - Instructions (CURRENTLY HIDDEN) -->
+
     <form action="" id="submitForm">
-      <div id = "page1" style="visibility:visible; position:absolute"> <!--Instructions-->
+      <div id = "page1" style="visibility:hidden; position:absolute"> <!--Instructions-->
         Instructions? <br>
-        <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
-        <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Let's go!" onClick="showLayer('page2');loadDefault()"></p>
+        <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true">Back</a>
+        <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Let's go!" onClick="showLayer('page2');"></p>
       </div>
 
-<!--End of instructions-->
-      <div id = "page2" style="visibility:hidden; position:absolute"> <!--select a donor-->
+    <!-- Page 2 - Feed for finding a donor to match -->
+
+      <div id = "page2" style="visibility:visible; position:absolute"> <!--select a donor-->
         <div class = "container-fluid">
           <div class="form-group">
               <label for="searchBar"></label>
@@ -124,7 +185,7 @@
               <input type="button" class="btn btn-outline-primary" id="searchButton" value= "Search!" onClick="search()">
           </div>
         </div>
-        <div class = "container-fluid">
+        <div class = "container-fluid" id = "filterButtons">
           Filter by amount:
           <input type="button" class="btn btn-outline-primary" id="under25Button" value= "Less than $25" onClick="loadUnder25()">
           <input type="button" class="btn btn-outline-primary" id="midButton" value= "$25 - $50" onClick="load25to50()">
@@ -132,9 +193,11 @@
         </div>
         <div class = "container-fluid" id= "feed"></div>
         <p><input type="button" class="btn btn-outline-primary" id="loadButton" value= "Load more" onClick = "more()"></p>
-        <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
-        <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Back" onClick="showLayer('page1')"></p>
+          <p><a href="index.html" class="btn btn-outline-primary" id="backButton" role="button" aria-pressed="true">Back</a></p>
       </div>
+
+     <!-- Page 3 - Entering the Matcher Information -->
+
       <div id = "page3" style="visibility:hidden;"> <!--info input-->
         <!-- add summary of donor -->
         <div id="donorSummary"> </div>
@@ -148,7 +211,7 @@
         </div>
         <div class="form-group">
             <label for="matcherRate"></label>
-            <input type="text" class="form-control" id="matcherRate" placeholder="Company Matching Rate (i.e. 1:1)">
+            <input type="number" class="form-control" id="matcherRate" placeholder="For every $1 donated, your company matches $... (i.e. $0.50)">
         </div>
         <div class="form-group">
             <label for="emailInput"></label>
@@ -163,11 +226,14 @@
             <textarea class="form-control" id="noteInput" placeholder="Limit to 150 characters" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <p><input type="button" class="btn btn-outline-primary" id="backButton" value= Back onClick="showLayer('page2')"></p>
+            <div id="emailNote">Have questions? Email us at teambonobud@gmail.com</div>
+            <p><a href="index.html" class="btn btn-outline-primary" id="backButton" role="button" aria-pressed="true">Back</a></p>
             <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 4')"></p>
         </div>
       </div>
-<!--End of info input-->
+
+     <!-- Page 4 - Submission confirmation for the matcher -->
+
       <div id="page 4" style="visibility:hidden; position:absolute">
         <div id="submitted">
         </div>

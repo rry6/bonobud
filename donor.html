@@ -77,12 +77,22 @@
             font-size:26px;
             -webkit-font-smoothing: antialiased;
          }
-        #nextButton{
+        #submitButton,#backButton{
             border-color:#B5EAD7;
             color:#B5EAD7;
             font-size: 26px;
             border-radius: 25px;
             padding: 5px 50px;
+        }
+        #submitButton:hover,#backButton:hover{
+            background-color: #B5EAD7;
+            color: #FFFFFF;
+        }
+        #emailNote{
+            font-size: 26px;
+            color: grey;
+            -webkit-font-smoothing: antialiased;
+            margin-bottom: 15px;
         }
     </style>
 
@@ -93,45 +103,50 @@
             <b id="titleElement">Donor</b>
         </div>
         <form action="" id="submitForm">
-          <div id = "page1" style="visibility:visible; position:absolute"> <!--Instructions-->
+
+    <!-- Page 1 - Instructions (CURRENTLY HIDDEN) -->
+          <div id = "page1" style="visibility:hidden; position:absolute"> <!--Instructions-->
             Instructions? <br>
             <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
             <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Let's go!" onClick="showLayer('page2')"></p>
           </div>
 
-<!--End of instructions page-->
-          <div id="page2" style="visibility:hidden"> <!--info input-->
+    <!-- Page 2 - Donor Form -->
+
+          <div id="page2" style="visibility:visible;"> <!--info input-->
             <div class="form-group">
                 <label for="nameInput"></label>
-                <input type="text" class="form-control" id="nameInput" placeholder="Full Name">
+                <input type="text" class="form-control" id="nameInput" placeholder="Full Name" required="true">
             </div>
             <div class="form-group">
                 <label for="emailInput"></label>
-                <input type="text" class="form-control" id="emailInput" placeholder="Email">
+                <input type="text" class="form-control" id="emailInput" placeholder="Email" required>
             </div>
             <div class="form-group">
                 <label for="orgInput"></label>
-                <input type="text" class="form-control" id="orgInput" placeholder="Name of Charitable Organization">
+                <input type="text" class="form-control" id="orgInput" placeholder="Name of Charitable Organization" required>
             </div>
             <div class="form-group">
                 <label for="linkInput"></label>
-                <input type="text" class="form-control" id="linkInput" placeholder="Link to Donation Portal">
+                <input type="text" class="form-control" id="linkInput" placeholder="Link to Donation Portal" >
             </div>
             <div class="form-group">
                 <label for="amount"></label>
-                <input type="number" class="form-control" id="amount" placeholder="Amount to Donate ($)">
+                <input type="number" class="form-control" id="amount" placeholder="Amount to Donate ($)" required>
             </div>
             <div class="form-group">
                 <label for="reasonInput" id="reasonLabel">Why are you donating? (optional)</label>
                 <textarea class="form-control" id="reasonInput" placeholder="Limit to 150 characters" rows="3"></textarea>
             </div>
-            <p><input type="button" class="btn btn-outline-primary" id="backButton" value= Back onClick="showLayer('page1')"></p>
-            <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 3')"></p>
+              <div id="emailNote">Have questions? Email us at teambonobud@gmail.com</div>
+              <p><a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="backButton">Back</a></p>
+              <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 3');"></p>
           </div>
-<!--End of info input-->
+
+    <!-- Page 3 - Submission Confirmation for Donor -->
+
         <div id="page 3" style="visibility:hidden;">
-          <div id="submitted">
-          </div>
+          <div id="submitted"></div>
           <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
         </div>
         </form>

@@ -1,11 +1,12 @@
 //multi-page form
-var currentLayer = 'page1';
+var currentLayer = 'page2';
+//shows the next page of form and hides current page
 function showLayer(lyr){
 	hideLayer(currentLayer);
 	document.getElementById(lyr).style.visibility = 'visible';
 	currentLayer = lyr;
 }
-
+//hides a specific page
 function hideLayer(lyr){
 	document.getElementById(lyr).style.visibility = 'hidden';
 }
@@ -27,6 +28,7 @@ firebase.analytics();
 
 var db = firebase.firestore();
 
+//log donor info from form
 const dname = document.querySelector("#nameInput");
 const demail = document.querySelector("#emailInput");
 const dcharity = document.querySelector("#orgInput");
@@ -35,30 +37,37 @@ const dreason = document.querySelector("#reasonInput");
 const damount = document.querySelector("#amount");
 const dsave = document.querySelector("#submitButton");
 
+//create new donor doc in firebase from input information
 dsave.addEventListener("click", function(){
   var newdonor = db.collection("donors").doc();
+	var reason = dreason.value;
+	if (reason.length === 0) {
+		reason = "I really liked their mission!"; //sets a default message for reason
+	}
+	var first = dname.value.split(" ")[0]
   newdonor.set({
     name: dname.value,
+		firstname: first,
     email: demail.value,
     charity: dcharity.value,
 		charityArray: arrayify(dcharity.value),
     link: dlink.value,
-    reason: dreason.value,
+    reason: reason,
     amount: Number(damount.value),
     date: firebase.firestore.FieldValue.serverTimestamp(),
-		status: "available" //available = display in feed, or matcherid if matched, expired after 3 weeks
+		status: "available" //available = display in feed, matcherid = donor is matched, expired = after 3 weeks
   })
   .then(function() {
-			document.getElementById("submitted").innerHTML = ("<h1>Success! Thank you for submitting! <br> ID: "
-				+ newdonor.id + "<br> email: " + demail.value)
+      location.href='submission.html'; //donor success page
   })
   .catch(function(error) {
       console.error("Error adding donor: ", error);
-      document.getElementById("submitted").innerHTML = "<h1>Error processing donor. Please try again later.</h1>"
+      location.href='submissionFail.html'; //submission failed page
   });
 })
 
-//turns a charity name into an array of all sequential word combinations
+//turns a charity name into an array of all sequential word combinations for search functionality
+//i.e. American Red Cross -> [American, American , American Red, American Red , American Red Cross, American Red Cross ]
 function arrayify(phrase) {
 	phrase = phrase.toLowerCase();
 	var singleWords = phrase.split(" ");

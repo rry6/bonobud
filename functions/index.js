@@ -26,8 +26,9 @@ exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( as
         from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: donor.firstname + ', we received your donation request!',
         html: `
-        <p>Hi ${donor.firstname},</p> <p style="text-align:right">Submission ID: ${donorSnap.id} </p>
-        <p> Thank you for using BonoBud! Our bonobos are out searching for your BonoBuddy
+        <img src='bonobud logo.png'>
+        <p>Hi ${donor.firstname}, <span style="float:right">Submission ID: ${donorSnap.id}</span></p>
+        <p>Thank you for using BonoBud! Our bonobos are out searching for your BonoBuddy
         and you will be notified when someone wants to match your donation!
         <br> <br>
         We respect your time and want your donation to have the biggest impact possible.
@@ -40,7 +41,7 @@ exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( as
         Sincerely, <br>
         Team BonoBud </p>
         <br> <br>
-        <button id= ${donorSnap.id} type="button" class="btn btn-outline-success" onClick= "location.href= matcher.html">
+        <button class="btn btn-outline-success" onClick= "location.href=matcher.html">
           $${donor.amount} to
           <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
           <div>By ${donor.name}</div>
@@ -93,23 +94,24 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: matcher.firstname + ', thank you for using BonoBud!',
         html: `
-        <p>Hi ${matcher.firstname},</p> <p style="text-align:right">Submission ID: ${matcherSnap.id} </p>
-        <p> We have processed your BonoBud matcher request!
+        <img src='bonobud logo.png'>
+        <p>Hi ${matcher.firstname}, <span style="float:right">Submission ID: ${matcherSnap.id}</span></p>
+        <p>We have processed your BonoBud matcher request!
         <br> <br>
         Thank you for choosing to help ${donor.name} increase their donation of
         $${donor.amount} to ${donor.charity}. Here is their email: ${donor.email}. Your BonoBuddy
         ${donor.firstname} has been notified of the match, so reach out and start the conversation!
         <br><br>
         Reply to this email or contact teambonobud@gmail.com with any feedback,
-        questions, or concerns. Want to continue to increase your impact? Please
-        share us with your friends and family!
+        questions, or concerns.
         <br><br>
+        Want to continue to increase your impact? Please share us with your friends and family!
         Thank you for using BonoBud and we hope to see you again soon!
         <br> <br>
         Sincerely, <br>
         Team BonoBud </p>
         <br> <br>
-        <div id= ${donorSnap.id} type="button" class="btn btn-outline-success" onClick= "matcher.html">
+        <div class="btn btn-outline-success" onClick= "location.href=matcher.html">
           $${donor.amount} to
           <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
           <div>By ${donor.name}</div>
@@ -122,7 +124,8 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: donor.firstname + ', you\'ve been matched!',
         html: `
-        <p>Hi ${donor.firstname},</p> <p style="text-align:right">Submission ID: ${donorSnap.id} </p>
+        <img src='bonobud logo.png'>
+        <p>Hi ${donor.firstname},<span style="float:right">Submission ID: ${donorSnap.id}</span></p>
         <p>We have good news! ${matcher.name} from ${matcher.company} wants to
         match your donation of $${donor.amount} to ${donor.charity}. Here is their email: ${matcher.pemail}.
         Look out for an email from ${matcher.firstname} or reach out to start the conversation!
@@ -152,7 +155,7 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
                     console.log(error)
                     return
                 }
-            }) 
+            })
         }
         console.log("Sent")
     });
@@ -176,7 +179,8 @@ exports.expired = functions.firestore.document('matchers/{matcherId}').onCreate(
                     from: 'Team BonoBud <teambonobud@gmail.com>',
                     subject: donor.firstname + ', sorry to see you go!',
                     html: `
-                    <p>Hi ${donor.firstname},</p> <p style="text-align:right">Submission ID: ${doc.id} </p>
+                    <img src='bonobud logo.png'>
+                    <p>Hi ${donor.firstname},<span style="float:right">Submission ID: ${doc.id}</span></p>
                     <br> <br>
                     <p> Unfortunately, our bonobos could not find a matcher for your donation
                     of ${donor.amount} to ${donor.charity}. We hate to see you go, but we want your
@@ -194,7 +198,7 @@ exports.expired = functions.firestore.document('matchers/{matcherId}').onCreate(
                     Sincerely, <br>
                     Team BonoBud </p>
                     <br> <br>
-                    <button id= ${doc.id} type="button" class="btn btn-outline-success" onClick= "location.href=matcher.html">
+                    <button class="btn btn-outline-success" onClick= "location.href=matcher.html">
                       $${donor.amount} to
                       <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
                       <div>By ${donor.name}</div>

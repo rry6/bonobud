@@ -40,6 +40,7 @@ const dsave = document.querySelector("#submitButton");
 //create new donor doc in firebase from input information
 dsave.addEventListener("click", function(){
 	if(!empty()) {
+		alert("works");
 		var newdonor = db.collection("donors").doc();
 		var reason = dreason.value;
 		if (reason.length === 0) {
@@ -152,7 +153,7 @@ function empty(){
 	}
 
 	//Test amount input
-	if(amount.value == 0){
+	if(amount.value == null){
 		amount.style.boxShadow = "rgb(255,105,97) 0px 1px";
 		isEmpty = true;
 	}

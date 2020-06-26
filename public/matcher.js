@@ -5,6 +5,7 @@ function showLayer(lyr){
 	hideLayer(currentLayer);
 	document.getElementById(lyr).style.visibility = 'visible';
 	currentLayer = lyr;
+	window.scroll({top: 0, left: 0});
 }
 //hides a specific page
 function hideLayer(lyr){
@@ -257,34 +258,121 @@ const mSave = document.querySelector("#submitButton");
 
 //create new matcher doc in firebase with input information
 mSave.addEventListener("click", function(){
-	db.collection("donors").doc(donorId).get() //reread the specific donor chosen
-		.then(function(snapshot) {
-			if (snapshot.data().status == "available") { //double check that the donor is still available
-			  var newMatcher = db.collection("matchers").doc();
-				var first = mName.value.split(" ")[0];
-			  newMatcher.set({ //writes new matcher to firebase
-			    name: mName.value,
-					firstname: first,
-			    company: mCompany.value,
-			    rate: Number(mRate.value),
-			    cemail: mCompanyemail.value,
-			    pemail: mEmail.value,
-			    note: mNote.value,
-			    date: firebase.firestore.FieldValue.serverTimestamp(),
-			    donorID: donorId
-			  })
-			  .then(function() {
-					  location.href('matcherSubmission.html'); //matcher success page
-			  })
-			  .catch(function(error) {
-			      console.error("Error adding donor: ", error);
-			      location.href('matcherSubmitFail.html'); //matcher fail page
-			  });
-			} else {
-					location.href('matcherSubmitFail.html') //matcher fail page if donor status isn't available anymore
-			}
-	});
+	if(!empty()) {
+		db.collection("donors").doc(donorId).get() //reread the specific donor chosen
+			.then(function (snapshot) {
+				if (snapshot.data().status == "available") { //double check that the donor is still available
+					var newMatcher = db.collection("matchers").doc();
+					var first = mName.value.split(" ")[0];
+
+					//sets a default message is no note is entered.
+
+					if(mNote.value == ""){
+						mNote.value = "I'd like to help match your donation!";
+					}
+
+
+					newMatcher.set({ //writes new matcher to firebase
+						name: mName.value,
+						firstname: first,
+						company: mCompany.value,
+						rate: Number(mRate.value),
+						cemail: mCompanyemail.value,
+						pemail: mEmail.value,
+						note: mNote.value,
+						date: firebase.firestore.FieldValue.serverTimestamp(),
+						donorID: donorId
+					})
+						.then(function () {
+							location.href = 'matcherSubmission.html'; //matcher success page
+						})
+						.catch(function (error) {
+							alert("catch");
+							console.error("Error adding donor: ", error);
+							location.href = 'matcherSubmitFail.html'; //matcher fail page
+						});
+				} else {
+					alert("else");
+					location.href = 'matcherSubmitFail.html'; //matcher fail page if donor status isn't available anymore
+				}
+			});
+	}
 })
 
 //pairing complete-> send email to mEmail.value and donor email (read from firebase)
 //use donorId to find doc with donor email, double check status, and change status to matcherid
+
+
+function empty(){
+	var nameInput = document.getElementById("nameInput");
+	var companyInput = document.getElementById("companyInput");
+	var matcherRate = document.getElementById("matcherRate");
+	var emailInput = document.getElementById("emailInput");
+	var personalEmailInput = document.getElementById("personalEmailInput");
+	var alertString = " ";
+
+	var emailRegex = RegExp('^\\S+@\\S+$');
+
+	var isEmpty = false;
+	var isInvalid = false;
+
+	//Test name value
+	if(nameInput.value.trim() == ""){
+		nameInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		isEmpty = true;
+	}
+	else{
+		nameInput.style.boxShadow = "#FFDAC1 0px 1px";
+	}
+
+	//Test company name value
+	if(companyInput.value.trim() == ""){
+		companyInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		isEmpty = true;
+	}
+	else{
+		companyInput.style.boxShadow = "#FFDAC1 0px 1px";
+	}
+
+	//Test rate input
+	if(matcherRate.value == 0){
+		matcherRate.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		isEmpty = true;
+	}
+	else{
+		matcherRate.style.boxShadow = "#FFDAC1 0px 1px";
+	}
+
+	//Test company email value and validation
+	if(emailInput.value.trim() == ""){
+		emailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		isEmpty = true;
+	}
+	else{
+		emailInput.style.boxShadow = "#FFDAC1 0px 1px";
+	}
+
+	//Test personal email value and validation
+	if(personalEmailInput.value.trim() == ""){
+		personalEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		isEmpty = true;
+	}
+	else if(!emailRegex.test(personalEmailInput.value)){
+		personalEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		alertString = alertString.concat(" ","Please enter a valid email.");
+		isInvalid = true;
+	}
+	else{
+		personalEmailInput.style.boxShadow = "#FFDAC1 0px 1px";
+	}
+
+	if(isEmpty){
+		alertString = alertString.concat(" ", "Please fill out all required fields.");
+		isInvalid = true;
+	}
+	if(isInvalid){
+		alert(alertString);
+	}
+	return isInvalid;
+}
+

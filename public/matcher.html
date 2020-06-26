@@ -138,6 +138,7 @@
         #searchButton{
             border-color: #FFDAC1;
             color:#000000;
+            position: relative;
         }
         #searchButton:hover{
             color:#FFFFFF;
@@ -152,14 +153,17 @@
             background-color: #FFDAC1;
             color: #FFFFFF;
         }
-        #searchBar{
-            width: 50%;
-        }
         #emailNote{
             font-size: 26px;
             color: grey;
             -webkit-font-smoothing: antialiased;
             margin-bottom: 15px;
+        }
+        #top{
+            margin-left: 10px;
+        }
+        #searchBar{
+            width: 600px;
         }
     </style>
 
@@ -170,25 +174,14 @@
         <b id="titleElement">Matcher</b>
     </div>
 
-    <!-- Page 1 - Instructions (CURRENTLY HIDDEN) -->
-
-    <form action="" id="submitForm">
-      <div id = "page1" style="visibility:hidden; position:absolute"> <!--Instructions-->
-        Instructions? <br>
-        <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true">Back</a>
-        <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Let's go!" onClick="showLayer('page2');"></p>
-      </div>
-
     <!-- Page 2 - Feed for finding a donor to match -->
 
       <div id = "page2" style="visibility:visible; position:absolute"> <!--select a donor-->
-        <div class = "container-fluid">
-          <div class="form-group">
+          <div id="top" class="form-group">
               <label for="searchBar"></label>
               <input type="text" class="form-control" id="searchBar" placeholder="Search by Charity Name" onblur="blurInput()">
               <input type="button" class="btn btn-outline-primary" id="searchButton" value= "Search!" onClick="search()">
           </div>
-        </div>
         <div class = "container-fluid" id = "filterButtons">
           Filter by amount:
           <input type="button" class="btn btn-outline-primary" id="under25Button" value= "Less than $25" onClick="loadUnder25()">
@@ -231,8 +224,8 @@
         </div>
         <div class="form-group">
             <div id="emailNote">Have questions? Email us at teambonobud@gmail.com</div>
-            <p><a href="index.html" class="btn btn-outline-primary" id="backButton" role="button" aria-pressed="true">Back</a></p>
-            <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick="showLayer('page 4')"></p>
+            <p><input type="button" class="btn btn-outline-primary" id="backButton" value="Back" onClick="showLayer('page2')"></p>
+            <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick=""></p>
         </div>
       </div>
 

@@ -15,4 +15,4 @@ Ann: has been managing Firebase implementation and data storage of matcher and d
 
 Rishab: has been working on front end development with Bootstrap. He wrote all the html docs and is looking to reorganize the site. 
 
-Michael: has been working on automating emails. He wrote index.js and has been using Firebase functions to trigger events and reference data. 
+Michael: has been working on automating emails and managing the database to only include real, active users. He wrote index.js and has been using Firebase functions to trigger events and reference data. 

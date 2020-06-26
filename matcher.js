@@ -5,6 +5,7 @@ function showLayer(lyr){
 	hideLayer(currentLayer);
 	document.getElementById(lyr).style.visibility = 'visible';
 	currentLayer = lyr;
+	window.scroll({top: 0, left: 0});
 }
 //hides a specific page
 function hideLayer(lyr){

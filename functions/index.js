@@ -124,8 +124,8 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
           <br>Date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</div>
         `,
         attachments: [{
-            filename: 'bonobud logo.png',
-            path: 'bonobud logo.png',
+            filename: 'bonobud.svg',
+            path: 'bonobud.svg',
             cid: 'bl'
         }]
     };
@@ -152,8 +152,8 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         Team BonoBud </p>
         `,
         attachments: [{
-            filename: 'bonobud logo.png',
-            path: 'bonobud logo.png',
+            filename: 'bonobud.svg',
+            path: 'bonobud.svg',
             cid: 'bl'
         }]
     }
@@ -221,8 +221,8 @@ exports.expired = functions.firestore.document('matchers/{matcherId}').onCreate(
                       <br>Date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</button>
                       `,
                       attachments: [{
-                        filename: 'bonobud logo.png',
-                        path: 'bonobud logo.png',
+                        filename: 'bonobud.svg',
+                        path: 'bonobud.svg',
                         cid: 'bl'
                     }]
                 };

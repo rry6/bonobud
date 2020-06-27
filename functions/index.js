@@ -42,17 +42,17 @@ exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( as
         Team BonoBud </p>
         <br> <br>
         <button class="btn btn-outline-success" onClick= "location.href=matcher.html">
-          $${donor.amount} to
-          <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
-          <div>By ${donor.name}</div>
-          <br>Reason: ${donor.reason}
-          <br>Date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</button>
-          `,
-          attachments: [{
-              filename: 'bonobud logo.png',
-              path: 'bonobud logo.png',
-              cid: 'bl'
-          }]
+        $${donor.amount} to
+        <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
+        <div>By ${donor.name}</div>
+        <br>Reason: ${donor.reason}
+        <br>Date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</button>
+        `,
+        attachments: [{
+            filename: 'bonobud.png',
+            path: 'bonobud.png',
+            cid: 'bl'
+        }]
        };
     return transporter.sendMail(msg, (error, data) => {
         if (error) {
@@ -124,8 +124,8 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
           <br>Date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</div>
         `,
         attachments: [{
-            filename: 'bonobud.svg',
-            path: 'bonobud.svg',
+            filename: 'bonobud.png',
+            path: 'bonobud.png',
             cid: 'bl'
         }]
     };
@@ -152,8 +152,8 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         Team BonoBud </p>
         `,
         attachments: [{
-            filename: 'bonobud.svg',
-            path: 'bonobud.svg',
+            filename: 'bonobud.png',
+            path: 'bonobud.png',
             cid: 'bl'
         }]
     }
@@ -221,8 +221,8 @@ exports.expired = functions.firestore.document('matchers/{matcherId}').onCreate(
                       <br>Date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</button>
                       `,
                       attachments: [{
-                        filename: 'bonobud.svg',
-                        path: 'bonobud.svg',
+                        filename: 'bonobud.png',
+                        path: 'bonobud.png',
                         cid: 'bl'
                     }]
                 };

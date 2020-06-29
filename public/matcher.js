@@ -264,14 +264,6 @@ mSave.addEventListener("click", function(){
 				if (snapshot.data().status == "available") { //double check that the donor is still available
 					var newMatcher = db.collection("matchers").doc();
 					var first = mName.value.split(" ")[0];
-
-					//sets a default message is no note is entered.
-
-					if(mNote.value == ""){
-						mNote.value = "I'd like to help match your donation!";
-					}
-
-
 					newMatcher.set({ //writes new matcher to firebase
 						name: mName.value,
 						firstname: first,

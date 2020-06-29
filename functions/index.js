@@ -26,7 +26,7 @@ exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( as
         from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: donor.firstname + ', we received your donation request!',
         html: `
-        <img src='cid:bl' width='300'/>
+        <img src='cid:bl' width='200'/>
         <p>Hi ${donor.firstname}, <span style="float:right">Submission ID: ${donorSnap.id}</span></p>
         <p>Thank you for using BonoBud! Our bonobos are out searching for your BonoBuddy
         and you will be notified when someone wants to match your donation!
@@ -41,12 +41,12 @@ exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( as
         Sincerely, <br>
         Team BonoBud </p>
         <br> <br>
-        <button class="btn btn-outline-success" onClick= "location.href=matcher.html">
+        <button class="btn btn-outline-success" onClick= "location.href=www.bonobud.com/matcher.html">
         $${donor.amount} to
         <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
         <div>By ${donor.name}</div>
         <br>Reason: ${donor.reason}
-        <br>Date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</button>
+        <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</button>
         `,
         attachments: [{
             filename: 'bonobud.png',
@@ -99,7 +99,7 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: matcher.firstname + ', thank you for using BonoBud!',
         html: `
-        <img src='cid:bl' width='300'/>
+        <img src='cid:bl' width='200'/>
         <p>Hi ${matcher.firstname}, <span style="float:right">Submission ID: ${matcherSnap.id}</span></p>
         <p>We have processed your BonoBud matcher request!
         <br> <br>
@@ -116,12 +116,12 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         Sincerely, <br>
         Team BonoBud </p>
         <br> <br>
-        <div class="btn btn-outline-success" onClick= "location.href=matcher.html">
+        <button class="btn btn-outline-success" onClick= "location.href=www.bonobud.com/matcher.html">
           $${donor.amount} to
           <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
           <div>By ${donor.name}</div>
           <br>Reason: ${donor.reason}
-          <br>Date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</div>
+          <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</button>
         `,
         attachments: [{
             filename: 'bonobud.png',
@@ -134,7 +134,7 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: donor.firstname + ', you\'ve been matched!',
         html: `
-        <img src='cid:bl' width='300'/>
+        <img src='cid:bl' width='200'/>
         <p>Hi ${donor.firstname},<span style="float:right">Submission ID: ${donorSnap.id}</span></p>
         <p>We have good news! ${matcher.name} from ${matcher.company} wants to
         match your donation of $${donor.amount} to ${donor.charity}. Here is their email: ${matcher.pemail}.
@@ -150,6 +150,12 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         <br> <br>
         Sincerely, <br>
         Team BonoBud </p>
+        <button class="btn btn-outline-success" onClick= "location.href=www.bonobud.com/matcher.html">
+          $${donor.amount} to
+          <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
+          <div>By ${donor.name}</div>
+          <br>Reason: ${donor.reason}
+          <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</button>
         `,
         attachments: [{
             filename: 'bonobud.png',
@@ -194,7 +200,7 @@ exports.expired = functions.firestore.document('matchers/{matcherId}').onCreate(
                     from: 'Team BonoBud <teambonobud@gmail.com>',
                     subject: donor.firstname + ', sorry to see you go!',
                     html: `
-                    <img src='cid:bl' width='300'/>
+                    <img src='cid:bl' width='200'/>
                     <p>Hi ${donor.firstname},<span style="float:right">Submission ID: ${doc.id}</span></p>
                     <br> <br>
                     <p> Unfortunately, our bonobos could not find a matcher for your donation
@@ -213,12 +219,12 @@ exports.expired = functions.firestore.document('matchers/{matcherId}').onCreate(
                     Sincerely, <br>
                     Team BonoBud </p>
                     <br> <br>
-                    <button class="btn btn-outline-success" onClick= "location.href=matcher.html">
+                    <button class="btn btn-outline-success" onClick= "location.href=www.bonobud.com/matcher.html">
                       $${donor.amount} to
                       <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
                       <div>By ${donor.name}</div>
                       <br>Reason: ${donor.reason}
-                      <br>Date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</button>
+                      <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</button>
                       `,
                       attachments: [{
                         filename: 'bonobud.png',

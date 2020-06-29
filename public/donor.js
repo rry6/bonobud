@@ -1,16 +1,3 @@
-//multi-page form
-var currentLayer = 'page2';
-//shows the next page of form and hides current page
-function showLayer(lyr){
-	hideLayer(currentLayer);
-	document.getElementById(lyr).style.visibility = 'visible';
-	currentLayer = lyr;
-}
-//hides a specific page
-function hideLayer(lyr){
-	document.getElementById(lyr).style.visibility = 'hidden';
-}
-
 //Firebase
 var firebaseConfig = {
     apiKey: "AIzaSyAxe7I5_U4JQ0VWkyRTIAEtPSbxuMOuR1s",
@@ -170,4 +157,3 @@ function empty(){
 	}
 	return isInvalid;
 }
-

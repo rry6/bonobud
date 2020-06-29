@@ -1,5 +1,5 @@
 //multi-page form
-var currentLayer = 'page2';
+var currentLayer = 'page1';
 //shows the next page of form and hides current page
 function showLayer(lyr){
 	hideLayer(currentLayer);
@@ -131,13 +131,13 @@ function loadDonors(content){
       var reason = doc.data().reason;
 			var date = doc.data().date.toDate();
       html += `<div id= ${id} type="button" class="btn btn-outline-success"
-			onClick= "saveId('${id}');copyBox('${id}');showLayer('page3')">
+			onClick= "saveId('${id}');copyBox('${id}');showLayer('page2')">
       $${amount} to
       <a href="${link}" class="btn btn-lg btn-outline-warning" role="button"
 			target = "_blank" aria-pressed="true"><b>${charity}</b></a>
       <div>By ${name}</div>
       <br>Reason: ${reason}
-      <br>Date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</div>`
+      <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</div>`
     })
 		//sets 'load' to the next query to be loaded when 'load more' button is pressed
 		var n = querySnapshot.docs.length;
@@ -375,4 +375,3 @@ function empty(){
 	}
 	return isInvalid;
 }
-

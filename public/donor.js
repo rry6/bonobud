@@ -33,7 +33,7 @@ dsave.addEventListener("click", function(){
 		if (reason.length === 0) {
 			reason = "I really liked their mission!"; //sets a default message for reason
 		}
-		var first = dname.value.split(" ")[0]
+		var first = dname.value.split(" ")[0];
 		newdonor.set({
 			name: dname.value,
 			firstname: first,
@@ -53,8 +53,7 @@ dsave.addEventListener("click", function(){
 				console.error("Error adding donor: ", error);
 				location.href = 'submissionFail.html'; //submission failed page
 			});
-	}
-	else{
+	} else {
 		return;
 	}
 })

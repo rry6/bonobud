@@ -99,7 +99,7 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: matcher.firstname + ', thank you for using BonoBud!',
         html: `
-        <img src='cid:bl' width='200'/>
+        <img src='cid:bl' width='200' height='49.315' onClick="location.href='https://bonobud.com/matcher.html'">
         <p>Hi ${matcher.firstname}, <span style="float:right">Submission ID: ${matcherSnap.id}</span></p>
         <p>We have processed your BonoBud matcher request!
         <br> <br>
@@ -115,7 +115,7 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         Sincerely, <br>
         Team BonoBud </p>
         <br> <br>
-        <button class="btn btn-outline-success" onClick= "location.href=www.bonobud.com/matcher.html">
+        <button class="btn btn-outline-success" onClick= "location.href='https://bonobud.com/matcher.html'" type="button" target= "_blank">
           $${donor.amount} to
           <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
           <div>By ${donor.name}</div>
@@ -139,22 +139,25 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: donor.firstname + ', you\'ve been matched!',
         html: `
-        <img src='cid:bl' width='200'/>
+        <img src='cid:bl' width='100'/>
         <p>Hi ${donor.firstname},<span style="float:right">Submission ID: ${donorSnap.id}</span></p>
         <p>We have good news! ${matcher.name} from ${matcher.company} wants to
-        match your donation of $${donor.amount} to ${donor.charity}. Here is their personal email: ${matcher.pemail}.
-        If you would like to verify that ${matcher.firstname} works at ${matcher.company}, please contact them at ${matcher.cemail}.
+        match your donation of $${donor.amount} to ${donor.charity}.
+        <br><br>
+        Here is their personal email: ${matcher.pemail}.
+        If you would like to verify that ${matcher.firstname} works at ${matcher.company}, please contact them through
+        their company email: ${matcher.cemail}.
         Look out for an email from ${matcher.firstname} or reach out to start the conversation!
         ${notesection}
         <br><br>
-        Have any questions or concerns? Check out our FAQs page or reply to this email.
-        Feedback is also appreciated! Refer us to your friends and family or tell us how we can do better next time!
+        Something doesn't look right? Check out our FAQs page or reply to this email with questions, concerns, or feedback.
         <br><br>
+        Continue increasing your impact by referring us to your friends and family.
         Thank you for using BonoBud and we hope to see you again soon!
         <br> <br>
         Sincerely, <br>
         Team BonoBud </p>
-        <button class="btn btn-outline-success" onClick= "location.href=www.bonobud.com/matcher.html">
+        <button class="btn btn-outline-success" onClick= "location.href='https://bonobud.com/matcher.html'" type="button">
           $${donor.amount} to
           <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
           <div>By ${donor.name}</div>

@@ -128,12 +128,11 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
             cid: 'bl'
         }]
     };
+    var notesection = ``;
     if (matcher.note) { //checks if matcher note exists
-      var notesection = `<br><br>
+      notesection = `<br><br>
       Here is a note from your BonoBuddy:
       <div>${matcher.note}</div>`;
-    } else {
-      var notesection = ``;
     }
     const msg2 = { //donor notified of match
         to: donor.email,

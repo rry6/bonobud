@@ -174,9 +174,9 @@
         <b id="titleElement">Matcher</b>
     </div>
 
-    <!-- Page 2 - Feed for finding a donor to match -->
+    <!-- Page 1 - Feed for finding a donor to match -->
 
-      <div id = "page2" style="visibility:visible; position:absolute"> <!--select a donor-->
+      <div id = "page1" style="visibility:visible; position:absolute"> <!--select a donor-->
           <div id="top" class="form-group">
               <label for="searchBar"></label>
               <input type="text" class="form-control" id="searchBar" placeholder="Search by Charity Name" onblur="blurInput()">
@@ -193,48 +193,40 @@
           <p><a href="index.html" class="btn btn-outline-primary" id="backButton" role="button" aria-pressed="true">Back</a></p>
       </div>
 
-     <!-- Page 3 - Entering the Matcher Information -->
+     <!-- Page 2 - Entering the Matcher Information -->
 
-      <div id = "page3" style="visibility:hidden;"> <!--info input-->
+      <div id = "page2" style="visibility:hidden;"> <!--info input-->
         <!-- add summary of donor -->
         <div id="donorSummary"> </div>
         <div class="form-group">
             <label for="nameInput"></label>
-            <input type="text" class="form-control" id="nameInput" placeholder="Full Name">
+            <input type="text" class="form-control" id="nameInput" placeholder="Full Name *">
         </div>
         <div class="form-group">
             <label for="companyInput"></label>
-            <input type="text" class="form-control" id="companyInput" placeholder="Company Name">
+            <input type="text" class="form-control" id="companyInput" placeholder="Company Name *">
         </div>
         <div class="form-group">
             <label for="matcherRate"></label>
-            <input type="number" class="form-control" id="matcherRate" placeholder="For every $1 donated, your company matches $... (i.e. $0.50)">
+            <input type="number" class="form-control" id="matcherRate" placeholder="For every $1 donated, your company matches $... (i.e. $0.50) *">
         </div>
         <div class="form-group">
             <label for="emailInput"></label>
-            <input type="text" class="form-control" id="emailInput" placeholder="Company Email (For verification purposes)">
+            <input type="text" class="form-control" id="emailInput" placeholder="Company Email (For verification purposes) *">
         </div>
         <div class="form-group">
             <label for="personalEmailInput"></label>
-            <input type="text" class="form-control" id="personalEmailInput" placeholder="Personal Email (For contact purposes)">
+            <input type="text" class="form-control" id="personalEmailInput" placeholder="Personal Email (For contact purposes) *">
         </div>
         <div class="form-group">
             <label for="noteInput" id="noteLabel">Leave a note to your donor! (optional)</label>
             <textarea class="form-control" id="noteInput" placeholder="Limit to 150 characters" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <div id="emailNote">Have questions? Email us at teambonobud@gmail.com</div>
-            <p><input type="button" class="btn btn-outline-primary" id="backButton" value="Back" onClick="showLayer('page2')"></p>
-            <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick=""></p>
+            <div id="emailNote">Have questions? Email us at teambonobud@gmail.com.</div>
+            <p><input type="button" class="btn btn-outline-primary" id="backButton" value="Back" onClick="showLayer('page1')"></p>
+            <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit!></p>
         </div>
-      </div>
-
-     <!-- Page 4 - Submission confirmation for the matcher -->
-
-      <div id="page 4" style="visibility:hidden; position:absolute">
-        <div id="submitted">
-        </div>
-        <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
       </div>
     </form>
 </div>

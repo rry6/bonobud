@@ -1,5 +1,5 @@
 //multi-page form
-var currentLayer = 'page2';
+var currentLayer = 'page1';
 //shows the next page of form and hides current page
 function showLayer(lyr){
 	hideLayer(currentLayer);
@@ -131,13 +131,13 @@ function loadDonors(content){
       var reason = doc.data().reason;
 			var date = doc.data().date.toDate();
       html += `<div id= ${id} type="button" class="btn btn-outline-success"
-			onClick= "saveId('${id}');copyBox('${id}');showLayer('page3')">
+			onClick= "saveId('${id}');copyBox('${id}');showLayer('page2')">
       $${amount} to
       <a href="${link}" class="btn btn-lg btn-outline-warning" role="button"
 			target = "_blank" aria-pressed="true"><b>${charity}</b></a>
       <div>By ${name}</div>
       <br>Reason: ${reason}
-      <br>Date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</div>`
+      <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</div>`
     })
 		//sets 'load' to the next query to be loaded when 'load more' button is pressed
 		var n = querySnapshot.docs.length;
@@ -264,14 +264,6 @@ mSave.addEventListener("click", function(){
 				if (snapshot.data().status == "available") { //double check that the donor is still available
 					var newMatcher = db.collection("matchers").doc();
 					var first = mName.value.split(" ")[0];
-
-					//sets a default message is no note is entered.
-
-					if(mNote.value == ""){
-						mNote.value = "I'd like to help match your donation!";
-					}
-
-
 					newMatcher.set({ //writes new matcher to firebase
 						name: mName.value,
 						firstname: first,
@@ -287,12 +279,10 @@ mSave.addEventListener("click", function(){
 							location.href = 'matcherSubmission.html'; //matcher success page
 						})
 						.catch(function (error) {
-							alert("catch");
 							console.error("Error adding donor: ", error);
 							location.href = 'matcherSubmitFail.html'; //matcher fail page
 						});
 				} else {
-					alert("else");
 					location.href = 'matcherSubmitFail.html'; //matcher fail page if donor status isn't available anymore
 				}
 			});
@@ -375,4 +365,3 @@ function empty(){
 	}
 	return isInvalid;
 }
-

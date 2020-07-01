@@ -104,53 +104,37 @@
         </div>
         <form action="" id="submitForm">
 
-    <!-- Page 1 - Instructions (CURRENTLY HIDDEN) -->
-          <div id = "page1" style="visibility:hidden; position:absolute"> <!--Instructions-->
-            Instructions? <br>
-            <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
-            <p><input type="button" class="btn btn-outline-primary" id="nextButton" value= "Let's go!" onClick="showLayer('page2')"></p>
-          </div>
+    <!-- Donor Form -->
 
-    <!-- Page 2 - Donor Form -->
-
-          <div id="page2" style="visibility:visible;"> <!--info input-->
+          <div id="page1" style="visibility:visible;"> <!--info input-->
             <div class="form-group">
                 <label for="nameInput"></label>
-                <input type="text" class="form-control" id="nameInput" placeholder="Full Name" required="true">
+                <input type="text" class="form-control" id="nameInput" placeholder="Full Name *" required="true">
             </div>
             <div class="form-group">
                 <label for="emailInput"></label>
-                <input type="text" class="form-control" id="emailInput" placeholder="Email" required="true">
+                <input type="text" class="form-control" id="emailInput" placeholder="Email *" required="true">
             </div>
             <div class="form-group">
                 <label for="orgInput"></label>
-                <input type="text" class="form-control" id="orgInput" placeholder="Name of Charitable Organization" required="true">
+                <input type="text" class="form-control" id="orgInput" placeholder="Name of Charitable Organization *" required="true">
             </div>
             <div class="form-group">
                 <label for="linkInput"></label>
-                <input type="text" class="form-control" id="linkInput" placeholder="Link to Donation Portal" required="true">
+                <input type="text" class="form-control" id="linkInput" placeholder="Link to Donation Portal *" required="true">
             </div>
             <div class="form-group">
                 <label for="amount"></label>
-                <input type="number" class="form-control" id="amount" placeholder="Amount to Donate ($)" required="true">
+                <input type="number" class="form-control" id="amount" placeholder="Amount to Donate ($) *" required="true">
             </div>
             <div class="form-group">
                 <label for="reasonInput" id="reasonLabel">Why are you donating? (optional)</label>
                 <textarea class="form-control" id="reasonInput" placeholder="Limit to 150 characters" rows="3"></textarea>
             </div>
-              <div id="emailNote">Have questions? Email us at teambonobud@gmail.com</div>
+              <div id="emailNote">Have questions? Email us at teambonobud@gmail.com.</div>
               <p><a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="backButton">Back</a></p>
-              <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit! onClick=""></p>
+              <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit!></p>
           </div>
-
-    <!-- Page 3 - Submission Confirmation for Donor -->
-
-        <div id="page 3" style="visibility:hidden;">
-          <div id="submitted"></div>
-          <a href="index.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true"><b>Home</b></a>
-        </div>
-        </form>
-    </div>
 
     <!-- bootstrap implementation tags -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

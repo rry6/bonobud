@@ -1,16 +1,3 @@
-//multi-page form
-var currentLayer = 'page2';
-//shows the next page of form and hides current page
-function showLayer(lyr){
-	hideLayer(currentLayer);
-	document.getElementById(lyr).style.visibility = 'visible';
-	currentLayer = lyr;
-}
-//hides a specific page
-function hideLayer(lyr){
-	document.getElementById(lyr).style.visibility = 'hidden';
-}
-
 //Firebase
 var firebaseConfig = {
     apiKey: "AIzaSyAxe7I5_U4JQ0VWkyRTIAEtPSbxuMOuR1s",
@@ -40,34 +27,32 @@ const dsave = document.querySelector("#submitButton");
 //create new donor doc in firebase from input information
 dsave.addEventListener("click", function(){
 	if(!empty()) {
-		alert("works");
 		var newdonor = db.collection("donors").doc();
 		var reason = dreason.value;
 		if (reason.length === 0) {
 			reason = "I really liked their mission!"; //sets a default message for reason
 		}
-		var first = dname.value.split(" ")[0]
-			newdonor.set({
-				name: dname.value,
-				firstname: first,
-				email: demail.value,
-				charity: dcharity.value,
-				charityArray: arrayify(dcharity.value),
-				link: dlink.value,
-				reason: reason,
-				amount: Number(damount.value),
-				date: firebase.firestore.FieldValue.serverTimestamp(),
-				status: 'available' //available = display in feed, matcherid = donor is matched, expired = after 3 weeks
-			})
-		.then(function () {
-			location.href = 'submission.html'; //donor success page
+		var first = dname.value.split(" ")[0];
+		newdonor.set({
+			name: dname.value,
+			firstname: first,
+			email: demail.value,
+			charity: dcharity.value,
+			charityArray: arrayify(dcharity.value),
+			link: dlink.value,
+			reason: reason,
+			amount: Number(damount.value),
+			date: firebase.firestore.FieldValue.serverTimestamp(),
+			status: "available" //available = display in feed, matcherid = donor is matched, expired = after 3 weeks
 		})
-		.catch(function (error) {
-			console.error("Error adding donor: ", error);
-			location.href = 'submissionFail.html'; //submission failed page
-		});
-	}
-	else{
+			.then(function () {
+				location.href = 'submission.html'; //donor success page
+			})
+			.catch(function (error) {
+				console.error("Error adding donor: ", error);
+				location.href = 'submissionFail.html'; //submission failed page
+			});
+	} else {
 		return;
 	}
 })
@@ -170,4 +155,3 @@ function empty(){
 	}
 	return isInvalid;
 }
-

@@ -27,7 +27,6 @@ const dsave = document.querySelector("#submitButton");
 //create new donor doc in firebase from input information
 dsave.addEventListener("click", function(){
 	if(!empty()) {
-		alert("works");
 		var newdonor = db.collection("donors").doc();
 		var reason = dreason.value;
 		if (reason.length === 0) {

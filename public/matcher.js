@@ -279,12 +279,10 @@ mSave.addEventListener("click", function(){
 							location.href = 'matcherSubmission.html'; //matcher success page
 						})
 						.catch(function (error) {
-							alert("catch");
 							console.error("Error adding donor: ", error);
 							location.href = 'matcherSubmitFail.html'; //matcher fail page
 						});
 				} else {
-					alert("else");
 					location.href = 'matcherSubmitFail.html'; //matcher fail page if donor status isn't available anymore
 				}
 			});

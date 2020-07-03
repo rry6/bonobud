@@ -33,8 +33,7 @@ dsave.addEventListener("click", function(){
 			reason = "I really liked their mission!"; //sets a default message for reason
 		}
 		var first = dname.value.split(" ")[0];
-		firebase.auth.fetchSignInMethodsForEmail(demail.value).then((value) => {
-			newdonor.set({
+    newdonor.set({
 				name: dname.value,
 				firstname: first,
 				email: demail.value,
@@ -44,9 +43,8 @@ dsave.addEventListener("click", function(){
 				reason: reason,
 				amount: Number(damount.value),
 				date: firebase.firestore.FieldValue.serverTimestamp(),
-				status: "available" //available = display in feed, matcherid = donor is matched, expired = after 3 weeks
+				status: "available" //available = display in feed, matcherid = donor is matched, expired = after 2 weeks
 			})
-		})
 			.then(function () {
 				location.href = 'submission.html'; //donor success page
 			})

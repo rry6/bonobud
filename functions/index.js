@@ -26,7 +26,6 @@ exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( as
         from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: donor.firstname + ', we received your donation request!',
         html: `
-        <img src='cid:bl' width='200'/>
         <p>Hi ${donor.firstname}, <span style="float:right">Submission ID: ${donorSnap.id}</span></p>
         <p>Thank you for using BonoBud! Our bonobos are out searching for your BonoBuddy
         and you will be notified when someone wants to match your donation!
@@ -41,18 +40,40 @@ exports.newDonor = functions.firestore.document('donors/{donorId}').onCreate( as
         Sincerely, <br>
         Team BonoBud </p>
         <br> <br>
-        <button class="btn btn-outline-success" onClick= "location.href=www.bonobud.com/matcher.html">
+        <a href="https://bonobud.com/" target="_blank">
         $${donor.amount} to
-        <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
+        <object><a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a></object>
         <div>By ${donor.name}</div>
         <br>Reason: ${donor.reason}
-        <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</button>
-        `,
-        attachments: [{
-            filename: 'bonobud.png',
-            path: 'bonobud.png',
-            cid: 'bl'
-        }]
+        <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</a>
+        `
+        // <table width="100%" cellspacing="0" cellpadding="0">
+        //   <tr>
+        //       <td>
+        //           <table cellspacing="0" cellpadding="0">
+        //               <tr>
+        //                   <td style="border-radius: 2px;" bgcolor="#ED2939">
+        //                       <a href="https://bonobud.com/" target="_blank" style="padding: 8px 12px; border: 1px solid #ED2939;border-radius: 2px;font-family: Helvetica, Arial, sans-serif;font-size: 14px; color: #ffffff;text-decoration: none;font-weight:bold;display: inline-block;">
+        //                         <div>
+        //                           $${donor.amount} to
+        //                           <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
+        //                           <div>By ${donor.name}</div>
+        //                           <br>Reason: ${donor.reason}
+        //                           <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}
+        //                         </div>
+        //                       </a>
+        //                   </td>
+        //               </tr>
+        //           </table>
+        //       </td>
+        //   </tr>
+        // </table>
+        // `
+        // attachments: [{
+        //     filename: 'bonobud.png',
+        //     path: 'bonobud.png',
+        //     cid: 'bl'
+        // }]
        };
     return transporter.sendMail(msg, (error, data) => {
         if (error) {
@@ -99,7 +120,6 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: matcher.firstname + ', thank you for using BonoBud!',
         html: `
-        <img src='cid:bl' width='200' height='49.315' onClick="location.href='https://bonobud.com/matcher.html'">
         <p>Hi ${matcher.firstname}, <span style="float:right">Submission ID: ${matcherSnap.id}</span></p>
         <p>We have processed your BonoBud matcher request!
         <br> <br>
@@ -115,18 +135,40 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         Sincerely, <br>
         Team BonoBud </p>
         <br> <br>
-        <button class="btn btn-outline-success" onClick= "location.href='https://bonobud.com/matcher.html'" type="button" target= "_blank">
-          $${donor.amount} to
-          <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
-          <div>By ${donor.name}</div>
-          <br>Reason: ${donor.reason}
-          <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</button>
-        `,
-        attachments: [{
-            filename: 'bonobud.png',
-            path: 'bonobud.png',
-            cid: 'bl'
-        }]
+        <table width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+              <td>
+                  <table cellspacing="0" cellpadding="0">
+                      <tr>
+                          <td style="border-radius: 2px;" bgcolor="#ED2939">
+                              <a href="https://bonobud.com/" target="_blank" style="padding: 8px 12px; border: 1px solid #ED2939;border-radius: 2px;font-family: Helvetica, Arial, sans-serif;font-size: 14px; color: #ffffff;text-decoration: none;font-weight:bold;display: inline-block;">
+                                <div>
+                                  $${donor.amount} to
+                                  <object><a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a></object>
+                                  <div>By ${donor.name}</div>
+                                  <br>Reason: ${donor.reason}
+                                  <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}
+                                </div>
+                              </a>
+                          </td>
+                      </tr>
+                  </table>
+              </td>
+          </tr>
+        </table>
+        `
+        // <button class="btn btn-outline-success" onClick="https://bonobud.com/" target="_blank">
+        //   $${donor.amount} to
+        //   <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
+        //   <div>By ${donor.name}</div>
+        //   <br>Reason: ${donor.reason}
+        //   <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</button>
+        // `
+        // attachments: [{
+        //     filename: 'bonobud.png',
+        //     path: 'bonobud.png',
+        //     cid: 'bl'
+        // }]
     };
     var notesection = ``;
     if (matcher.note) { //checks if matcher note exists
@@ -139,7 +181,6 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         from: 'Team BonoBud <teambonobud@gmail.com>',
         subject: donor.firstname + ', you\'ve been matched!',
         html: `
-        <img src='cid:bl' width='100'/>
         <p>Hi ${donor.firstname},<span style="float:right">Submission ID: ${donorSnap.id}</span></p>
         <p>We have good news! ${matcher.name} from ${matcher.company} wants to
         match your donation of $${donor.amount} to ${donor.charity}.
@@ -157,18 +198,20 @@ exports.newMatcher = functions.firestore.document('matchers/{matcherId}').onCrea
         <br> <br>
         Sincerely, <br>
         Team BonoBud </p>
-        <button class="btn btn-outline-success" onClick= "location.href='https://bonobud.com/matcher.html'" type="button">
+        <br><br>
+        <a href="https://bonobud.com/" target="_blank">
+          <div>
           $${donor.amount} to
-          <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
+          <object><a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a></object>
           <div>By ${donor.name}</div>
           <br>Reason: ${donor.reason}
-          <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</button>
-        `,
-        attachments: [{
-            filename: 'bonobud.png',
-            path: 'bonobud.png',
-            cid: 'bl'
-        }]
+          <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</div></a>
+        `
+        // attachments: [{
+        //     filename: 'bonobud.png',
+        //     path: 'bonobud.png',
+        //     cid: 'bl'
+        // }]
     }
     return transporter.sendMail(msg, (error, data) => {
         if (error) {
@@ -207,7 +250,6 @@ exports.expired = functions.firestore.document('matchers/{matcherId}').onCreate(
                     from: 'Team BonoBud <teambonobud@gmail.com>',
                     subject: donor.firstname + ', sorry to see you go!',
                     html: `
-                    <img src='cid:bl' width='200'/>
                     <p>Hi ${donor.firstname},<span style="float:right">Submission ID: ${doc.id}</span></p>
                     <br> <br>
                     <p> Unfortunately, our bonobos could not find a matcher for your donation
@@ -226,18 +268,18 @@ exports.expired = functions.firestore.document('matchers/{matcherId}').onCreate(
                     Sincerely, <br>
                     Team BonoBud </p>
                     <br> <br>
-                    <button class="btn btn-outline-success" onClick= "location.href=www.bonobud.com/matcher.html">
+                    <button class="btn btn-outline-success" onClick= "https://bonobud.com/">
                       $${donor.amount} to
                       <a href="${donor.link}" class="btn btn-lg btn-outline-warning" role="button" target = "_blank" aria-pressed="true"><b>${donor.charity}</b></a>
                       <div>By ${donor.name}</div>
                       <br>Reason: ${donor.reason}
                       <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</button>
-                      `,
-                      attachments: [{
-                        filename: 'bonobud.png',
-                        path: 'bonobud.png',
-                        cid: 'bl'
-                    }]
+                    `
+                    //   attachments: [{
+                    //     filename: 'bonobud.png',
+                    //     path: 'bonobud.png',
+                    //     cid: 'bl'
+                    // }]
                 };
                 return transporter.sendMail(msg, (error, data) => {
                     if (error) {

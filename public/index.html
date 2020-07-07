@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <!-- meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,10 +27,24 @@
         #donorHeading{
             margin-top: 20px;
             color: #B5EAD7;
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
         #matcherHeading{
             margin-top: 20px;
             color: #FFDAC1;
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        #donorDescription{
+            font-size: 18px;
+            line-height: 2;
+        }
+        #matcherDescription{
+            font-size: 18px;
+            line-height: 2;
         }
         #donorButton{
             margin-right: 20px;
@@ -44,7 +59,11 @@
             padding: 10px 50px;
         }
         #buttons{
-            margin-top: 20px;
+            margin-top: 50px;
+        }
+        .addMargins{
+          margin-left: 20px;
+          margin-right: 20px;
         }
     </style>
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -53,35 +72,34 @@
 
 <div class="container-fluid" id="titleElement">
     <div class="row justify-content-center" id="titleOne">
-        <img src="logo.svg" height=98.63 width=400>
+        <img src="logo.svg" height=98.63 width=400 id="logo">
     </div>
     <div class="row justify-content-center" id="subtitleElement">
-        Multiply your charitable donation.
+      <div class="col-12 text-center">
+          Multiply your charitable donation.
+      </div>
     </div>
     <div class="row justify-content-center" id="donorHeading">
-        <h3> <b> For Donors 💚</b></h3>
+        For Donors 💚
     </div>
-    <div class="row justify-content-center" name="donorDescription">
-        <p> Step 1. Provide a brief summary of your donation request. </p>
-    </div>
-    <div class="row justify-content-center" name="donorDescription">
-        <p> Step 2. Wait for a "matcher", whose company can match your donation, to select your request. </p>
-    </div>
-    <div class="row justify-content-center" name="donorDescription">
-        <p> Step 3. You've now got a BonoBuddy! We'll put you in contact with the matcher via email. </p>
+    <div class="row justify-content-center" id="donorDescription">
+      <div class="flex-column addMargins">
+          Step 1. Provide a brief summary of your donation request. <br>
+          Step 2. Wait for an employee with a matching program to select your matcher request. <br>
+          Step 3. You've now got a BonoBuddy! We'll connect you with the matcher via email. <br>
+      </div>
     </div>
     <div class="row justify-content-center" id="matcherHeading">
-        <h3> <b> For Matchers 🧡</b></h3>
+         For Matchers 🧡
     </div>
-    <div class="row justify-content-center" name="donorDescription">
-        <p> Step 1. Select a donation request from our feed that your company can match. </p>
+    <div class="row justify-content-center" id="matcherDescription">
+        <div class="flex-column addMargins">
+          Step 1. Select a donation request from our feed that your company can match. <br>
+          Step 2. Enter information about you and your company to share with the "donor". &nbsp &nbsp &nbsp &nbsp <br>
+          Step 3. Contact the donor (your BonoBuddy) via email to match their donation. <br>
+        </div>
     </div>
-    <div class="row justify-content-center" name="donorDescription">
-        <p> Step 2. Enter information about you and your company that we can share with the "donor". </p>
-    </div>
-    <div class="row justify-content-center" name="donorDescription">
-        <p> Step 3. Contact the donor (your BonoBuddy) via email to match their donation. </p>
-    </div>
+
     <div class="row justify-content-center" id="buttons">
         <a href="donor.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true" id="donorButton"><b>Donor</b></a>
         <a href="matcher.html" class="btn btn-lg btn-primary" role="button" aria-pressed="true" id="matcherButton"><b>Matcher</b></a>

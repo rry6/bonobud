@@ -1,4 +1,4 @@
-<!-- DONOR CONFIRMATION EMAIL-->
+<!-- DONOR MATCHED EMAIL-->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -34,7 +34,7 @@
                                       </td>
                                       <td style="font-family:Helvetica,sans-serif,Arial;font-size:16px;font-weight:500;line-height:150%;color:#6b6b6b" align="right">
                                           <div>
-                                              <span style="padding:20px 0px"> <b>Submission ID: </b> <span>${id}</span></span>
+                                              <span style="padding:20px 0px"> <b>Submission ID: </b> <span>${dId}</span></span>
                                           </div>
                                       </td>
                                   </tr>
@@ -45,30 +45,35 @@
                           <tr>
                             <td style="font-family:Helvetica,sans-serif,Arial;font-size:16px;font-weight:500;line-height:150%;color:#6b6b6b;padding-bottom:20px;
                             padding-left:40px;padding-right:40px">
-                              <b>Thank you for using BonoBud!</b> We are searching for your BonoBuddy and you will be notified when
-                              someone wants to match your donation!
+                              We have good news! <b>${matcher.name} from ${matcher.company}</b> wants to
+                              match your donation of $${donor.amount} to ${donor.charity}.
+
                             </td>
                           </tr>
                           <tr>
-                            <td style="font-family:Helvetica,sans-serif,Arial;font-size:16px;font-weight:500;line-height:150%;color:#6b6b6b;padding-bottom:20px;
+                            <td style="font-family:Helvetica,sans-serif,Arial;font-size:16px;font-weight:500;line-height:150%;color:#6b6b6b;
                             padding-left:40px;padding-right:40px">
-                              We respect your time and want your donation to have the biggest impact possible.
-                              If your donation is not matched <b>within 2 weeks</b>, we will notify you
-                              so that you can donate directly to the charity. Please read our <a href="https://bonobud.com/faq.html" target="_blank" style="color:#6b6b6b">FAQs page</a>
-                              or reply to this email with any feedback, questions, or concerns.
+                              <b>Here is their personal email: <a href="mailto:${matcher.pemail}" target="_blank" style="color:#6b6b6b">${matcher.pemail}</a>.</b>
+                              If you would like to verify that ${matcher.firstname} works at ${matcher.company}, please contact them through
+                              their company email: <a href="mailto:${matcher.cemail}" target="_blank" style="color:#6b6b6b">${matcher.cemail}</a>.
+                              Go ahead, reach out and start the conversation!
+
                             </td>
                           </tr>
+                          ${notesection}
                           <tr>
-                            <td style="font-family:Helvetica,sans-serif,Arial;font-size:16px;font-weight:500;line-height:150%;color:#6b6b6b;padding-bottom:20px;
+                            <td style="font-family:Helvetica,sans-serif,Arial;font-size:16px;font-weight:500;line-height:150%;color:#6b6b6b;padding-top:20px;padding-bottom:20px;
                             padding-left:40px;padding-right:40px">
-                              Want to continue to increase your impact? Follow us on Instagram @<a href="https://www.instagram.com/bono.bud/" target="_blank" style="color:#6b6b6b">bono.bud</a>
-                              and share us with your friends and family! 
+                              Something doesn't look right? Check out our <a href="https://bonobud.com/faq.html" target="_blank" style="color:#6b6b6b">FAQs page</a> or reply to this email with questions, concerns, or feedback.
+
                             </td>
                           </tr>
                           <tr>
                             <td style="font-family:Helvetica,sans-serif,Arial;font-size:16px;font-weight:500;line-height:150%;color:#6b6b6b;padding-bottom:30px;
                             padding-left:40px;padding-right:40px">
-                              Thank you for your support and we will email you soon!
+                              Don't forget to follow us on Instagram @<a href="https://www.instagram.com/bono.bud/" target="_blank" style="color:#6b6b6b">bono.bud</a> and share us with friends and family!
+                              Thank you for using BonoBud and we hope to see you again soon!
+
                             </td>
                           </tr>
                           <tr>

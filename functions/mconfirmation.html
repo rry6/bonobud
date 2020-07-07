@@ -1,4 +1,4 @@
-<!-- DONOR CONFIRMATION EMAIL-->
+<!-- MATCHER CONFIRMATION EMAIL-->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -6,7 +6,7 @@
     <title></title>
   </head>
   <body>
-      <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#B5EAD7">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFDAC1">
           <tbody><tr>
             <td align="left" style="padding-top:30px;padding-bottom:25px;padding-left:40px">
               <a href="https://bonobud.com/" style="text-decoration:none" target="_blank">
@@ -29,12 +29,12 @@
                                   <tr>
                                       <td style="font-family:Helvetica,sans-serif,Arial;font-size:16px;font-weight:500;line-height:150%;color:#6b6b6b;width:40%">
                                           <div>
-                                              <span style="padding:20px 0px">Hi <span>${donor.firstname}!</span> </span>
+                                              <span style="padding:20px 0px">Hi <span>${matcher.firstname}!</span> </span>
                                           </div>
                                       </td>
                                       <td style="font-family:Helvetica,sans-serif,Arial;font-size:16px;font-weight:500;line-height:150%;color:#6b6b6b" align="right">
                                           <div>
-                                              <span style="padding:20px 0px"> <b>Submission ID: </b> <span>${id}</span></span>
+                                              <span style="padding:20px 0px"> <b>Submission ID: </b> <span>${mId}</span></span>
                                           </div>
                                       </td>
                                   </tr>
@@ -45,30 +45,31 @@
                           <tr>
                             <td style="font-family:Helvetica,sans-serif,Arial;font-size:16px;font-weight:500;line-height:150%;color:#6b6b6b;padding-bottom:20px;
                             padding-left:40px;padding-right:40px">
-                              <b>Thank you for using BonoBud!</b> We are searching for your BonoBuddy and you will be notified when
-                              someone wants to match your donation!
+                              <b>We have processed your BonoBud matcher request!</b>
                             </td>
                           </tr>
                           <tr>
                             <td style="font-family:Helvetica,sans-serif,Arial;font-size:16px;font-weight:500;line-height:150%;color:#6b6b6b;padding-bottom:20px;
                             padding-left:40px;padding-right:40px">
-                              We respect your time and want your donation to have the biggest impact possible.
-                              If your donation is not matched <b>within 2 weeks</b>, we will notify you
-                              so that you can donate directly to the charity. Please read our <a href="https://bonobud.com/faq.html" target="_blank" style="color:#6b6b6b">FAQs page</a>
-                              or reply to this email with any feedback, questions, or concerns.
+                              Thank you for choosing to help ${donor.name} increase their donation of
+                              $${donor.amount} to ${donor.charity}. <b>Here is their email: <a href="mailto:${donor.email}" target="_blank" style="color:#6b6b6b">${donor.email}</a>.</b> Your BonoBuddy
+                              ${donor.firstname} has been notified of the match, so reach out and start the conversation!
+
                             </td>
                           </tr>
                           <tr>
                             <td style="font-family:Helvetica,sans-serif,Arial;font-size:16px;font-weight:500;line-height:150%;color:#6b6b6b;padding-bottom:20px;
                             padding-left:40px;padding-right:40px">
-                              Want to continue to increase your impact? Follow us on Instagram @<a href="https://www.instagram.com/bono.bud/" target="_blank" style="color:#6b6b6b">bono.bud</a>
-                              and share us with your friends and family! 
+                              Please read our <a href="https://bonobud.com/faq.html" target="_blank" style="color:#6b6b6b">FAQs page</a> or reply to this email
+                              with any feedback, questions, or concerns.
+
                             </td>
                           </tr>
                           <tr>
                             <td style="font-family:Helvetica,sans-serif,Arial;font-size:16px;font-weight:500;line-height:150%;color:#6b6b6b;padding-bottom:30px;
                             padding-left:40px;padding-right:40px">
-                              Thank you for your support and we will email you soon!
+                              Want to continue to increase your impact? Follow us on Instagram @<a href="https://www.instagram.com/bono.bud/" target="_blank" style="color:#6b6b6b">bono.bud</a>
+                              and share us with your friends and family! Thank you for using BonoBud and we hope to see you again soon!
                             </td>
                           </tr>
                           <tr>
@@ -84,7 +85,7 @@
                                 <tbody>
                                 <tr>
                                   <td>
-                                    <table width=100% style="border:5px solid #B5EAD7;border-radius:15px;padding-left:15px;padding-right:15px;padding-top:15px;
+                                    <table width=100% style="border:5px solid #FFDAC1;border-radius:15px;padding-left:15px;padding-right:15px;padding-top:15px;
                                     padding-bottom:15px;text-align:center">
                                       <tbody>
                                       <tr>
@@ -123,8 +124,8 @@
             </td>
           </tr>
           <tr>
-            <td style="padding-left:30px;padding-right:30px;padding-bottom:30px;padding-top:30px" bgcolor="#B5EAD7">
-              <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#B5EAD7">
+            <td style="padding-left:30px;padding-right:30px;padding-bottom:30px;padding-top:30px" bgcolor="#FFDAC1">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFDAC1">
                 <tbody>
                 <tr>
                 <td><table width="75%" cellpadding="0" cellspacing="0" border="0" align="left">

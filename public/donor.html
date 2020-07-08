@@ -12,6 +12,7 @@
     <style>
         *{
             font-family: "Helvetica-Light", Helvetica, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
         #mainContainer{
             position: absolute;
@@ -23,7 +24,6 @@
             border-radius: 25px;
             color: #FFFFFF;
             font-size: 36px;
-            -webkit-font-smoothing: antialiased;
         }
         #submitForm{
             padding-top: 30px;
@@ -31,11 +31,10 @@
         input[type=text]{
             display: inline;
             font-size: 26px;
-            width: 99%;
-            -webkit-font-smoothing: antialiased;
+            width: 94%;
             line-height: unset;
             box-shadow: rgb(181, 234, 215) 0px 1px;
-            padding: 0px 0px 0px;
+            padding: 0px 0px 1px;
             border-width: initial;
             border-style: none;
             border-color: initial;
@@ -47,8 +46,7 @@
         input[type=number]{
             display: inline;
             font-size: 26px;
-            width: 99%;
-            -webkit-font-smoothing: antialiased;
+            width: 94%;
             line-height: unset;
             box-shadow: rgb(181, 234, 215) 0px 1px;
             padding: 0px 0px 1px;
@@ -64,18 +62,15 @@
             padding-top: 10px;
             font-size: 26px;
             color: grey;
-            -webkit-font-smoothing: antialiased;
-            padding
         }
         #reasonInput{
-            padding-top: 20px;
+            padding-top: 10px;
             display: block;
-            width:99%;
+            width:95%;
             background: rgba(181, 234, 215, 0.20);
             border: none;
             height: 200px;
             font-size:26px;
-            -webkit-font-smoothing: antialiased;
          }
         #submitButton,#backButton{
             border-color:#B5EAD7;
@@ -97,8 +92,10 @@
         #emailNote{
             font-size: 26px;
             color: grey;
-            -webkit-font-smoothing: antialiased;
             margin-bottom: 15px;
+        }
+        #buttonRow{
+          margin-top: 10px;
         }
     </style>
 
@@ -160,10 +157,12 @@
                   </div>
               </div>
             </div>
-            <div class="row justify-content-center">
-              <div id="emailNote">Have questions? Email us at teambonobud@gmail.com.</div>
+            <div class="row justify-content-center" id="helper">
+              <div class="col-8 text-center">
+                <div id="emailNote">Have questions? Email us at teambonobud@gmail.com.</div>
             </div>
-            <div class="row justify-content-center">
+            </div>
+            <div class="row justify-content-center" id="buttonRow">
               <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="backButton">Back</a>
               <input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit!>
             </div>

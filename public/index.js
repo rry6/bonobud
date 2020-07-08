@@ -20,15 +20,16 @@ var isMobile = {
 };
 
 function adjustForMobile(){
-  document.getElementById("subtitleElement").style.font-size = "22px";
+  document.getElementById("subtitleElement").style.fontSize = "22px";
   document.getElementbyId("logo").height = "75";
   document.getElementById("titleElement").style.top="4%";
-  document.getElementbyId("donorHeading").style.font-size = "24px";
-  document.getElementbyId("matcherHeading").style.font-size = "24px";
-  document.getElementById("donorDescription").style.font-size = "14px";
-  document.getElementById("matcherDescription").style.font-size = "14px";
-  document.getElementById("donorHeading").style.margin-top = "10px";
-  document.getElementById("matcherHeading").style.margin-top = "10px";
+  document.getElementbyId("donorHeading").style.fontSize = "24px";
+  document.getElementbyId("matcherHeading").style.fontSize = "24px";
+  document.getElementById("donorDescription").style.fontSize = "14px";
+  document.getElementById("matcherDescription").style.fontSize = "14px";
+  document.getElementById("donorHeading").style.marginTop = "10px";
+  document.getElementById("matcherHeading").style.marginTop = "10px";
   document.getElementById("donorButton").style.padding = "10px 30px";
   document.getElementById("matcherButton").style.padding = "10px 30px";
+  document.getElementById("donorButton").href = "donorMobile.html";
 }

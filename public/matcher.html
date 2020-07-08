@@ -7,6 +7,7 @@
 
     <!-- bootstrap implementation -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="icon" href="./favicon.png" />
 
     <title>Matcher Page</title>
     <style>
@@ -67,8 +68,9 @@
             border-radius: 25px;
             padding: 5px 50px;
         }
-        #noteLabel{
+        .noteLabel{
             padding-top: 10px;
+            padding-left: 5px;
             font-size: 26px;
             color: grey;
             -webkit-font-smoothing: antialiased;
@@ -158,6 +160,7 @@
             color: grey;
             -webkit-font-smoothing: antialiased;
             margin-bottom: 15px;
+            padding-left:5px;
         }
         #top{
             margin-left: 10px;
@@ -207,19 +210,27 @@
             <input type="text" class="form-control" id="companyInput" placeholder="Company Name *">
         </div>
         <div class="form-group">
-            <label for="matcherRate"></label>
-            <input type="number" class="form-control" id="matcherRate" placeholder="For every $1 donated, your company matches $... (i.e. $0.50) *">
+            <label for="emailInput"></label>
+            <input type="text" class="form-control" id="emailInput" placeholder="Company Email (For verification purposes) *">
         </div>
         <div class="form-group">
             <label for="emailInput"></label>
-            <input type="text" class="form-control" id="emailInput" placeholder="Company Email (For verification purposes) *">
+            <input type="text" class="form-control" id="emailInput2" placeholder="Re-enter Company Email *">
         </div>
         <div class="form-group">
             <label for="personalEmailInput"></label>
             <input type="text" class="form-control" id="personalEmailInput" placeholder="Personal Email (For contact purposes) *">
         </div>
         <div class="form-group">
-            <label for="noteInput" id="noteLabel">Leave a note to your donor! (optional)</label>
+            <label for="personalEmailInput2"></label>
+            <input type="text" class="form-control" id="personalEmailInput" placeholder="Re-enter Personal Email *">
+        </div>
+        <div class="form-group">
+            <label for="matcherRate" class="noteLabel">For every $1 donated, your company matches $ </label>
+            <input type="number" class="form-control" style="padding-left:5px"id="matcherRate" placeholder="0.50 *">
+        </div>
+        <div class="form-group">
+            <label for="noteInput" class="noteLabel">Leave a note to your donor! (optional)</label>
             <textarea class="form-control" id="noteInput" placeholder="Limit to 150 characters" rows="3"></textarea>
         </div>
         <div class="form-group">

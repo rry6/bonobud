@@ -1,3 +1,25 @@
+//Mobile Check
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
 //Firebase
 var firebaseConfig = {
     apiKey: "AIzaSyAxe7I5_U4JQ0VWkyRTIAEtPSbxuMOuR1s",
@@ -46,7 +68,12 @@ dsave.addEventListener("click", function(){
 				status: "available" //available = display in feed, matcherid = donor is matched, expired = after 2 weeks
 			})
 			.then(function () {
-				location.href = 'submission.html'; //donor success page
+        if(isMobile){
+          location.href ='submissionMobile.html';
+        }
+        else{
+          location.href = 'submission.html';
+        }
 			})
 			.catch(function (error) {
 				console.error("Error adding donor: ", error);

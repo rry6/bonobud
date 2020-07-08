@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta stuff -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- bootstrap implementation -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="icon" href="./favicon.png" />
+
+    <title>Submission Page</title>
+    <style>
+        *{
+            font-family: "Helvetica-Light", Helvetica, sans-serif;
+        }
+        #mainContainer{
+            position: absolute;
+            top: 2%;
+        }
+        #titleElement {
+            padding: 5px 50px;
+            background-color: #B5EAD7;
+            border-radius: 25px;
+            color: #FFFFFF;
+            font-size: 26px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .column{
+            float:left;
+            padding:10px;
+        }
+        .left,.right{
+            width: 10%
+        }
+        .middle{
+            width: 80%;
+        }
+        #midRow{
+            margin-top: 10px;
+        }
+        .statement{
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .faq{
+            font-size: 16px;
+            margin-bottom: 10px;
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+        #homeButton{
+            border-color:#B5EAD7;
+            color:#B5EAD7;
+            font-size: 18px;
+            border-radius: 25px;
+            padding: 5px 50px;
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+        #homeButton:hover{
+            background-color:#B5EAD7;
+            color: #FFFFFF;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container-fluid" id="mainContainer">
+    <div class="row justify-content-center">
+        <b id="titleElement">Donor</b>
+    </div>
+    <div class="row"id="midRow">
+        <div class="column left"></div>
+        <div class="column middle">
+          <div class="row statement justify-content-center" style="text-align: center">
+            <b>Thank you for submitting a donation request!</b>
+          </div>
+          <div class="row statement justify-content-center" style="margin-bottom:40px;text-align: center">
+            If you do not recieve a confirmation email, please contact us at teambonobud@gmail.com.
+          </div>
+          <div style="background-color:#f5f5f5;border-radius:15px;padding:20px;margin:-15px">
+            <div class="row faq">
+              <b>What should I do now?</b>
+            </div>
+            <div class="row faq">
+              Your donation request will be posted for matchers to see. We will email you again when your request is matched along with the matcher's email so that you can get in contact.
+            </div>
+            <div class="row faq">
+              <b>Should I make a donation to the organization?</b>
+            </div>
+            <div class="row faq">
+              Don’t make a donation at this point. After getting in touch with the matcher, make sure they donate the agreed amount and have it matched by their company before you reimburse them.
+            </div>
+            <div class="row faq">
+              <b>How long will my donation be posted?</b>
+            </div>
+            <div class="row faq">
+              We respect your time and want your donation to have the biggest impact possible. That is why your donation listing will be up for a maximum of 2 weeks. Then you will have the option to donate directly to the charity.
+            </div>
+            <div class="row faq">
+              <b>For general FAQs, click here or ask teambonobud@gmail.com!</b>
+            </div>
+          </div>
+            <!-- <div class="row question"><b>What happens if my donation isn’t matched?</b></div>
+            <div class="row answer ">If your donation request is not matched within a week, we’ll delist your donation from the site and send you a notification.</div> -->
+            <div class="row justify-content-center">
+                <a href="index.html" class="btn btn-outline-primary" id="homeButton" role="button" aria-pressed="true">Home</a>
+            </div>
+        </div>
+        <div class="column right"></div>
+    </div>
+</div>
+
+<!-- bootstrap implementation tags -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<!-- Firestore implementation-->
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+
+
+</body>
+</html>

@@ -13,6 +13,7 @@
     <style>
         *{
             font-family: "Helvetica-Light", Helvetica, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
         #mainContainer{
             position: absolute;
@@ -24,16 +25,14 @@
             border-radius: 25px;
             color: #FFFFFF;
             font-size: 36px;
-            -webkit-font-smoothing: antialiased;
         }
         #submitForm{
             padding-top: 30px;
         }
         input[type=text]{
             display: inline;
-            width: 50%;
+            width: 94%;
             font-size: 26px;
-            -webkit-font-smoothing: antialiased;
             line-height: unset;
             box-shadow: #FFDAC1 0px 1px;
             padding: 0px 0px 1px;
@@ -47,9 +46,8 @@
         }
         input[type=number]{
             display: inline;
-            width: 50%;
+            width: 94%;
             font-size: 26px;
-            -webkit-font-smoothing: antialiased;
             line-height: unset;
             box-shadow: #FFDAC1 0px 1px;
             padding: 0px 0px 1px;
@@ -73,18 +71,19 @@
             padding-left: 5px;
             font-size: 26px;
             color: grey;
-            -webkit-font-smoothing: antialiased;
             padding
         }
         #noteInput{
             padding-top: 20px;
             display: block;
-            width:50%;
+            width:95%;
             background: rgba(255, 218, 193, 0.20);
             border: none;
             height: 200px;
             font-size:26px;
-            -webkit-font-smoothing: antialiased;
+        }
+        #matcherRate{
+            width: 45%;
         }
         #submitButton, #backButton{
             border-color:#FFDAC1;
@@ -95,6 +94,9 @@
         }
         #backButton{
             margin-right: 20px;
+        }
+        #submitButton{
+          margin-left: 20px;
         }
         #backButton:hover, #submitButton:hover{
             background-color: #FFDAC1;
@@ -158,7 +160,6 @@
         #emailNote{
             font-size: 26px;
             color: grey;
-            -webkit-font-smoothing: antialiased;
             margin-bottom: 15px;
             padding-left:5px;
         }
@@ -167,6 +168,9 @@
         }
         #searchBar{
             width: 600px;
+        }
+        #summaryBox{
+          margin-top: 20px;
         }
     </style>
 
@@ -200,41 +204,79 @@
 
       <div id = "page2" style="visibility:hidden;"> <!--info input-->
         <!-- add summary of donor -->
-        <div id="donorSummary"> </div>
-        <div class="form-group">
-            <label for="nameInput"></label>
-            <input type="text" class="form-control" id="nameInput" placeholder="Full Name *">
+        <div class="row justify-content-center" id="summaryBox">
+          <div id="donorSummary"> </div>
         </div>
-        <div class="form-group">
-            <label for="companyInput"></label>
-            <input type="text" class="form-control" id="companyInput" placeholder="Company Name *">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <div class="form-group">
+              <label for="nameInput"></label>
+              <input type="text" class="form-control" id="nameInput" placeholder="Full Name *">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="emailInput"></label>
-            <input type="text" class="form-control" id="emailInput" placeholder="Company Email (For verification purposes) *">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <div class="form-group">
+              <label for="companyInput"></label>
+              <input type="text" class="form-control" id="companyInput" placeholder="Company Name *">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="emailInput"></label>
-            <input type="text" class="form-control" id="emailInput2" placeholder="Re-enter Company Email *">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <div class="form-group">
+              <label for="emailInput"></label>
+              <input type="text" class="form-control" id="emailInput" placeholder="Company Email (For verification purposes) *">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="personalEmailInput"></label>
-            <input type="text" class="form-control" id="personalEmailInput" placeholder="Personal Email (For contact purposes) *">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <div class="form-group">
+              <label for="emailInput"></label>
+              <input type="text" class="form-control" id="emailInput2" placeholder="Re-enter Company Email *">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="personalEmailInput2"></label>
-            <input type="text" class="form-control" id="personalEmailInput" placeholder="Re-enter Personal Email *">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <div class="form-group">
+              <label for="personalEmailInput"></label>
+              <input type="text" class="form-control" id="personalEmailInput" placeholder="Personal Email (For contact purposes) *">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="matcherRate" class="noteLabel">For every $1 donated, your company matches $ </label>
-            <input type="number" class="form-control" style="padding-left:5px"id="matcherRate" placeholder="0.50 *">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <div class="form-group">
+              <label for="personalEmailInput2"></label>
+              <input type="text" class="form-control" id="personalEmailInput" placeholder="Re-enter Personal Email *">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="noteInput" class="noteLabel">Leave a note to your donor! (optional)</label>
-            <textarea class="form-control" id="noteInput" placeholder="Limit to 150 characters" rows="3"></textarea>
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <div class="form-group">
+              <label for="matcherRate" class="noteLabel">For every $1 donated, your company matches $ </label>
+              <input type="number" class="form-control" style="padding-left:5px"id="matcherRate" placeholder="0.50 *">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <div class="form-group">
+              <label for="noteInput" class="noteLabel">Leave a note to your donor! (optional)</label>
+              <textarea class="form-control" id="noteInput" placeholder="Limit to 150 characters" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center" id="helper">
+          <div class="col-8 text-center">
             <div id="emailNote">Have questions? Email us at teambonobud@gmail.com.</div>
+          </div>
+        </div>
+        <div class="row justify-content-center" id="buttonRow">
             <p><input type="button" class="btn btn-outline-primary" id="backButton" value="Back" onClick="showLayer('page1')"></p>
             <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit!></p>
         </div>

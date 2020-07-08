@@ -29,22 +29,7 @@
         #submitForm{
             padding-top: 30px;
         }
-        input[type=text]{
-            display: inline;
-            font-size: 26px;
-            width: 94%;
-            line-height: unset;
-            box-shadow: rgb(181, 234, 215) 0px 1px;
-            padding: 0px 0px 1px;
-            border-width: initial;
-            border-style: none;
-            border-color: initial;
-            outline: none;
-            border-radius: 0px;
-            background: none;
-            transition: box-shadow 0.1s ease-out 0s;
-        }
-        input[type=number]{
+        .textInput{
             display: inline;
             font-size: 26px;
             width: 94%;
@@ -116,7 +101,7 @@
               <div class="col-8">
                   <div class="form-group">
                     <label for="nameInput"></label>
-                    <input type="text" class="form-control" id="nameInput" placeholder="Full Name *" required="true">
+                    <input type="text" class="form-control textInput" id="nameInput" placeholder="Full Name *" required="true">
                   </div>
               </div>
             </div>
@@ -124,7 +109,7 @@
               <div class="col-8">
                   <div class="form-group">
                     <label for="emailInput"></label>
-                    <input type="text" class="form-control" id="emailInput" placeholder="Email *" required="true">
+                    <input type="text" class="form-control textInput" id="emailInput" placeholder="Email *" required="true">
                   </div>
               </div>
             </div>
@@ -132,7 +117,7 @@
               <div class="col-8">
                 <div class="form-group">
                   <label for="orgInput"></label>
-                  <input type="text" class="form-control" id="orgInput" placeholder="Name of Charitable Organization *" required="true">
+                  <input type="text" class="form-control textInput" id="orgInput" placeholder="Name of Charitable Organization *" required="true">
                 </div>
               </div>
             </div>
@@ -140,7 +125,7 @@
               <div class="col-8">
                 <div class="form-group">
                   <label for="linkInput"></label>
-                  <input type="text" class="form-control" id="linkInput" placeholder="Link to Donation Portal *" required="true">
+                  <input type="text" class="form-control textInput" id="linkInput" placeholder="Link to Donation Portal *" required="true">
                 </div>
               </div>
             </div>
@@ -148,7 +133,7 @@
               <div class="col-8">
                 <div class="form-group">
                   <label for="amount"></label>
-                  <input type="number" class="form-control" id="amount" placeholder="Amount to Donate ($) *" required="true">
+                  <input type="number" class="form-control textInput" id="amount" placeholder="Amount to Donate ($) *" required="true">
                 </div>
               </div>
             </div>

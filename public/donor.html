@@ -29,22 +29,7 @@
         #submitForm{
             padding-top: 30px;
         }
-        input[type=text]{
-            display: inline;
-            font-size: 26px;
-            width: 94%;
-            line-height: unset;
-            box-shadow: rgb(181, 234, 215) 0px 1px;
-            padding: 0px 0px 1px;
-            border-width: initial;
-            border-style: none;
-            border-color: initial;
-            outline: none;
-            border-radius: 0px;
-            background: none;
-            transition: box-shadow 0.1s ease-out 0s;
-        }
-        input[type=number]{
+        .textInput{
             display: inline;
             font-size: 26px;
             width: 94%;
@@ -95,10 +80,39 @@
             font-size: 26px;
             color: grey;
             margin-bottom: 15px;
-            padding-left: 5px;
         }
         #buttonRow{
           margin-top: 10px;
+        }
+        @media only screen and (max-width: 576px){
+          .textInput{
+            font-size:18px;
+          }
+          #titleElement{
+            font-size: 26px;
+          }
+          #submitForm{
+            padding-top: 15px;
+          }
+          #submitButton{
+            margin-left: 10px;
+          }
+          #backButton{
+            margin-right: 10px;
+          }
+          #reasonLabel{
+            font-size: 18px;
+          }
+          #reasonInput{
+            font-size: 18px;
+            height: 150px;
+          }
+          #emailNote{
+            display: none;
+          }
+          #submitButton, #backButton{
+            font-size: 18px;
+          }
         }
     </style>
 
@@ -113,47 +127,47 @@
     <!-- Donor Form -->
           <div id="page1" style="visibility:visible;"> <!--info input-->
             <div class="row justify-content-center">
-              <div class="col-8">
+              <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
                   <div class="form-group">
                     <label for="nameInput"></label>
-                    <input type="text" class="form-control" id="nameInput" placeholder="Full Name *" required="true">
+                    <input type="text" class="form-control textInput" id="nameInput" placeholder="Full Name *" required="true">
                   </div>
               </div>
             </div>
             <div class="row justify-content-center">
-              <div class="col-8">
+              <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
                   <div class="form-group">
                     <label for="emailInput"></label>
-                    <input type="text" class="form-control" id="emailInput" placeholder="Email *" required="true">
+                    <input type="text" class="form-control textInput" id="emailInput" placeholder="Email *" required="true">
                   </div>
               </div>
             </div>
             <div class="row justify-content-center">
-              <div class="col-8">
+              <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
                 <div class="form-group">
                   <label for="orgInput"></label>
-                  <input type="text" class="form-control" id="orgInput" placeholder="Name of Charitable Organization *" required="true">
+                  <input type="text" class="form-control textInput" id="orgInput" placeholder="Name of Charitable Organization *" required="true">
                 </div>
               </div>
             </div>
             <div class="row justify-content-center">
-              <div class="col-8">
+              <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
                 <div class="form-group">
                   <label for="linkInput"></label>
-                  <input type="text" class="form-control" id="linkInput" placeholder="Link to Donation Portal *" required="true">
+                  <input type="text" class="form-control textInput" id="linkInput" placeholder="Link to Donation Portal *" required="true">
                 </div>
               </div>
             </div>
             <div class="row justify-content-center">
-              <div class="col-8">
+              <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
                 <div class="form-group">
                   <label for="amount"></label>
-                  <input type="number" class="form-control" id="amount" placeholder="Amount to Donate ($) *" required="true">
+                  <input type="number" class="form-control textInput" id="amount" placeholder="Amount to Donate ($) *" required="true">
                 </div>
               </div>
             </div>
             <div class="row justify-content-center">
-              <div class="col-8">
+              <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
                   <div class="form-group">
                       <label for="reasonInput" id="reasonLabel">Why are you donating? (optional)</label>
                       <textarea class="form-control" id="reasonInput" placeholder="Limit to 150 characters" rows="3"></textarea>
@@ -161,7 +175,7 @@
               </div>
             </div>
             <div class="row justify-content-center" id="helper">
-              <div class="col-8 text-center">
+              <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8 text-center">
                 <div id="emailNote">Have questions? Email us at teambonobud@gmail.com.</div>
               </div>
             </div>

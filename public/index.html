@@ -68,6 +68,36 @@
           margin-left: 20px;
           margin-right: 20px;
         }
+        #logo{
+          height: 98.63px;
+          width: 400px;
+        }
+        @media only screen and (max-width: 576px){
+          #subtitleElement{
+            font-size: 22px;
+          }
+          #logo{
+            height: 75px;
+          }
+          #titleElement{
+            top: 4%;
+          }
+          #donorHeading, #matcherHeading{
+            font-size: 24px;
+          }
+          #donorDescription, #matcherDescription{
+            font-size: 14px;
+          }
+          #donorHeading, #matcherHeading{
+            margin-top: 10px;
+          }
+          #donorButton, #matcherButton{
+            padding: 10px 30px;
+          }
+          #buttons{
+            margin-top:20px;
+          }
+        }
     </style>
     <link rel="stylesheet" href="css/bootstrap.css">
 
@@ -76,7 +106,7 @@
 
 <div class="container-fluid" id="titleElement">
     <div class="row justify-content-center" id="titleOne">
-        <img src="logo.svg" style="text-decoration:none" height=98.63 width=400>
+        <img src="logo.svg" style="text-decoration:none" id="logo">
     </div>
     <div class="row justify-content-center" id="subtitleElement">
       <div class="col-12 text-center">

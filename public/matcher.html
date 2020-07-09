@@ -13,10 +13,14 @@
     <style>
         *{
             font-family: "Helvetica-Light", Helvetica, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
         #mainContainer{
             position: absolute;
             top: 2%;
+        }
+        #page1{
+          width: 100%;
         }
         #titleElement{
             padding: 5px 50px;
@@ -24,16 +28,14 @@
             border-radius: 25px;
             color: #FFFFFF;
             font-size: 36px;
-            -webkit-font-smoothing: antialiased;
         }
         #submitForm{
             padding-top: 30px;
         }
-        input[type=text]{
+        .textInput{
             display: inline;
-            width: 50%;
+            width: 94%;
             font-size: 26px;
-            -webkit-font-smoothing: antialiased;
             line-height: unset;
             box-shadow: #FFDAC1 0px 1px;
             padding: 0px 0px 1px;
@@ -45,11 +47,9 @@
             background: none;
             transition: box-shadow 0.1s ease-out 0s;
         }
-        input[type=number]{
+        .searchClass{
             display: inline;
-            width: 50%;
             font-size: 26px;
-            -webkit-font-smoothing: antialiased;
             line-height: unset;
             box-shadow: #FFDAC1 0px 1px;
             padding: 0px 0px 1px;
@@ -73,20 +73,20 @@
             padding-left: 5px;
             font-size: 26px;
             color: grey;
-            -webkit-font-smoothing: antialiased;
-            padding
         }
         #noteInput{
             padding-top: 20px;
             display: block;
-            width:50%;
+            width:95%;
             background: rgba(255, 218, 193, 0.20);
             border: none;
             height: 200px;
             font-size:26px;
-            -webkit-font-smoothing: antialiased;
         }
-        #submitButton, #backButton{
+        #matcherRate{
+            width: 45%;
+        }
+        #submitButton, #backButton, #firstBackButton{
             border-color:#FFDAC1;
             color:#FFDAC1;
             font-size: 26px;
@@ -96,7 +96,10 @@
         #backButton{
             margin-right: 20px;
         }
-        #backButton:hover, #submitButton:hover{
+        #submitButton{
+          margin-left: 20px;
+        }
+        #backButton:hover, #submitButton:hover, #firstBackButton:hover{
             background-color: #FFDAC1;
             color: #FFFFFF;
         }
@@ -140,7 +143,6 @@
         #searchButton{
             border-color: #FFDAC1;
             color:#000000;
-            position: relative;
         }
         #searchButton:hover{
             color:#FFFFFF;
@@ -158,15 +160,56 @@
         #emailNote{
             font-size: 26px;
             color: grey;
-            -webkit-font-smoothing: antialiased;
             margin-bottom: 15px;
             padding-left:5px;
         }
-        #top{
-            margin-left: 10px;
-        }
         #searchBar{
-            width: 600px;
+            width: 80%;
+        }
+        #summaryBox{
+          margin-top: 20px;
+        }
+        @media only screen and (max-width: 576px){
+          .textInput{
+            font-size: 18px;
+          }
+          #titleElement{
+            font-size: 26px;
+          }
+           #noteInput{
+             font-size: 18px;
+           }
+           .noteLabel{
+             font-size: 18px;
+           }
+           #emailNote{
+             display: none;
+           }
+           #backButton, #submitButton, #firstBackButton{
+             font-size: 18px;
+           }
+           #backButton{
+             margin-right: 10px;
+           }
+           #submitButton{
+             margin-left: 10px;
+           }
+           .displayBox{
+             font-size: 12px;
+           }
+           .btn-outline-success{
+             width: 300px;
+             height: 125px;
+           }
+           #filterButtons{
+             font-size: 14px;
+           }
+           #under25Button, #midButton, #over50Button{
+             font-size: 14px;
+           }
+           #searchBar{
+             font-size: 12px;
+           }
         }
     </style>
 
@@ -179,67 +222,113 @@
 
     <!-- Page 1 - Feed for finding a donor to match -->
 
-      <div id = "page1" style="visibility:visible; position:absolute"> <!--select a donor-->
-          <div id="top" class="form-group">
-              <label for="searchBar"></label>
-              <input type="text" class="form-control" id="searchBar" placeholder="Search by Charity Name" onblur="blurInput()">
-              <input type="button" class="btn btn-outline-primary" id="searchButton" value= "Search!" onClick="search()">
+      <div id="page1" style="visibility:visible; position:absolute"> <!--select a donor-->
+          <div class="row justify-content-center">
+            <div class="col-xs-8 col-sm-8 col-md-6 col-lg-6 col-xl-6">
+              <div id="top" class="form-group">
+                <label for="searchBar"></label>
+                    <input type="text" class="form-control searchClass" id="searchBar" placeholder="Search by Charity Name" onblur="blurInput()">
+                    <input type="button" class="btn btn-outline-primary" id="searchButton" value= "Search!" onClick="search()">
+              </div>
+            </div>
           </div>
-        <div class = "container-fluid" id = "filterButtons">
-          Filter by amount:
-          <input type="button" class="btn btn-outline-primary" id="under25Button" value= "Less than $25" onClick="loadUnder25()">
-          <input type="button" class="btn btn-outline-primary" id="midButton" value= "$25 - $50" onClick="load25to50()">
-          <input type="button" class="btn btn-outline-primary" id="over50Button" value= "Over $50" onClick="loadOver50()">
+          <div class = "row justify-content-center" id = "filterButtons">
+            <span class="align-middle"> Filter by amount: &nbsp
+            <input type="button" class="btn btn-outline-primary" id="under25Button" value= "Less than $25" onClick="loadUnder25()">
+            <input type="button" class="btn btn-outline-primary" id="midButton" value= "$25 - $50" onClick="load25to50()">
+            <input type="button" class="btn btn-outline-primary" id="over50Button" value= "Over $50" onClick="loadOver50()">
+          </span>
+          </div>
+        <div class = "row justify-content-center" id= "feed"></div>
+        <div class = "row justify-content-center">
+          <p><input type="button" class="btn btn-outline-primary" id="loadButton" value= "Load more" onClick = "more()"></p>
         </div>
-        <div class = "container-fluid" id= "feed"></div>
-        <p><input type="button" class="btn btn-outline-primary" id="loadButton" value= "Load more" onClick = "more()"></p>
-          <p><a href="index.html" class="btn btn-outline-primary" id="backButton" role="button" aria-pressed="true">Back</a></p>
+        <div class= "row justify-content-center">
+          <p><a href="index.html" class="btn btn-outline-primary" id="firstBackButton" role="button" aria-pressed="true">Back</a></p>
+        </div>
       </div>
 
      <!-- Page 2 - Entering the Matcher Information -->
 
       <div id = "page2" style="visibility:hidden;"> <!--info input-->
         <!-- add summary of donor -->
-        <div id="donorSummary"> </div>
-        <div class="form-group">
-            <label for="nameInput"></label>
-            <input type="text" class="form-control" id="nameInput" placeholder="Full Name *">
+        <div class="row justify-content-center" id="summaryBox">
+          <div id="donorSummary"> </div>
         </div>
-        <div class="form-group">
-            <label for="companyInput"></label>
-            <input type="text" class="form-control" id="companyInput" placeholder="Company Name *">
+        <div class="row justify-content-center">
+          <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
+            <div class="form-group">
+              <label for="nameInput"></label>
+              <input type="text" class="form-control textInput" id="nameInput" placeholder="Full Name *">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="emailInput"></label>
-            <input type="text" class="form-control" id="emailInput" placeholder="Company Email (For verification purposes) *">
+        <div class="row justify-content-center">
+          <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
+            <div class="form-group">
+              <label for="companyInput"></label>
+              <input type="text" class="form-control textInput" id="companyInput" placeholder="Company Name *">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="emailInput"></label>
-            <input type="text" class="form-control" id="emailInput2" placeholder="Re-enter Company Email *">
+        <div class="row justify-content-center">
+          <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
+            <div class="form-group">
+              <label for="emailInput"></label>
+              <input type="text" class="form-control textInput" id="emailInput" placeholder="Company Email (For verification purposes) *">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="personalEmailInput"></label>
-            <input type="text" class="form-control" id="personalEmailInput" placeholder="Personal Email (For contact purposes) *">
+        <div class="row justify-content-center">
+          <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
+            <div class="form-group">
+              <label for="emailInput"></label>
+              <input type="text" class="form-control textInput" id="emailInput2" placeholder="Re-enter Company Email *">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="personalEmailInput2"></label>
-            <input type="text" class="form-control" id="personalEmailInput" placeholder="Re-enter Personal Email *">
+        <div class="row justify-content-center">
+          <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
+            <div class="form-group">
+              <label for="personalEmailInput"></label>
+              <input type="text" class="form-control textInput" id="personalEmailInput" placeholder="Personal Email (For contact purposes) *">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="matcherRate" class="noteLabel">For every $1 donated, your company matches $ </label>
-            <input type="number" class="form-control" style="padding-left:5px"id="matcherRate" placeholder="0.50 *">
+        <div class="row justify-content-center">
+          <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
+            <div class="form-group">
+              <label for="personalEmailInput2"></label>
+              <input type="text" class="form-control textInput" id="personalEmailInput" placeholder="Re-enter Personal Email *">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="noteInput" class="noteLabel">Leave a note to your donor! (optional)</label>
-            <textarea class="form-control" id="noteInput" placeholder="Limit to 150 characters" rows="3"></textarea>
+        <div class="row justify-content-center">
+          <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
+            <div class="form-group">
+              <label for="matcherRate" class="noteLabel">For every $1 donated, your company matches $ </label>
+              <input type="number" class="form-control textInput" style="padding-left:5px"id="matcherRate" placeholder="0.50 *">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
+        <div class="row justify-content-center">
+          <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
+            <div class="form-group">
+              <label for="noteInput" class="noteLabel">Leave a note to your donor! (optional)</label>
+              <textarea class="form-control" id="noteInput" placeholder="Limit to 150 characters" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center" id="helper">
+          <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8 text-center">
             <div id="emailNote">Have questions? Email us at teambonobud@gmail.com.</div>
+          </div>
+        </div>
+        <div class="row justify-content-center" id="buttonRow">
             <p><input type="button" class="btn btn-outline-primary" id="backButton" value="Back" onClick="showLayer('page1')"></p>
             <p><input type="button" class="btn btn-outline-primary" id="submitButton" value= Submit!></p>
         </div>
       </div>
-    </form>
 </div>
 
 <!-- bootstrap implementation tags -->

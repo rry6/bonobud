@@ -46,12 +46,7 @@ dsave.addEventListener("click", function(){
 				status: "available" //available = display in feed, matcherid = donor is matched, expired = after 2 weeks
 			})
 			.then(function () {
-        if(isMobile){
-          location.href ='submissionMobile.html';
-        }
-        else{
-          location.href = 'submission.html';
-        }
+        location.href = 'submission.html';
 			})
 			.catch(function (error) {
 				console.error("Error adding donor: ", error);

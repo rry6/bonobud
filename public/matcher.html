@@ -19,6 +19,9 @@
             position: absolute;
             top: 2%;
         }
+        #page1{
+          width: 100%;
+        }
         #titleElement{
             padding: 5px 50px;
             background-color: #FFDAC1;
@@ -83,7 +86,7 @@
         #matcherRate{
             width: 45%;
         }
-        #submitButton, #backButton{
+        #submitButton, #backButton, #firstBackButton{
             border-color:#FFDAC1;
             color:#FFDAC1;
             font-size: 26px;
@@ -96,7 +99,7 @@
         #submitButton{
           margin-left: 20px;
         }
-        #backButton:hover, #submitButton:hover{
+        #backButton:hover, #submitButton:hover, #firstBackButton:hover{
             background-color: #FFDAC1;
             color: #FFFFFF;
         }
@@ -140,7 +143,6 @@
         #searchButton{
             border-color: #FFDAC1;
             color:#000000;
-            position: relative;
         }
         #searchButton:hover{
             color:#FFFFFF;
@@ -161,16 +163,13 @@
             margin-bottom: 15px;
             padding-left:5px;
         }
-        #top{
-            margin-left: 10px;
-        }
         #searchBar{
-            width: 600px;
+            width: 80%;
         }
         #summaryBox{
           margin-top: 20px;
         }
-        @media only screen and (max-width: 540px){
+        @media only screen and (max-width: 576px){
           .textInput{
             font-size: 18px;
           }
@@ -186,7 +185,7 @@
            #emailNote{
              display: none;
            }
-           #backButton, #submitButton{
+           #backButton, #submitButton, #firstBackButton{
              font-size: 18px;
            }
            #backButton{
@@ -202,6 +201,15 @@
              width: 300px;
              height: 125px;
            }
+           #filterButtons{
+             font-size: 14px;
+           }
+           #under25Button, #midButton, #over50Button{
+             font-size: 14px;
+           }
+           #searchBar{
+             font-size: 12px;
+           }
         }
     </style>
 
@@ -215,20 +223,29 @@
     <!-- Page 1 - Feed for finding a donor to match -->
 
       <div id="page1" style="visibility:visible; position:absolute"> <!--select a donor-->
-          <div id="top" class="form-group">
-              <label for="searchBar"></label>
-              <input type="text" class="form-control searchClass" id="searchBar" placeholder="Search by Charity Name" onblur="blurInput()">
-              <input type="button" class="btn btn-outline-primary" id="searchButton" value= "Search!" onClick="search()">
+          <div class="row justify-content-center">
+            <div class="col-xs-8 col-sm-8 col-md-6 col-lg-6 col-xl-6">
+              <div id="top" class="form-group">
+                <label for="searchBar"></label>
+                    <input type="text" class="form-control searchClass" id="searchBar" placeholder="Search by Charity Name" onblur="blurInput()">
+                    <input type="button" class="btn btn-outline-primary" id="searchButton" value= "Search!" onClick="search()">
+              </div>
+            </div>
           </div>
-        <div class = "container-fluid" id = "filterButtons">
-          Filter by amount:
-          <input type="button" class="btn btn-outline-primary" id="under25Button" value= "Less than $25" onClick="loadUnder25()">
-          <input type="button" class="btn btn-outline-primary" id="midButton" value= "$25 - $50" onClick="load25to50()">
-          <input type="button" class="btn btn-outline-primary" id="over50Button" value= "Over $50" onClick="loadOver50()">
+          <div class = "row justify-content-center" id = "filterButtons">
+            <span class="align-middle"> Filter by amount: &nbsp
+            <input type="button" class="btn btn-outline-primary" id="under25Button" value= "Less than $25" onClick="loadUnder25()">
+            <input type="button" class="btn btn-outline-primary" id="midButton" value= "$25 - $50" onClick="load25to50()">
+            <input type="button" class="btn btn-outline-primary" id="over50Button" value= "Over $50" onClick="loadOver50()">
+          </span>
+          </div>
+        <div class = "row justify-content-center" id= "feed"></div>
+        <div class = "row justify-content-center">
+          <p><input type="button" class="btn btn-outline-primary" id="loadButton" value= "Load more" onClick = "more()"></p>
         </div>
-        <div class = "container-fluid" id= "feed"></div>
-        <p><input type="button" class="btn btn-outline-primary" id="loadButton" value= "Load more" onClick = "more()"></p>
-          <p><a href="index.html" class="btn btn-outline-primary" id="backButton" role="button" aria-pressed="true">Back</a></p>
+        <div class= "row justify-content-center">
+          <p><a href="index.html" class="btn btn-outline-primary" id="firstBackButton" role="button" aria-pressed="true">Back</a></p>
+        </div>
       </div>
 
      <!-- Page 2 - Entering the Matcher Information -->

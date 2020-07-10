@@ -202,12 +202,15 @@
              height: 125px;
            }
            #filterButtons{
-             font-size: 14px;
+             font-size: 12px;
            }
            #under25Button, #midButton, #over50Button{
-             font-size: 14px;
+             font-size: 12px;
            }
            #searchBar{
+             font-size: 12px;
+           }
+           #searchButton{
              font-size: 12px;
            }
         }
@@ -233,10 +236,12 @@
             </div>
           </div>
           <div class = "row justify-content-center" id = "filterButtons">
+            <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8 text-center">
             <span class="align-middle"> Filter by amount: &nbsp
             <input type="button" class="btn btn-outline-primary" id="under25Button" value= "Less than $25" onClick="loadUnder25()">
             <input type="button" class="btn btn-outline-primary" id="midButton" value= "$25 - $50" onClick="load25to50()">
             <input type="button" class="btn btn-outline-primary" id="over50Button" value= "Over $50" onClick="loadOver50()">
+          </div>
           </span>
           </div>
         <div class = "row justify-content-center" id= "feed"></div>

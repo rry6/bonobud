@@ -1,19 +1,179 @@
-What happens after I fill out a form?
-Donors: You will receive a confirmation email and your donation request will immediately be posted for matchers to see. We will email you again when your request is matched along with the matcher's email so that you can get in contact.
-Matchers: Reach out to your donor using the information in the confirmation email. After getting in touch with your BonoBuddy, you should donate the agreed amount, have your company match the donation, and then have the donor reimburse you.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta stuff -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-What if I do not receive a confirmation email?
-If you do not receive an email from us within a few minutes of filling out the form, you may have incorrectly entered your information or used an invalid company email. If you think this is the case, you can either resubmit a form or contact us at teambonobud@gmail.com.
+    <!-- bootstrap implementation -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="icon" href="./favicon.png" />
 
-How long are donation postings available?
-We respect your time and want your donation to have the biggest impact possible. That is why each donation request will be posted for a maximum of 2 weeks on our site. We will then notify the donor so that they can donate directly to the charity.
+    <title>Submission Page</title>
+    <style>
+        *{
+            font-family: "Helvetica-Light", Helvetica, sans-serif;
+        }
+        #mainContainer{
+            position: absolute;
+            top: 2%;
+        }
+        #titleElement {
+            padding: 5px 50px;
+            background-color: #708090;
+            border-radius: 25px;
+            color: #FFFFFF;
+            font-size: 36px;
+            -webkit-font-smoothing: antialiased;
+        }
+        #submissionConfirm{
+            margin-top: 100px;
+            font-size: 30px;
+        }
+        .column{
+            float:left;
+            padding:10px;
+        }
+        .left,.right{
+            width: 20%
+        }
+        .middle{
+            width: 60%;
+        }
+        #midRow{
+            margin-top: 30px;
+        }
+        .statement{
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        .faq{
+            font-size: 18px;
+            margin-bottom: 10px;
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+        #homeButton{
+            border-color:#708090;
+            color:#708090;
+            font-size: 26px;
+            border-radius: 25px;
+            padding: 5px 50px;
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+        #homeButton:hover{
+            background-color:#708090;
+            color: #FFFFFF;
+        }
+        .ques{
+            font-weight: bold;
+        }
+        .ans
+        @media only screen and (max-width: 576px){
+          #titleElement{
+            font-size: 26px;
+          }
+          .left, .right{
+            width: 10%;
+          }
+          .middle{
+            width: 80%;
+          }
+          #midRow{
+            margin-top: 10px;
+          }
+          .statement{
+            font-size: 18px;
+          }
+          .faq{
+            font-size: 16px;
+          }
+          #homeButton{
+            font-size: 18px;
+          }
+        }
+    </style>
 
-Can I make more than one donation request or match more than one donation?
-Yes, definitely. As a donor or matcher, feel free to submit as many forms as you can commit to. Remember that it is a waste of time if you do not actually intend on donating.
+</head>
+<body>
+<div class="container-fluid" id="mainContainer">
+    <div class="row justify-content-center">
+        <b id="titleElement">FAQ</b>
+    </div>
+    <div class="row"id="midRow">
+        <div class="column left"></div>
+        <div class="column middle">
+            <div class="row statement justify-content-center" style="text-align: center"><b>Common Questions & Answers</b></div>
+            <div class="row statement justify-content-center" style="margin-bottom:40px;text-align: center">If you have any further questions, feel free to contact us at teambonobud@gmail.com.</div>
+          <div style="background-color:#f5f5f5;border-radius:15px;padding:20px;margin:-15px">
+            <div class="row faq ques">
+              What happens after I fill out a form?
+            </div>
+            <div class="row faq ans">
+              <span> Donors: </span> You will receive a confirmation email and your donation request will immediately be posted for matchers to see. We will email you again when your request is matched along with the matcher's email so that you can get in contact. <br>
+              <span> Matchers: </span> Reach out to your donor using the information in the confirmation email. After getting in touch with your BonoBuddy, you should donate the agreed amount, have your company match the donation, and then have the donor reimburse you. <br>
+            </div>
+            <div class="row faq ques">
+              What if I do not receive a confirmation email?
+            </div>
+            <div class="row faq ans">
+              If you do not receive an email from us within a few minutes of filling out the form, you may have incorrectly entered your information or used an invalid company email. If you think this is the case, you can either resubmit a form or contact us at teambonobud@gmail.com.
+            </div>
+            <div class="row faq ques">
+              How long are donation postings available?
+            </div>
+            <div class="row faq ans">
+              We respect your time and want your donation to have the biggest impact possible. That is why each donation request will be posted for a maximum of 2 weeks on our site. We will then notify the donor so that they can donate directly to the charity.
+            </div>
+            <div class="row faq ques">
+              Can I make more than one donation request or match more than one donation?
+            </div>
+            <div class="row faq ans">
+              Yes, definitely. As a donor or matcher, feel free to submit as many forms as you can commit to. Remember that it is a waste of time if you do not actually intend on donating.
+            </div>
+            <div class="row faq ques">
+              What if my BonoBuddy doesn’t respond?
+            </div>
+            <div class="row faq ans">
+              If the donor or matcher that you are working with becomes unresponsive, they may not wish to donate anymore. However, some people check their emails more frequently than others. Be patient and remember that both parties receive each other’s email addresses. Don’t be afraid to start the conversation!
+              If your BonoBuddy falls through, we encourage you to choose another donation to request or match!
+            </div>
+            <div class="row faq ques">
+              What if I do not trust my BonoBuddy?
+            </div>
+            <div class="row faq ans">
+              If your matcher or donor seems untrustworthy, do not feel pressured to continue the conversation. Report any suspicious activity immediately by sending an email to teambonobud@gmail.com. Note that this is our one and only official email address.
+            </div>
+          </div>
+            <!-- <div class="row question"><b>What happens if my donation isn’t matched?</b></div>
+            <div class="row answer ">If your donation request is not matched within a week, we’ll delist your donation from the site and send you a notification.</div> -->
+            <div class="row justify-content-center">
+                <a href="index.html" class="btn btn-outline-primary" id="homeButton" role="button" aria-pressed="true">Home</a>
+            </div>
+        </div>
+        <div class="column right"></div>
+    </div>
+</div>
 
-What if my BonoBuddy doesn’t respond?
-If the donor or matcher that you are working with becomes unresponsive, they may not wish to donate anymore. However, some people check their emails more frequently than others. Be patient and remember that both parties receive each other’s email addresses. Don’t be afraid to start the conversation!
-If your BonoBuddy falls through, we encourage you to choose another donation to request or match!
+<!-- bootstrap implementation tags -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-What if I do not trust my BonoBuddy?
-If your matcher or donor seems untrustworthy, do not feel pressured to continue the conversation. Report any suspicious activity immediately by sending an email to teambonobud@gmail.com. Note that this is our one and only official email address. 
+<!-- Firestore implementation-->
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+
+
+</body>
+</html>

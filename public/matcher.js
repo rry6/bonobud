@@ -3,13 +3,13 @@ var currentLayer = 'page1';
 //shows the next page of form and hides current page
 function showLayer(lyr){
 	hideLayer(currentLayer);
-	document.getElementById(lyr).style.visibility = 'visible';
+	document.getElementById(lyr).style.display = 'inline';
 	currentLayer = lyr;
 	window.scroll({top: 0, left: 0});
 }
 //hides a specific page
 function hideLayer(lyr){
-	document.getElementById(lyr).style.visibility = 'hidden';
+	document.getElementById(lyr).style.display = 'none';
 }
 
 //Firebase

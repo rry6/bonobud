@@ -202,10 +202,10 @@
              height: 125px;
            }
            #filterButtons{
-             font-size: 12px;
+             font-size: 11px;
            }
            #under25Button, #midButton, #over50Button{
-             font-size: 12px;
+             font-size: 11px;
            }
            #searchBar{
              font-size: 12px;
@@ -214,7 +214,7 @@
              font-size: 12px;
            }
            #searchBar{
-               width: 70%;
+               width: 75%;
            }
         }
     </style>
@@ -228,7 +228,7 @@
 
     <!-- Page 1 - Feed for finding a donor to match -->
 
-      <div id="page1" style="visibility:visible; position:absolute"> <!--select a donor-->
+      <div id="page1" style="display:inline;"> <!--select a donor-->
 
           <div class="row justify-content-center">
             <div class="col-xs-8 col-sm-8 col-md-6 col-lg-6 col-xl-6">
@@ -242,13 +242,12 @@
 
           <div class = "row justify-content-center" id = "filterButtons">
             <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8 text-center">
-            <span class="align-middle"> Filter by amount: &nbsp
-            <input type="button" class="btn btn-outline-primary" id="under25Button" value= "Less than $25" onClick="loadUnder25()">
-            <input type="button" class="btn btn-outline-primary" id="midButton" value= "$25 - $50" onClick="load25to50()">
-            <input type="button" class="btn btn-outline-primary" id="over50Button" value= "Over $50" onClick="loadOver50()">
-          </div>
-
-          </span>
+              <span class="align-middle"> Filter by amount: &nbsp
+                <input type="button" class="btn btn-outline-primary" id="under25Button" value= "Less than $25" onClick="loadUnder25()">
+                <input type="button" class="btn btn-outline-primary" id="midButton" value= "$25 - $50" onClick="load25to50()">
+                <input type="button" class="btn btn-outline-primary" id="over50Button" value= "Over $50" onClick="loadOver50()">
+              </span>
+            </div>
           </div>
         <div class = "row justify-content-center" id= "feed"></div>
         <div class = "row justify-content-center">
@@ -261,7 +260,7 @@
 
      <!-- Page 2 - Entering the Matcher Information -->
 
-      <div id = "page2" style="visibility:hidden;"> <!--info input-->
+      <div id = "page2" style="display:none;"> <!--info input-->
         <!-- add summary of donor -->
         <div class="row justify-content-center" id="summaryBox">
           <div id="donorSummary"> </div>

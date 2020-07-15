@@ -297,7 +297,10 @@ function empty(){
 	var companyInput = document.getElementById("companyInput");
 	var matcherRate = document.getElementById("matcherRate");
 	var emailInput = document.getElementById("emailInput");
+	var secondEmailInput = document.getElementById("emailInput2");
 	var personalEmailInput = document.getElementById("personalEmailInput");
+	var secondPersonalEmailInput = document.getElementById ("personalEmailInput2");
+	var reasonMessage = document.getElementById("noteInput");
 	var alertString = " ";
 
 	var emailRegex = RegExp('^\\S+@\\S+$');
@@ -332,13 +335,45 @@ function empty(){
 		matcherRate.style.boxShadow = "#FFDAC1 0px 1px";
 	}
 
-	//Test company email value and validation
+	//Tests if second company email matches the first
+	if(secondEmailInput.value.trim() != emailInput.value.trim()){
+		emailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		secondEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		alertString = alertString.concat("Make sure both of the company emails match. ");
+		isInvalid = true;
+	}
+	else{
+		emailInput.style.boxShadow = "#FFDAC1 0px 1px";
+		secondEmailInput.style.boxShadow = "#FFDAC1 0px 1px";
+	}
+
+	//Test company email value
 	if(emailInput.value.trim() == ""){
 		emailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
 		isEmpty = true;
 	}
 	else{
 		emailInput.style.boxShadow = "#FFDAC1 0px 1px";
+	}
+
+	//Test second company email value
+	if(secondEmailInput.value.trim() == ""){
+		secondEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		isEmpty = true;
+	}
+	else{
+		secondEmailInput.style.boxShadow = "#FFDAC1 0px 1px";
+	}
+
+	//Tests if second personal email matches the first
+	if(secondPersonalEmailInput.value.trim() != personalEmailInput.value.trim()){
+		personalEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		secondPersonalEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		alertString = alertString.concat("Make sure both of the personal emails match. ");
+		isInvalid = true;
+	}
+	else{
+		secondPersonalEmailInput.style.boxShadow = "#FFDAC1 0px 1px";
 	}
 
 	//Test personal email value and validation
@@ -348,15 +383,34 @@ function empty(){
 	}
 	else if(!emailRegex.test(personalEmailInput.value)){
 		personalEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
-		alertString = alertString.concat(" ","Please enter a valid email.");
+		alertString = alertString.concat("Please enter a valid email. ");
 		isInvalid = true;
 	}
 	else{
 		personalEmailInput.style.boxShadow = "#FFDAC1 0px 1px";
 	}
 
+	//Test second personal company email value
+	if(secondPersonalEmailInput.value.trim() == ""){
+		secondPersonalEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		isEmpty = true;
+	}
+	else{
+		secondPersonalEmailInput.style.boxShadow = "#FFDAC1 0px 1px";
+	}
+
+	//Tests reason input
+	if(reasonMessage.value.trim().length > 150){
+    reasonMessage.style.background =  "rgba(255,105,97, 0.10)";
+    alertString = alertString.concat("Please make sure your note is under 150 characters. ");
+    isInvalid = true;
+  }
+  else{
+    reasonMessage.style.background =  "rgba(255, 218, 193, 0.20)";
+  }
+
 	if(isEmpty){
-		alertString = alertString.concat(" ", "Please fill out all required fields.");
+		alertString = alertString.concat("Please fill out all required fields. ");
 		isInvalid = true;
 	}
 	if(isInvalid){

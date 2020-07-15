@@ -20,11 +20,13 @@
             top: 2%;
         }
         #titleElement{
-            padding: 5px 50px;
+            padding: 5px 0px;
             background-color: #B5EAD7;
             border-radius: 25px;
             color: #FFFFFF;
             font-size: 36px;
+            border-color:#B5EAD7;
+            width:200px;
         }
         #submitForm{
             padding-top: 30px;
@@ -32,7 +34,7 @@
         .textInput{
             display: inline;
             font-size: 26px;
-            width: 94%;
+            width: 100%;
             line-height: unset;
             box-shadow: rgb(181, 234, 215) 0px 1px;
             padding: 0px 0px 1px;
@@ -46,25 +48,27 @@
         }
         #reasonLabel{
             padding-top: 10px;
-            padding-left:5px;
+            padding-left:0px;
             font-size: 26px;
             color: grey;
         }
         #reasonInput{
             padding-top: 10px;
             display: block;
-            width:95%;
+            width: 100%;
             background: rgba(181, 234, 215, 0.20);
             border: none;
-            height: 200px;
-            font-size:26px;
+            height: 130px;
+            font-size:22px;
          }
         #submitButton,#backButton{
             border-color:#B5EAD7;
             color:#B5EAD7;
             font-size: 26px;
             border-radius: 25px;
-            padding: 5px 50px;
+            padding: 5px 0px;
+            margin-bottom: 20px;
+            width: 160px;
         }
         #submitButton:hover,#backButton:hover{
             background-color: #B5EAD7;
@@ -76,20 +80,58 @@
         #submitButton{
           margin-left: 20px;
         }
-        #emailNote{
+        #helpnote{
             font-size: 26px;
+            white-space:nowrap;
             color: grey;
             margin-bottom: 15px;
         }
         #buttonRow{
           margin-top: 10px;
         }
+
+        @media only screen and (max-width: 428.57px){
+          #helpnote{
+              font-size: 4.3vw;
+              margin: 0px 0px 10px;
+          }
+        }
+        @media only screen and (min-width: 428.57px) and (max-width: 576px){
+          #helpnote{
+              font-size: 18px;
+              margin: 0px 0px 10px;
+          }
+        }
+        @media only screen and (min-width: 577px) and (max-width: 638px){
+          #helpnote{
+              font-size: 24px;
+              margin: 0px 0px 10px;
+          }
+        }
+        @media only screen and (min-width: 639px) and (max-width: 767px){
+          #helpnote{
+              font-size: 26px;
+          }
+        }
+        @media only screen and (min-width: 768px) and (max-width: 810px){
+          #helpnote{
+              font-size: 22px;
+          }
+        }
+
+        @media only screen and (min-width: 811px) and (max-width: 880px){
+          #helpnote{
+              font-size: 24px;
+          }
+        }
+
         @media only screen and (max-width: 576px){
           .textInput{
             font-size:18px;
           }
           #titleElement{
             font-size: 26px;
+            width: 160px;
           }
           #submitForm{
             padding-top: 15px;
@@ -104,14 +146,11 @@
             font-size: 18px;
           }
           #reasonInput{
-            font-size: 18px;
-            height: 150px;
-          }
-          #emailNote{
-            display: none;
+            font-size: 14px;
           }
           #submitButton, #backButton{
             font-size: 18px;
+            width: 130px;
           }
         }
     </style>
@@ -120,7 +159,7 @@
 <body>
     <div class="container-fluid" id="mainContainer">
         <div class="row justify-content-center">
-            <b id="titleElement">Donor</b>
+            <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="titleElement"><b>Donor</b></a>
         </div>
         <form action="" id="submitForm">
 
@@ -129,7 +168,6 @@
             <div class="row justify-content-center">
               <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
                   <div class="form-group">
-                    <label for="nameInput"></label>
                     <input type="text" class="form-control textInput" id="nameInput" placeholder="Full Name *" required="true">
                   </div>
               </div>
@@ -137,7 +175,6 @@
             <div class="row justify-content-center">
               <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
                   <div class="form-group">
-                    <label for="emailInput"></label>
                     <input type="text" class="form-control textInput" id="emailInput" placeholder="Email *" required="true">
                   </div>
               </div>
@@ -145,7 +182,6 @@
             <div class="row justify-content-center">
               <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
                 <div class="form-group">
-                  <label for="orgInput"></label>
                   <input type="text" class="form-control textInput" id="orgInput" placeholder="Name of Charitable Organization *" required="true">
                 </div>
               </div>
@@ -153,7 +189,6 @@
             <div class="row justify-content-center">
               <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
                 <div class="form-group">
-                  <label for="linkInput"></label>
                   <input type="text" class="form-control textInput" id="linkInput" placeholder="Link to Donation Portal *" required="true">
                 </div>
               </div>
@@ -161,7 +196,6 @@
             <div class="row justify-content-center">
               <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
                 <div class="form-group">
-                  <label for="amount"></label>
                   <input type="number" class="form-control textInput" id="amount" placeholder="Amount to Donate ($) *" required="true">
                 </div>
               </div>
@@ -170,13 +204,13 @@
               <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
                   <div class="form-group">
                       <label for="reasonInput" id="reasonLabel">Why are you donating? (optional)</label>
-                      <textarea class="form-control" id="reasonInput" placeholder="Limit to 150 characters" rows="3"></textarea>
+                      <textarea class="form-control" id="reasonInput" placeholder="I really liked their mission!" rows="3"></textarea>
                   </div>
               </div>
             </div>
             <div class="row justify-content-center" id="helper">
               <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8 text-center">
-                <div id="emailNote">Have questions? Email us at teambonobud@gmail.com.</div>
+                <div id="helpnote">Have questions? Please read our general <a href="faq.html" style="color: #B5EAD7">FAQs</a>.</div>
               </div>
             </div>
             <div class="row justify-content-center" id="buttonRow">

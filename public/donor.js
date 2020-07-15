@@ -84,6 +84,7 @@ function empty(){
 	var orgInput = document.getElementById("orgInput");
 	var linkInput = document.getElementById("linkInput");
 	var amount = document.getElementById("amount");
+  var reasonMessage = document.getElementById("reasonInput");
 	var isEmpty = false;
 	var alertString = " ";
 	var emailRegex = RegExp('^\\S+@\\S+$');
@@ -107,7 +108,7 @@ function empty(){
 	}
 	else if(!emailRegex.test(emailInput.value)){
 		emailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
-		alertString = alertString.concat(" ","Please enter a valid email.");
+		alertString = alertString.concat("Please enter a valid email. ");
 		isInvalid = true;
 	}
 	else{
@@ -130,7 +131,7 @@ function empty(){
 	}
 	else if(!linkRegex.test(linkInput.value)){
 		linkInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
-		alertString = alertString.concat(" ","Please enter a valid link.");
+		alertString = alertString.concat("Please enter a valid link. ");
 		isInvalid = true;
 	}
 	else{
@@ -138,7 +139,7 @@ function empty(){
 	}
 
 	//Test amount input
-	if(amount.value == null){
+	if(amount.value == 0){
 		amount.style.boxShadow = "rgb(255,105,97) 0px 1px";
 		isEmpty = true;
 	}
@@ -146,8 +147,19 @@ function empty(){
 		amount.style.boxShadow = "rgb(181, 234, 215) 0px 1px";
 	}
 
+  //Test reason input
+
+  if(reasonMessage.value.trim().length > 150){
+    reasonMessage.style.background =  "rgba(255,105,97, 0.10)";
+    alertString = alertString.concat("Please make sure your reason is under 150 characters. ");
+    isInvalid = true;
+  }
+  else{
+    reasonMessage.style.background =  "rgba(181, 234, 215, 0.20)";
+  }
+
 	if(isEmpty){
-		alertString = alertString.concat(" ", "Please fill out all required fields.");
+		alertString = alertString.concat("Please fill out all required fields. ");
 		isInvalid = true;
 	}
 	if(isInvalid){

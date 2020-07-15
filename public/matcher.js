@@ -166,7 +166,6 @@ function saveId(id) {
 
 //clones selected donor box for reference when filling out information form
 function copyBox(id) {
-  console.log(id);
   var clone = document.getElementById(id).cloneNode(true);
   clone.onclick= "";
   document.getElementById("donorSummary").innerHTML = "";

@@ -35,7 +35,7 @@
             padding:10px;
         }
         .left,.right{
-            width: 20%
+            width: 20%;
         }
         .middle{
             width: 60%;
@@ -69,7 +69,7 @@
         .ques{
             font-weight: bold;
         }
-        .ans
+
         @media only screen and (max-width: 576px){
           #titleElement{
             font-size: 26px;
@@ -93,6 +93,15 @@
             font-size: 18px;
           }
         }
+
+        @media only screen and (min-width: 577px) and (max-width: 916px){
+          .left, .right{
+            width: 15%;
+          }
+          .middle{
+            width: 70%;
+          }
+        }
     </style>
 
 </head>
@@ -111,8 +120,10 @@
               What happens after I fill out a form?
             </div>
             <div class="row faq ans">
-              <span> Donors: </span> You will receive a confirmation email and your donation request will immediately be posted for matchers to see. We will email you again when your request is matched along with the matcher's email so that you can get in contact. <br>
-              <span> Matchers: </span> Reach out to your donor using the information in the confirmation email. After getting in touch with your BonoBuddy, you should donate the agreed amount, have your company match the donation, and then have the donor reimburse you. <br>
+              Donors: You will receive a confirmation email and your donation request will immediately be posted for matchers to see. We will email you again when your request is matched along with the matcher's email so that you can get in contact.
+            </div>
+            <div class="row faq ans">
+              Matchers: Reach out to your donor using the information in the confirmation email. After getting in touch with your BonoBuddy, you should donate the agreed amount, have your company match the donation, and then have the donor reimburse you. 
             </div>
             <div class="row faq ques">
               What if I do not receive a confirmation email?

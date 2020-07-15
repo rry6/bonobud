@@ -19,12 +19,14 @@
             top: 2%;
         }
         #titleElement {
-            padding: 5px 50px;
+            padding: 5px 0px;
             background-color: #B5EAD7;
             border-radius: 25px;
             color: #FFFFFF;
             font-size: 36px;
             -webkit-font-smoothing: antialiased;
+            border-color:#B5EAD7;
+            width:200px;
         }
         #submissionConfirm{
             margin-top: 100px;
@@ -67,11 +69,13 @@
             color: #FFFFFF;
         }
         #faqLink{
-          color: #B5EAD7;
+          color: #32b384;
         }
+
         @media only screen and (max-width: 576px){
           #titleElement{
             font-size: 26px;
+            width:160px;
           }
           .left, .right{
             width: 10%;
@@ -92,13 +96,20 @@
             font-size: 18px;
           }
         }
+        @media only screen and (min-width: 577px) and (max-width: 916px){
+          .left, .right{
+            width: 15%;
+          }
+          .middle{
+            width: 70%;
+          }
     </style>
 
 </head>
 <body>
 <div class="container-fluid" id="mainContainer">
     <div class="row justify-content-center">
-        <b id="titleElement">Donor</b>
+        <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="titleElement"><b>Donor</b></a>
     </div>
     <div class="row"id="midRow">
         <div class="column left"></div>
@@ -115,7 +126,7 @@
             <div class="row faq"><b>How long will my donation be posted?</b></div>
             <div class="row faq">We respect your time and want your donation to have the biggest impact possible.
               That is why your donation listing will be up for a maximum of 2 weeks. Then you will have the option to donate directly to the charity. </div>
-            <div class="row faq"><b>For general FAQs, <a href="faq.html" id="faqLink">click here </a> or ask teambonobud@gmail.com!</b></div>
+            <div class="row faq"><b>For general FAQs, <a href="faq.html" id="faqLink">click here</a> or ask teambonobud@gmail.com!</b></div>
           </div>
             <!-- <div class="row question"><b>What happens if my donation isn’t matched?</b></div>
             <div class="row answer ">If your donation request is not matched within a week, we’ll delist your donation from the site and send you a notification.</div> -->

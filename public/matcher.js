@@ -130,10 +130,10 @@ function loadDonors(content){
       var link = doc.data().link;
       var reason = doc.data().reason;
 			var date = doc.data().date.toDate();
-      html += `<div id= ${id} type="button" class="btn btn-outline-success displayBox"
+      html += `<div id= ${id} type="button" class="btn displayBox bigBox"
 			onClick= "saveId('${id}');copyBox('${id}','${link}');showLayer('page2')">
       $${amount} to
-      <a href="${link}" class="btn btn-lg btn-outline-warning displayBox" role="button"
+      <a href="${link}" class="btn btn-lg displayBox linkBox" role="button"
 			target = "_blank" aria-pressed="true"><b>${charity}</b></a>
       <div>By ${name}</div>
       <br>Reason: ${reason}

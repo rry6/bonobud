@@ -131,7 +131,7 @@ function loadDonors(content){
       var reason = doc.data().reason;
 			var date = doc.data().date.toDate();
       html += `<div id= ${id} type="button" class="btn btn-outline-success displayBox"
-			onClick= "saveId('${id}');copyBox('${id}');showLayer('page2')">
+			onClick= "saveId('${id}');copyBox('${id}','${link}');showLayer('page2')">
       $${amount} to
       <a href="${link}" class="btn btn-lg btn-outline-warning displayBox" role="button"
 			target = "_blank" aria-pressed="true"><b>${charity}</b></a>
@@ -165,9 +165,11 @@ function saveId(id) {
 }
 
 //clones selected donor box for reference when filling out information form
-function copyBox(id) {
+function copyBox(id,link) {
   var clone = document.getElementById(id).cloneNode(true);
-  clone.onclick= "";
+  // clone.onclick= "";
+	// clone.style.pointerEvents="none";
+	clone.setAttribute("onclick","window.open('"+link+"', '_blank'); return false;");
   document.getElementById("donorSummary").innerHTML = "";
   document.getElementById("donorSummary").appendChild(clone);
 }

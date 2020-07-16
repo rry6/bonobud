@@ -19,12 +19,15 @@
             top: 2%;
         }
         #titleElement {
-            padding: 5px 50px;
+            padding: 5px 0px;
             background-color: #708090;
             border-radius: 25px;
             color: #FFFFFF;
             font-size: 36px;
             -webkit-font-smoothing: antialiased;
+            border-color:#708090;
+            width:200px;
+            margin-top: 20px;
         }
         #submissionConfirm{
             margin-top: 100px;
@@ -60,7 +63,7 @@
             border-radius: 25px;
             padding: 5px 50px;
             margin-top: 40px;
-            margin-bottom: 10px;
+            margin-bottom: 40px;
         }
         #homeButton:hover{
             background-color:#708090;
@@ -73,6 +76,8 @@
         @media only screen and (max-width: 576px){
           #titleElement{
             font-size: 26px;
+            width:160px;
+            margin-top: 0px;
           }
           .left, .right{
             width: 10%;
@@ -108,7 +113,7 @@
 <body>
 <div class="container-fluid" id="mainContainer">
     <div class="row justify-content-center">
-        <b id="titleElement">FAQ</b>
+        <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="titleElement"><b>FAQs</b></a>
     </div>
     <div class="row"id="midRow">
         <div class="column left"></div>
@@ -120,10 +125,10 @@
               What happens after I fill out a form?
             </div>
             <div class="row faq ans">
-              Donors: You will receive a confirmation email and your donation request will immediately be posted for matchers to see. We will email you again when your request is matched along with the matcher's email so that you can get in contact.
+              Donors: You will receive a confirmation email and your donation request will immediately be posted for matchers to see. We will email you again when your request is selected by a potential matcher, along with the matcher's email address so that you can get in contact.
             </div>
             <div class="row faq ans">
-              Matchers: Reach out to your donor using the information in the confirmation email. After getting in touch with your BonoBuddy, you should donate the agreed amount, have your company match the donation, and then have the donor reimburse you. 
+              Matchers: Reach out to your donor using the information in the confirmation email. After getting in touch with your BonoBuddy, you should donate the agreed amount, have your company match the donation, and then have the donor reimburse you.
             </div>
             <div class="row faq ques">
               What if I do not receive a confirmation email?

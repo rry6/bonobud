@@ -19,15 +19,18 @@
             top: 2%;
         }
         #titleElement {
-            padding: 5px 50px;
+            padding: 5px 0px;
             background-color: #FFDAC1;
             border-radius: 25px;
             color: #FFFFFF;
             font-size: 36px;
             -webkit-font-smoothing: antialiased;
+            border-color:#FFDAC1;
+            width:200px;
+            margin-top: 20px;
         }
-        #submissionConfirm{
-            margin-top: 40px;
+        #submissionFail{
+            margin-top: 50px;
             font-size: 30px;
         }
         #secondConfirm{
@@ -54,27 +57,40 @@
             border-radius: 25px;
             padding: 5px 50px;
             margin-top: 50px;
+            margin-bottom: 40px;
         }
         #homeButton:hover{
             background-color:#FFDAC1;
             color: #FFFFFF;
         }
-
+        @media only screen and (max-width: 576px){
+          #titleElement{
+            font-size: 26px;
+            width:160px;
+            margin-top: 0px;
+          }
+          #submissionFail{
+              margin-top: 30px;
+              font-size: 20px;
+          }
+          #homeButton{
+            font-size: 18px;
+          }
+        }
     </style>
 
 </head>
 <body>
 <div class="container-fluid" id="mainContainer">
     <div class="row justify-content-center">
-        <b id="titleElement">Matcher</b>
-    </div>
-    <br>
-    <div class="row justify-content-center" style="text-align: center" id="submissionConfirm">
-        Something went wrong. Please try again, or contact us at teambonobud@gmail.com.
+        <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="titleElement"><b>Matcher</b></a>
     </div>
     <div class="row"id="midRow">
         <div class="column left"></div>
         <div class="column middle">
+            <div class="row justify-content-center" style="text-align: center" id="submissionFail">
+                Something went wrong. Please try again, or contact us at teambonobud@gmail.com.
+            </div>
             <div class="row justify-content-center">
                 <a href="index.html" class="btn btn-outline-primary" id="homeButton" role="button" aria-pressed="true">Home</a>
             </div>

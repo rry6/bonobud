@@ -64,9 +64,6 @@
             background: none;
             transition: box-shadow 0.1s ease-out 0s;
         }
-        #back2 {
-          justify-content: left;
-        }
         #nextButton{
             border-color:#FFDAC1;
             color:#FFDAC1;
@@ -92,7 +89,7 @@
         #matcherRate{
             width: 20%;
         }
-        #submitButton, #backButton, #firstBackButton{
+        #submitButton, #backButton, #firstBackButton, #back2{
             border-color:#FFDAC1;
             color:#FFDAC1;
             font-size: 26px;
@@ -111,7 +108,7 @@
             background-color: #FFDAC1;
             color: #FFFFFF;
         }
-        .btn-outline-success{
+        .bigBox{
             color: #000000;
             background-color:#FFFFFF;
             margin-bottom:10px;
@@ -120,16 +117,16 @@
             width:500px;
             height: 160px;
         }
-        .btn-outline-success:hover{
+        .bigBox:hover{
             color: #FFFFFF;
             background-color:#FFDAC1;
             border-color: #FFDAC1;
         }
-        .btn-outline-warning{
+        .linkBox{
             color: #000;
             border:none;
         }
-        .btn-outline-warning:hover{
+        .linkBox:hover{
             color: #FFFFFF;
             background:none;
         }
@@ -244,7 +241,7 @@
            .displayBox{
              font-size: 12px;
            }
-           .btn-outline-success{
+           .bigBox{
              width: 300px;
              height: 125px;
            }
@@ -263,6 +260,16 @@
            #searchBar{
                width: 75%;
            }
+
+           #under25Button:hover, #midButton:hover, #over50Button:hover, #searchButton:hover{
+              background-color: inherit;
+              color: inherit;
+          }
+          #under25Button.active:hover, #midButton.active:hover, #over50Button.active:hover, #searchButton.active:hover{
+             background-color: #FFDAC1;
+             color: #FFFFFF;
+         }
+
         }
     </style>
 
@@ -309,7 +316,6 @@
       <div id = "page2" style="display:none;"> <!--info input-->
         <!-- add summary of donor -->
         <div class="row justify-content-center">
-            <input type="button" class="btn btn-outline-primary" id="back2" value="Back" onClick="showLayer('page1')">
             <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="titleElement2"><b>Matcher</b></a>
         </div>
         <div class="row justify-content-center" id="summaryBox">

@@ -132,15 +132,15 @@
             color: #FFFFFF;
             background:none;
         }
-        #under25Button, #midButton, #over50Button{
+        #under25Button, #midButton, #over50Button, #under25_small, #mid_small, #over50_small{
             color: #000000;
             border-color: #FFDAC1;
         }
-        #under25Button:hover, #midButton:hover, #over50Button:hover{
+        #under25Button:hover, #midButton:hover, #over50Button:hover, #under25_small:hover, #mid_small:hover, #over50_small:hover{
             background-color: #FFDAC1;
             color: #FFFFFF;
         }
-        #under25Button.active,#midButton.active,#over50Button.active{
+        #under25Button.active,#midButton.active,#over50Button.active, #under25_small.active, #mid_small.active, #over50_small.active{
             background-color: #FFDAC1;
             color:#FFFFFF;
         }
@@ -274,7 +274,7 @@
            #filterButtons{
              font-size: 11px;
            }
-           #under25Button, #midButton, #over50Button{
+           #under25Button, #midButton, #over50Button, #under25_small, #mid_small, #over50_small{
              font-size: 11px;
            }
            #searchButton{
@@ -282,11 +282,11 @@
              width: 68px;
            }
 
-           #under25Button:hover, #midButton:hover, #over50Button:hover, #searchButton:hover{
+           #under25Button:hover, #midButton:hover, #over50Button:hover, #searchButton:hover, #under25_small:hover, #mid_small:hover, #over50_small:hover{
               background-color: inherit;
               color: inherit;
           }
-          #under25Button.active:hover, #midButton.active:hover, #over50Button.active:hover, #searchButton.active:hover{
+          #under25Button.active:hover, #midButton.active:hover, #over50Button.active:hover, #searchButton.active:hover, #under25_small.active:hover, #mid_small.active:hover, #over50_small.active:hover{
              background-color: #FFDAC1;
              color: #FFFFFF;
          }
@@ -317,12 +317,12 @@
           <div class = "row justify-content-center" id = "filterButtons">
             <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8 text-center">
               <span class="align-middle"> Filter by amount: &nbsp
-                <input type="button" class="btn btn-outline-primary" id="under25Button" value= "Under $25" onClick="loadUnder25()">
-                <input type="button" class="btn btn-outline-primary" id="midButton" value= "$25 to $50" onClick="load25to50()">
-                <input type="button" class="btn btn-outline-primary" id="over50Button" value= "Over $50" onClick="loadOver50()">
-<!--small-->    <input type="button" class="btn btn-outline-primary" id="under25_small" value= "< $25" onClick="loadUnder25()">
-                <input type="button" class="btn btn-outline-primary" id="mid_small" value= "$25 to $50" onClick="load25to50()">
-                <input type="button" class="btn btn-outline-primary" id="over50_small" value= "> $50" onClick="loadOver50()">
+                <input type="button" class="btn btn-outline-primary filter" id="under25Button" value= "Under $25" onClick="loadUnder25()">
+                <input type="button" class="btn btn-outline-primary filter" id="midButton" value= "$25 to $50" onClick="load25to50()">
+                <input type="button" class="btn btn-outline-primary filter" id="over50Button" value= "Over $50" onClick="loadOver50()">
+<!--small-->    <input type="button" class="btn btn-outline-primary filter" id="under25_small" value= "< $25" onClick="loadUnder25()">
+                <input type="button" class="btn btn-outline-primary filter" id="mid_small" value= "$25 - $50" onClick="load25to50()">
+                <input type="button" class="btn btn-outline-primary filter" id="over50_small" value= "> $50" onClick="loadOver50()">
               </span>
             </div>
           </div>

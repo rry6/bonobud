@@ -92,6 +92,9 @@
         #matcherRate{
             width: 20%;
         }
+        #rateLabel{
+          white-space:nowrap;
+        }
         #submitButton, #backButton, #firstBackButton{
             border-color:#FFDAC1;
             color:#FFDAC1;
@@ -114,11 +117,10 @@
         .btn-outline-success{
             color: #000000;
             background-color:#FFFFFF;
-            margin-bottom:10px;
-            margin-right:10px;
             border-color: #FFDAC1;
             width:500px;
             height: 160px;
+            margin:5px;
         }
         .btn-outline-success:hover{
             color: #FFFFFF;
@@ -151,6 +153,7 @@
         #searchButton{
             border-color: #FFDAC1;
             color:#000000;
+            width:82px;
         }
         #searchButton:hover{
             color:#FFFFFF;
@@ -172,7 +175,8 @@
             white-space:nowrap;
         }
         #searchBar{
-            width:80%;
+            width: 390px;
+            font-size:20px;
         }
         #summaryBox{
           margin-top: 20px;
@@ -180,7 +184,29 @@
         #buttonRow{
           margin-top: 10px;
         }
+        @media only screen and (max-width: 358px){
+          #under25Button, #midButton, #over50Button {
+            display: none;
+          }
+        }
+        @media only screen and (min-width: 359px) {
+          #under25_small, #mid_small, #over50_small {
+            display: none;
+          }
+        }
 
+        @media only screen and (max-width: 372px){
+          #searchBar{
+              width: calc(100% - 73px);
+              font-size:12px;
+          }
+        }
+        @media only screen and (min-width: 373px) and (max-width: 576px){
+          #searchBar{
+              width: 262px;
+              font-size:12px;
+          }
+        }
         @media only screen and (max-width: 428.57px){
           #helpnote{
               font-size: 4.3vw;
@@ -254,14 +280,9 @@
            #under25Button, #midButton, #over50Button{
              font-size: 11px;
            }
-           #searchBar{
-             font-size: 12px;
-           }
            #searchButton{
              font-size: 12px;
-           }
-           #searchBar{
-               width: 75%;
+             width: 68px;
            }
         }
     </style>
@@ -278,7 +299,7 @@
             <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="titleElement"><b>Matcher</b></a>
         </div>
           <div class="row justify-content-center">
-            <div class="col-xs-8 col-sm-8 col-md-6 col-lg-6 col-xl-6">
+            <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8 text-center">
               <div class="form-group" style="margin-top:20px">
                     <input type="text" class="form-control searchClass" id="searchBar" placeholder="Search by Charity Name" onblur="blurInput()">
                     <input type="button" class="btn btn-outline-primary" id="searchButton" value= "Search!" onClick="search()">
@@ -289,9 +310,12 @@
           <div class = "row justify-content-center" id = "filterButtons">
             <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8 text-center">
               <span class="align-middle"> Filter by amount: &nbsp
-                <input type="button" class="btn btn-outline-primary" id="under25Button" value= "Less than $25" onClick="loadUnder25()">
-                <input type="button" class="btn btn-outline-primary" id="midButton" value= "$25 - $50" onClick="load25to50()">
+                <input type="button" class="btn btn-outline-primary" id="under25Button" value= "Under $25" onClick="loadUnder25()">
+                <input type="button" class="btn btn-outline-primary" id="midButton" value= "$25 to $50" onClick="load25to50()">
                 <input type="button" class="btn btn-outline-primary" id="over50Button" value= "Over $50" onClick="loadOver50()">
+<!--small-->    <input type="button" class="btn btn-outline-primary" id="under25_small" value= "< $25" onClick="loadUnder25()">
+                <input type="button" class="btn btn-outline-primary" id="mid_small" value= "$25 to $50" onClick="load25to50()">
+                <input type="button" class="btn btn-outline-primary" id="over50_small" value= "> $50" onClick="loadOver50()">
               </span>
             </div>
           </div>
@@ -318,7 +342,7 @@
         <div class="row justify-content-center">
           <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
             <div class="form-group">
-              <input type="text" class="form-control textInput" id="nameInput" placeholder="Full Name *">
+              <input type="text" class="form-control textInput" style="margin-top:10px" id="nameInput" placeholder="Full Name *">
             </div>
           </div>
         </div>
@@ -360,8 +384,8 @@
         <div class="row justify-content-center">
           <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
             <div class="form-group" style="margin: 0px 0px 7px">
-              <label for="matcherRate" class="noteLabel">For every $1 donated, your company matches $</label>
-              <input type="number" class="form-control textInput" id="matcherRate" placeholder="0.50 *">
+              <label for="matcherRate" class="noteLabel">For every $1 donated, your company
+                matches <span class="noteLabel" id=rateLabel>$ <input type="number" class="form-control textInput" id="matcherRate" placeholder="0.50 *"></span></label>
             </div>
           </div>
         </div>

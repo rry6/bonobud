@@ -59,6 +59,9 @@ function activate(button) {
 const under25 = document.querySelector("#under25Button");
 const mid = document.querySelector("#midButton");
 const over50 = document.querySelector("#over50Button");
+const u25small = document.querySelector("#under25_small"); //small screen filter buttons
+const midsmall = document.querySelector("#mid_small");
+const o50small = document.querySelector("#over50_small");
 
 //under $25 button: sets 'load' to only donors under $25 and activates/deactivates the correct buttons
 function loadUnder25(){
@@ -67,15 +70,19 @@ function loadUnder25(){
 		html = "";
 		load = db.collection("donors").where('status', '==', 'available').where('amount', '<', 25).limit(10);
 		loadDonors(load);
-		activate(under25)
+		activate(under25);
 		inactivate(mid);
 		inactivate(over50);
+		activate(u25small);
+		inactivate(midsmall);
+		inactivate(o50small);
 
 	} else { //if under $25 button is active-> deactivates, then loads default feed by date
 		html = "";
 		load = db.collection("donors").where('status', '==', 'available').orderBy("date").limit(10);
 		loadDonors(load);
 		inactivate(under25);
+		inactivate(u25small);
 	}
 }
 
@@ -89,12 +96,16 @@ function load25to50(){
 		activate(mid);
 		inactivate(under25);
 		inactivate(over50);
+		activate(midsmall);
+		inactivate(u25small);
+		inactivate(o50small);
 
 	} else { //if $25-$50 button is active-> deactivates, then loads default feed by date
 		html = "";
 		load = db.collection("donors").where('status', '==', 'available').orderBy("date").limit(10);
 		loadDonors(load);
 		inactivate(mid);
+		inactivate(midsmall);
 	}
 }
 
@@ -108,12 +119,16 @@ function loadOver50() {
 		activate(over50);
 		inactivate(under25);
 		inactivate(mid);
+		activate(o50small);
+		inactivate(u25small);
+		inactivate(midsmall);
 
 	} else { //if over $50 button is active-> deactivates, then loads default feed by date
 		html = "";
 		load = db.collection("donors").where('status', '==', 'available').orderBy("date").limit(10);
 		loadDonors(load);
 		inactivate(over50);
+		inactivate(o50small);
 	}
 }
 
@@ -194,11 +209,17 @@ function search() {
 		searchButton.value = "Cancel"; //turns search button to say cancel when search is complete
 		activate(searchButton);
 		inactivate(under25); //completely inactivate any $ filters previously clicked
+		inactivate(u25small);
 		under25.onclick = "";
+		u25small.onclick = "";
 		inactivate(mid);
+		inactivate(midsmall);
 		mid.onclick = "";
+		midsmall.onclick = "";
 		inactivate(over50);
+		inactivate(o50small);
 		over50.onclick = "";
+		o50small.onclick = "";
 	} else { //if searchButton says 'cancel', then cancel and reset the query
 		searchInput.value = "";
 		searchButton.value = "Search!";
@@ -208,6 +229,9 @@ function search() {
 		under25.setAttribute("onclick", "loadUnder25()"); //reactivate filter by amount buttons
 		mid.setAttribute("onclick", "load25to50()");
 		over50.setAttribute("onclick", "loadOver50()");
+		u25small.setAttribute("onclick", "loadUnder25()"); //same for small screen filter buttons
+		midsmall.setAttribute("onclick", "load25to50()");
+		o50small.setAttribute("onclick", "loadOver50()");
 	}
 }
 

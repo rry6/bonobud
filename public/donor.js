@@ -94,57 +94,57 @@ function empty(){
 
 	//Test name value
 	if(nameInput.value.trim() == ""){
-		nameInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		nameInput.style.borderColor = "rgb(255,105,97)";
 		isEmpty = true;
 	}
 	else{
-		nameInput.style.boxShadow = "rgb(181, 234, 215) 0px 1px";
+		nameInput.style.borderColor = "rgb(181, 234, 215)";
 	}
 
 	//Test email value and validation
 	if(emailInput.value.trim() == ""){
-		emailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		emailInput.style.borderColor = "rgb(255,105,97)";
 		isEmpty = true;
 	}
 	else if(!emailRegex.test(emailInput.value)){
-		emailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		emailInput.style.borderColor = "rgb(255,105,97)";
 		alertString = alertString.concat("Please enter a valid email. ");
 		isInvalid = true;
 	}
 	else{
-		emailInput.style.boxShadow = "rgb(181, 234, 215) 0px 1px";
+		emailInput.style.borderColor = "rgb(181, 234, 215)";
 	}
 
 	//Test org input
 	if(orgInput.value.trim() == ""){
-		orgInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		orgInput.style.borderColor = "rgb(255,105,97)";
 		isEmpty = true;
 	}
 	else{
-		orgInput.style.boxShadow = "rgb(181, 234, 215) 0px 1px";
+		orgInput.style.borderColor = "rgb(181, 234, 215)";
 	}
 
 	//Test link input and validation
 	if(linkInput.value.trim() == ""){
-		linkInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		linkInput.style.borderColor = "rgb(255,105,97)";
 		isEmpty = true;
 	}
 	else if(!linkRegex.test(linkInput.value)){
-		linkInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		linkInput.style.borderColor = "rgb(255,105,97)";
 		alertString = alertString.concat("Please enter a valid link. ");
 		isInvalid = true;
 	}
 	else{
-		linkInput.style.boxShadow = "rgb(181, 234, 215) 0px 1px";
+		linkInput.style.borderColor = "rgb(181, 234, 215)";
 	}
 
 	//Test amount input
 	if(amount.value == 0){
-		amount.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		amount.style.borderColor = "rgb(255,105,97)";
 		isEmpty = true;
 	}
 	else{
-		amount.style.boxShadow = "rgb(181, 234, 215) 0px 1px";
+		amount.style.borderColor = "rgb(181, 234, 215)";
 	}
 
   //Test reason input

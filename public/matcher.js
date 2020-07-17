@@ -317,93 +317,93 @@ function empty(){
 
 	//Test name value
 	if(nameInput.value.trim() == ""){
-		nameInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		nameInput.style.borderColor = "rgb(255,105,97)";
 		isEmpty = true;
 	}
 	else{
-		nameInput.style.boxShadow = "#FFDAC1 0px 1px";
+		nameInput.style.borderColor = "#FFDAC1";
 	}
 
 	//Test company name value
 	if(companyInput.value.trim() == ""){
-		companyInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		companyInput.style.borderColor = "rgb(255,105,97)";
 		isEmpty = true;
 	}
 	else{
-		companyInput.style.boxShadow = "#FFDAC1 0px 1px";
+		companyInput.style.borderColor = "#FFDAC1";
 	}
 
 	//Test rate input
 	if(matcherRate.value == 0){
-		matcherRate.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		matcherRate.style.borderColor = "rgb(255,105,97)";
 		isEmpty = true;
 	}
 	else{
-		matcherRate.style.boxShadow = "#FFDAC1 0px 1px";
+		matcherRate.style.borderColor = "#FFDAC1";
 	}
 
 	//Tests if second company email matches the first
 	if(secondEmailInput.value.trim() != emailInput.value.trim()){
-		emailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
-		secondEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		emailInput.style.borderColor = "rgb(255,105,97)";
+		secondEmailInput.style.borderColor = "rgb(255,105,97)";
 		alertString = alertString.concat("Make sure both of the company emails match. ");
 		isInvalid = true;
 	}
 	else{
-		emailInput.style.boxShadow = "#FFDAC1 0px 1px";
-		secondEmailInput.style.boxShadow = "#FFDAC1 0px 1px";
+		emailInput.style.borderColor = "#FFDAC1";
+		secondEmailInput.style.borderColor = "#FFDAC1";
 	}
 
 	//Test company email value
 	if(emailInput.value.trim() == ""){
-		emailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		emailInput.style.borderColor = "rgb(255,105,97)";
 		isEmpty = true;
 	}
 	else{
-		emailInput.style.boxShadow = "#FFDAC1 0px 1px";
+		emailInput.style.borderColor = "#FFDAC1";
 	}
 
 	//Test second company email value
 	if(secondEmailInput.value.trim() == ""){
-		secondEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		secondEmailInput.style.borderColor = "rgb(255,105,97)";
 		isEmpty = true;
 	}
 	else{
-		secondEmailInput.style.boxShadow = "#FFDAC1 0px 1px";
+		secondEmailInput.style.borderColor = "#FFDAC1";
 	}
 
 	//Tests if second personal email matches the first
 	if(secondPersonalEmailInput.value.trim() != personalEmailInput.value.trim()){
-		personalEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
-		secondPersonalEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		personalEmailInput.style.borderColor = "rgb(255,105,97)";
+		secondPersonalEmailInput.style.borderColor = "rgb(255,105,97)";
 		alertString = alertString.concat("Make sure both of the personal emails match. ");
 		isInvalid = true;
 	}
 	else{
-		secondPersonalEmailInput.style.boxShadow = "#FFDAC1 0px 1px";
+		secondPersonalEmailInput.style.borderColor = "#FFDAC1";
 	}
 
 	//Test personal email value and validation
 	if(personalEmailInput.value.trim() == ""){
-		personalEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		personalEmailInput.style.borderColor = "rgb(255,105,97)";
 		isEmpty = true;
 	}
 	else if(!emailRegex.test(personalEmailInput.value)){
-		personalEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		personalEmailInput.style.borderColor = "rgb(255,105,97)";
 		alertString = alertString.concat("Please enter a valid email. ");
 		isInvalid = true;
 	}
 	else{
-		personalEmailInput.style.boxShadow = "#FFDAC1 0px 1px";
+		personalEmailInput.style.borderColor = "#FFDAC1";
 	}
 
 	//Test second personal company email value
 	if(secondPersonalEmailInput.value.trim() == ""){
-		secondPersonalEmailInput.style.boxShadow = "rgb(255,105,97) 0px 1px";
+		secondPersonalEmailInput.style.borderColor = "rgb(255,105,97)";
 		isEmpty = true;
 	}
 	else{
-		secondPersonalEmailInput.style.boxShadow = "#FFDAC1 0px 1px";
+		secondPersonalEmailInput.style.borderColor = "#FFDAC1";
 	}
 
 	//Tests reason input

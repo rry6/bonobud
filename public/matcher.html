@@ -40,29 +40,40 @@
             width:100%;
             font-size: 26px;
             line-height: unset;
-            box-shadow: #FFDAC1 0px 1px;
+            /* box-shadow: #FFDAC1 0px 1px; */
             padding: 0px 0px 1px;
-            border-width: initial;
+            /* border-width: initial;
             border-style: none;
-            border-color: initial;
+            border-color: initial; */
+            border-style: none none solid none;
+            border-width: 1px;
+            border-color: #FFDAC1;
             outline: none;
             border-radius: 0px;
             background: none;
             transition: box-shadow 0.1s ease-out 0s;
         }
+        .textInput:focus{
+          border-color: #FFDAC1;
+        }
         .searchClass{
             display: inline;
-            font-size: 26px;
             line-height: unset;
-            box-shadow: #FFDAC1 0px 1px;
+            /* box-shadow: #FFDAC1 0px 1px; */
             padding: 0px 0px 1px;
-            border-width: initial;
+            /* border-width: initial;
             border-style: none;
-            border-color: initial;
+            border-color: initial; */
+            border-style: none none solid none;
+            border-width: 1px;
+            border-color: #FFDAC1;
             outline: none;
             border-radius: 0px;
             background: none;
             transition: box-shadow 0.1s ease-out 0s;
+        }
+        .searchClass:focus{
+          border-color: #FFDAC1;
         }
         #nextButton{
             border-color:#FFDAC1;
@@ -118,6 +129,7 @@
             width:500px;
             height: 160px;
             margin:5px;
+            font-size:16px;
         }
         .bigBox:hover{
             color: #FFFFFF;
@@ -127,6 +139,8 @@
         .linkBox{
             color: #000;
             border:none;
+            font-size:20px;
+            padding:8px;
         }
         .linkBox:hover{
             color: #FFFFFF;
@@ -151,6 +165,10 @@
             border-color: #FFDAC1;
             color:#000000;
             width:82px;
+        }
+        #searchButton.active{
+          background-color: #FFDAC1;
+          color:#FFFFFF;
         }
         #searchButton:hover{
             color:#FFFFFF;
@@ -195,13 +213,13 @@
         @media only screen and (max-width: 372px){
           #searchBar{
               width: calc(100% - 73px);
-              font-size:12px;
+              font-size:16px;
           }
         }
         @media only screen and (min-width: 373px) and (max-width: 576px){
           #searchBar{
               width: 262px;
-              font-size:12px;
+              font-size:16px;
           }
         }
         @media only screen and (max-width: 428.57px){
@@ -249,7 +267,7 @@
             margin-top: 0px;
           }
            #noteInput{
-             font-size: 14px;
+             font-size: 16px;
            }
            .noteLabel{
              font-size: 18px;
@@ -257,6 +275,7 @@
            #backButton, #submitButton, #firstBackButton{
              font-size: 18px;
              width:130px;
+             margin-bottom: 100px;
            }
            #backButton{
              margin-right: 10px;
@@ -270,6 +289,9 @@
            .bigBox{
              width: 300px;
              height: 125px;
+           }
+           .linkBox{
+               font-size:14px;
            }
            #filterButtons{
              font-size: 11px;

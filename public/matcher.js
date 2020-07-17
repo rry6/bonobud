@@ -192,6 +192,7 @@ function search() {
 		html = "";
 		loadDonors(output);
 		searchButton.value = "Cancel"; //turns search button to say cancel when search is complete
+		activate(searchButton);
 		inactivate(under25); //completely inactivate any $ filters previously clicked
 		under25.onclick = "";
 		inactivate(mid);
@@ -201,6 +202,7 @@ function search() {
 	} else { //if searchButton says 'cancel', then cancel and reset the query
 		searchInput.value = "";
 		searchButton.value = "Search!";
+		inactivate(searchButton);
 		html = "";
 		loadDefault();
 		under25.setAttribute("onclick", "loadUnder25()"); //reactivate filter by amount buttons
@@ -213,6 +215,7 @@ function search() {
 searchInput.addEventListener("click", function(event) {
 	if (searchButton.value == "Cancel") {
 		searchButton.value = "Search!";
+		inactivate(searchButton);
 	}
 });
 
@@ -220,6 +223,8 @@ searchInput.addEventListener("click", function(event) {
 function blurInput() {
 	if (searchButton.value == "Search!") {
 		searchButton.value = "Cancel";
+		activate(searchButton);
+
 	}
 }
 

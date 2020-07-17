@@ -30,22 +30,28 @@
             margin-top: 20px;
         }
         #submitForm{
-            padding-top: 30px;
+            padding-top: 20px;
         }
         .textInput{
             display: inline;
             font-size: 26px;
             width: 100%;
             line-height: unset;
-            box-shadow: rgb(181, 234, 215) 0px 1px;
+            /* box-shadow: rgb(181, 234, 215) 0px 1px; */
             padding: 0px 0px 1px;
-            border-width: initial;
+            /* border-width: initial;
             border-style: none;
-            border-color: initial;
+            border-color: initial; */
+            border-style: none none solid none;
+            border-width: 1px;
+            border-color: #B5EAD7;
             outline: none;
             border-radius: 0px;
             background: none;
             transition: box-shadow 0.1s ease-out 0s;
+        }
+        .textInput:focus{
+          border-color: #B5EAD7;
         }
         #reasonLabel{
             padding-top: 10px;
@@ -148,7 +154,7 @@
             font-size: 18px;
           }
           #reasonInput{
-            font-size: 14px;
+            font-size: 16px;
           }
           #submitButton, #backButton{
             font-size: 18px;

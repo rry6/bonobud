@@ -150,12 +150,7 @@ function loadDonors(content){
       $${amount} to
       <a href="${link}" class="btn btn-lg linkBox" role="button"
 			target = "_blank" aria-pressed="true"><b>${charity}</b></a>
-	  <div>By ${name}</div>
-	  <div class="container">
-	  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Click here to read ${name}'s reason for donating</button>
-  		<div id="demo" class="collapse">
-  			${reason}
-  		</div>
+      <br>${name}'s reason for giving: ${reason}
       <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</div>`
     })
 		//sets 'load' to the next query to be loaded when 'load more' button is pressed

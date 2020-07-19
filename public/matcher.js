@@ -147,11 +147,11 @@ function loadDonors(content){
 			var date = doc.data().date.toDate();
       html += `<div id= ${id} type="button" class="btn bigBox"
 			onClick= "saveId('${id}');copyBox('${id}','${link}');showLayer('page2')">
-      $${amount} to
-      <a href="${link}" class="btn btn-lg linkBox" role="button"
-			target = "_blank" aria-pressed="true"><b>${charity}</b></a>
-      <br>${name}'s reason for giving: ${reason}
-      <br>Date: ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</div>`
+      ${name} wants to donate $${amount} to
+			<a href="${link}" class="btn btn-lg linkBox" role="button" target = "_blank" aria-pressed="true"><b>${charity}</b></a>
+			<div class="linkBoxSmall"><b>${charity}</b></div>
+      <div class="reasonBox">${reason}</div>
+      <div class="date">${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}</div></div>`
     })
 		//sets 'load' to the next query to be loaded when 'load more' button is pressed
 		var n = querySnapshot.docs.length;

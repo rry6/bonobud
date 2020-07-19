@@ -92,7 +92,8 @@
             padding-top: 10px;
             display: block;
             width:100%;
-            background: rgba(255, 218, 193, 0.20);
+            /* background: rgba(255, 218, 193, 0.20); */
+            background: #FFF7F1;
             border: none;
             height: 130px;
             font-size:22px;
@@ -124,11 +125,14 @@
         }
         .bigBox{
             color: #000000;
-            background-color:#FFFFFF;
+            background-color: #FFF7F1;
             border-color: #FFDAC1;
+            border-radius: 25px;
+            border-width: 2px;
             width:500px;
             height: 200px;
-            margin:5px;
+            margin:7px;
+            padding: 8px 12px 6px;
             font-size:16px;
             display: flex;
             flex-direction: column;
@@ -139,9 +143,7 @@
             appearance: none;
         }
         .bigBox:hover{
-            color: #FFFFFF;
             background-color:#FFDAC1;
-            border-color: #FFDAC1;
         }
         .linkBox{
             color: #000;
@@ -152,6 +154,19 @@
         .linkBox:hover{
             color: #FFFFFF;
             background:none;
+        }
+        .linkBoxSmall{
+          display:none;
+        }
+        .reasonBox{
+          width: 100%;
+          color: #495057;
+          background-color: #ffffff;
+          padding: 5px 10px;
+          margin-bottom: 5px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
         }
         #under25Button, #midButton, #over50Button, #under25_small, #mid_small, #over50_small{
             color: #000000;
@@ -291,9 +306,11 @@
              margin-left: 10px;
            }
            .bigBox{
-             width: 300px;
+             width: 330px;
              height: 180px;
              font-size: 12px;
+             margin-left: 15px;
+             margin-right: 15px;
              display: flex;
              justify-content: center;
              align-items: center;
@@ -301,14 +318,21 @@
            }
            .bigBox:hover{
              color: #000000;
-             background-color:#FFFFFF;
+             background-color: #FFF7F1;
              border-color: #FFDAC1;
            }
-           .linkBox:hover{
-               color: #000;
-           }
            .linkBox{
-               font-size:14px;
+               display:none;
+           }
+           .linkBoxSmall{
+             display:block;
+             color: #000;
+             border:none;
+             font-size:14px;
+             margin: 8px;
+             -webkit-appearance: none;
+             -moz-appearance: none;
+             appearance: none;
            }
            #filterButtons{
              font-size: 11px;

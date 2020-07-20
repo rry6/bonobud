@@ -31,6 +31,11 @@
             border-color:#FFDAC1;
             width:200px;
             margin-top: 20px;
+            margin: auto;
+        }
+        #titleElement2{
+          display: block;
+          position: absolute;
         }
         #submitForm{
             padding-top: 30px;
@@ -104,14 +109,19 @@
         #rateLabel{
           white-space:nowrap;
         }
-        #submitButton, #backButton, #firstBackButton{
+        #submitButton, #backButton, #firstBackButton, #backButton2{
             border-color:#FFDAC1;
             color:#FFDAC1;
             font-size: 26px;
             border-radius: 25px;
             padding: 5px 0px;
-            margin-bottom: 40px;
             width: 160px;
+        }
+        #submitButton, #backButton, #firstBackButton{
+          margin-bottom: 40px;
+        }
+        #backbutton2{
+          margin-bottom: -300;
         }
         #backButton{
             margin-right: 20px;
@@ -119,7 +129,7 @@
         #submitButton{
           margin-left: 20px;
         }
-        #backButton:hover, #submitButton:hover, #firstBackButton:hover{
+        #backButton:hover, #submitButton:hover, #firstBackButton:hover, #backButton2:hover{
             background-color: #FFDAC1;
             color: #FFFFFF;
         }
@@ -307,6 +317,10 @@
              width:130px;
              margin-bottom: 100px;
            }
+           #backButton2{
+             font-size: 18px;
+             width: 75px;
+           }
            #backButton{
              margin-right: 10px;
            }
@@ -372,7 +386,7 @@
     <!-- Page 1 - Feed for finding a donor to match -->
 
       <div id="page1" style="display:inline;"> <!--select a donor-->
-        <div class="row justify-content-center">
+        <div class="row">
             <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="titleElement"><b>Matcher</b></a>
         </div>
           <div class="row justify-content-center">
@@ -410,7 +424,10 @@
       <div id = "page2" style="display:none;"> <!--info input-->
         <!-- add summary of donor -->
         <div class="row justify-content-center">
-            <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="titleElement2"><b>Matcher</b></a>
+          <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
+            <input type="button" class="btn btn-outline-primary " id="backButton2" value= "Feed" onClick="showLayer('page1')">
+          </div>
+          <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="titleElement2"><b>Matcher</b></a>
         </div>
         <div class="row justify-content-center" id="summaryBox">
           <div id="donorSummary"> </div>

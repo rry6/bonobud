@@ -109,7 +109,7 @@
         #rateLabel{
           white-space:nowrap;
         }
-        #submitButton, #backButton, #firstBackButton, #backButton2{
+        #submitButton, #backButton, #firstBackButton{
             border-color:#FFDAC1;
             color:#FFDAC1;
             font-size: 26px;
@@ -117,11 +117,16 @@
             padding: 5px 0px;
             width: 160px;
         }
+        #backButton2 {
+          border-color:#FFDAC1;
+          color:#FFDAC1;
+          font-size: 26px;
+          border-radius: 10px;
+          margin: 5px;
+          /* position:absolute; */
+        }
         #submitButton, #backButton, #firstBackButton{
           margin-bottom: 40px;
-        }
-        #backbutton2{
-          margin-bottom: -300;
         }
         #backButton{
             margin-right: 20px;
@@ -319,7 +324,6 @@
            }
            #backButton2{
              font-size: 18px;
-             width: 75px;
            }
            #backButton{
              margin-right: 10px;
@@ -425,7 +429,7 @@
         <!-- add summary of donor -->
         <div class="row justify-content-center">
           <div class="col-xs-11 col-sm-11 col-md-8 col-lg-8 col-xl-8">
-            <input type="button" class="btn btn-outline-primary " id="backButton2" value= "Feed" onClick="showLayer('page1')">
+            <input type="button" class="btn btn-outline-primary " id="backButton2" value= "<" onClick="showLayer('page1')">
           </div>
           <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="titleElement2"><b>Matcher</b></a>
         </div>

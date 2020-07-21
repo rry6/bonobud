@@ -248,6 +248,23 @@
           #under25Button, #midButton, #over50Button {
             display: none;
           }
+          .bigBox{
+            width: 300px;
+            font-size: 12px;
+          }
+        }
+        @media only screen and (max-width: 576px) and (min-width:358px){
+          .bigBox{
+            width: 330px;
+            height: 180px;
+            font-size: 12px;
+            margin-left: 15px;
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+          }
         }
         @media only screen and (min-width: 359px) {
           #under25_small, #mid_small, #over50_small {
@@ -330,17 +347,6 @@
            }
            #submitButton{
              margin-left: 10px;
-           }
-           .bigBox{
-             width: 330px;
-             height: 180px;
-             font-size: 12px;
-             margin-left: 15px;
-             margin-right: 15px;
-             display: flex;
-             justify-content: center;
-             align-items: center;
-             flex-direction: column;
            }
            .bigBox:hover{
              color: #000000;
@@ -434,7 +440,7 @@
           <a href="index.html" class="btn btn-outline-primary" role="button" aria-pressed="true" id="titleElement2"><b>Matcher</b></a>
         </div>
         <div class="row justify-content-center" id="summaryBox">
-          <div id="donorSummary"> </div>
+          <div class="row justify-content-center" id="donorSummary"> </div>
           <div id="linkHelp">(Click on the box to visit the charity website)</div>
         </div>
         <div class="row justify-content-center">

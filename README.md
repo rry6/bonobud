@@ -9,9 +9,8 @@ This basic version exchanges the emails of the matcher and donor so that the don
 4. Donors are notified of the match (their BonoBuddy) and are given the email of the matcher. 
 
 Launch date: July 21, 2020
-www.bonobud.com
 
-Ann: has been managing Firebase implementation and data storage of matcher and donor information. She wrote both matcher.js and donor.js (works with matcher.html and donor.html respectively) to store and display matcher/donor data from the user forms. She also created her own basic search and filter algorithm to show matchers the different donor requests.
+Ann: has been managing Firebase implementation and data storage of matcher and donor information. She wrote both matcher.js and donor.js (works with matcher.html and donor.html respectively) to store and display matcher/donor data from the user forms. She also created her own basic search and filter functions to show matchers the different donor requests.
 
 Rishab: has been working on UI development with Bootstrap. He designed the website layout, CSS styling, and wrote all the HTML docs. 
 
